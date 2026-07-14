@@ -83,7 +83,7 @@ export default function Home() {
         />
         {/* Karartma katmanı — yazıların okunabilmesi için */}
         <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/40 to-gray-900/10" />
-        <div className="relative w-full pb-28 md:pb-36" style={{ paddingTop: "0px", marginTop: "-12px", paddingLeft: "96px", paddingRight: "40px" }}>
+        <div className="relative w-full pb-16 md:pb-36 px-5 sm:px-10 md:pl-24 md:pr-10" style={{ marginTop: "-12px" }}>
           <div className="max-w-2xl">
             <span className="inline-block bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
               Türkiye&apos;nin Güvenilir Traktör Satıcısı
@@ -91,7 +91,7 @@ export default function Home() {
 
             {/* 3D Pekmezoğlu başlığı */}
             <h1
-              className="text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight mb-3 leading-none"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight mb-3 leading-none"
               style={{
                 color: "#ffffff",
                 textShadow: `

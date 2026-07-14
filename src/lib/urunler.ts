@@ -1,0 +1,137 @@
+export type Urun = {
+  id: number;
+  marka: string;
+  model: string;
+  modelYili: string;
+  guc: string;
+  saat: string;
+  vites: string;
+  kuyrukMili: string;
+  kaldirmaKapasitesi: string;
+  durum: "Sıfır" | "2. El";
+  renk: string;
+  textColor: string;
+  badge: string;
+  fotolar: string[];
+};
+
+export const urunler: Urun[] = [
+  {
+    id: 4,
+    marka: "Erkunt",
+    model: "Servet 80T",
+    modelYili: "2007",
+    guc: "80 HP",
+    saat: "-",
+    vites: "16+8",
+    kuyrukMili: "540 d/d",
+    kaldirmaKapasitesi: "3.200 kg",
+    durum: "2. El",
+    renk: "bg-teal-50",
+    textColor: "text-teal-700",
+    badge: "",
+    fotolar: [
+      "/tractors/erkunt-80t-2.jpg",
+      "/tractors/erkunt-80t-1.jpg",
+      "/tractors/erkunt-80t-3.jpg",
+      "/tractors/erkunt-80t-4.jpg",
+      "/tractors/erkunt-80t-5.jpg",
+      "/tractors/erkunt-80t-6.jpg",
+      "/tractors/erkunt-80t-7.jpg",
+      "/tractors/erkunt-80t-8.jpg",
+      "/tractors/erkunt-80t-9.jpg",
+      "/tractors/erkunt-80t-10.jpg",
+      "/tractors/erkunt-80t-11.jpg",
+      "/tractors/erkunt-80t-12.jpg",
+    ],
+  },
+  {
+    id: 5,
+    marka: "Massey Ferguson",
+    model: "5430",
+    modelYili: "2012",
+    guc: "92 HP",
+    saat: "6.000 saat",
+    vites: "16+16",
+    kuyrukMili: "540 / 540E / 1000 d/d",
+    kaldirmaKapasitesi: "4.300 kg",
+    durum: "2. El",
+    renk: "bg-orange-50",
+    textColor: "text-orange-700",
+    badge: "",
+    fotolar: [
+      "/tractors/mf5430-1.jpg",
+      "/tractors/mf5430-2.jpg",
+      "/tractors/mf5430-3.jpg",
+      "/tractors/mf5430-4.jpg",
+      "/tractors/mf5430-5.jpg",
+      "/tractors/mf5430-6.jpg",
+      "/tractors/mf5430-7.jpg",
+      "/tractors/mf5430-8.jpg",
+      "/tractors/mf5430-9.jpg",
+    ],
+  },
+  {
+    id: 6,
+    marka: "Başak",
+    model: "2090S",
+    modelYili: "2018",
+    guc: "92 HP",
+    saat: "-",
+    vites: "24+24",
+    kuyrukMili: "540 / 540E d/d",
+    kaldirmaKapasitesi: "3.000 kg",
+    durum: "2. El",
+    renk: "bg-red-50",
+    textColor: "text-red-700",
+    badge: "",
+    fotolar: [
+      "/tractors/basak2090s-1.jpg",
+      "/tractors/basak2090s-2.jpg",
+      "/tractors/basak2090s-3.jpg",
+      "/tractors/basak2090s-4.jpg",
+      "/tractors/basak2090s-5.jpg",
+      "/tractors/basak2090s-6.jpg",
+      "/tractors/basak2090s-7.jpg",
+      "/tractors/basak2090s-8.jpg",
+      "/tractors/basak2090s-9.jpg",
+      "/tractors/basak2090s-10.jpg",
+      "/tractors/basak2090s-11.jpg",
+      "/tractors/basak2090s-12.jpg",
+    ],
+  },
+  {
+    id: 7,
+    marka: "New Holland",
+    model: "TD5.100",
+    modelYili: "2022",
+    guc: "100 HP",
+    saat: "768 saat",
+    vites: "12+12",
+    kuyrukMili: "540 / 540E d/d",
+    kaldirmaKapasitesi: "3.565 kg",
+    durum: "2. El",
+    renk: "bg-blue-50",
+    textColor: "text-blue-700",
+    badge: "",
+    fotolar: [
+      "/tractors/nh-td5100-12.jpg",
+      "/tractors/nh-td5100-1.jpg",
+      "/tractors/nh-td5100-2.jpg",
+      "/tractors/nh-td5100-3.jpg",
+      "/tractors/nh-td5100-4.jpg",
+      "/tractors/nh-td5100-5.jpg",
+      "/tractors/nh-td5100-6.jpg",
+      "/tractors/nh-td5100-7.jpg",
+      "/tractors/nh-td5100-8.jpg",
+      "/tractors/nh-td5100-9.jpg",
+      "/tractors/nh-td5100-10.jpg",
+      "/tractors/nh-td5100-11.jpg",
+      "/tractors/nh-td5100-13.jpg",
+      "/tractors/nh-td5100-14.jpg",
+      "/tractors/nh-td5100-15.jpg",
+      "/tractors/nh-td5100-16.jpg",
+      "/tractors/nh-td5100-17.jpg",
+    ],
+  },
+];

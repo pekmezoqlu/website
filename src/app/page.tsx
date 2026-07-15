@@ -78,13 +78,13 @@ export default function Home() {
           alt="Pekmezoğlu Motorlu Araçlar showroom"
           fill
           priority
-          className="object-cover object-center"
+          className="object-contain md:object-cover object-center"
           quality={90}
         />
-        {/* Karartma katmanı — yazıların okunabilmesi için */}
-        <div className="absolute inset-0 bg-gradient-to-r from-gray-900/80 via-gray-900/40 to-gray-900/10" />
-        <div className="relative w-full pb-16 md:pb-36 px-5 sm:px-10 md:pl-24 md:pr-10" style={{ marginTop: "-12px" }}>
-          <div className="max-w-2xl">
+        {/* Karartma katmanı */}
+        <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-gray-900/85 via-gray-900/60 to-gray-900/30" />
+        <div className="relative w-full pb-16 md:pb-36 px-5 sm:px-10 md:pl-24 md:pr-10 text-center md:text-left" style={{ marginTop: "-12px" }}>
+          <div className="max-w-2xl mx-auto md:mx-0">
             <span className="inline-block bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
               Türkiye&apos;nin Güvenilir Traktör Satıcısı
             </span>
@@ -116,7 +116,7 @@ export default function Home() {
               Başak yetkili bayisi olarak sıfır traktörde en iyi fiyat garantisi sunuyoruz.
               Tüm marka ve modellerde 2. el traktör alım & satımı yapıyoruz.
             </p>
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
               <Link
                 href="/urunler"
                 className="bg-red-600 hover:bg-red-700 text-white font-semibold px-7 py-3 rounded-lg transition-colors text-sm md:text-base"

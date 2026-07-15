@@ -121,7 +121,7 @@ export default function Home() {
             <p className="text-lg md:text-xl font-semibold text-red-400 uppercase tracking-widest mb-6">
               Motorlu Araçlar
             </p>
-            <p className="text-lg md:text-xl text-gray-300 mt-52 md:mt-0 mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-300 mt-36 md:mt-0 mb-8 leading-relaxed">
               Başak yetkili bayisi olarak sıfır traktörde en iyi fiyat garantisi sunuyoruz.
               Tüm marka ve modellerde 2. el traktör alım & satımı yapıyoruz.
             </p>

@@ -71,7 +71,7 @@ export default function Home() {
       {/* Hero + İstatistik bar birlikte tam ekran */}
       <div className="flex flex-col md:min-h-[calc(100vh-64px)]">
       {/* Hero */}
-      <section className="relative bg-gray-900 text-white overflow-hidden md:flex-1 flex flex-col justify-start md:justify-center">
+      <section className="relative bg-gray-900 text-white overflow-hidden flex-1 flex flex-col justify-start md:justify-center min-h-[calc(100vh-64px)] md:min-h-0">
         {/* Masaüstü arka plan */}
         <Image
           src="/hero4.png"

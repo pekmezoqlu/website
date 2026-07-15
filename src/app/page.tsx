@@ -94,13 +94,13 @@ export default function Home() {
         <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 md:bg-gradient-to-r md:from-gray-900/80 md:via-gray-900/40 md:to-gray-900/10" />
         <div className="relative w-full pt-8 pb-16 md:pb-36 md:pt-0 px-5 sm:px-10 md:pl-24 md:pr-10 text-center md:text-left">
           <div className="max-w-2xl mx-auto md:mx-0">
-            <span className="inline-block bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
+            <span className="inline-block bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wider mt-20 md:mt-0">
               Türkiye&apos;nin Güvenilir Traktör Satıcısı
             </span>
 
             {/* 3D Pekmezoğlu başlığı */}
             <h1
-              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight mb-3 leading-none mt-20 md:mt-0"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight mb-3 leading-none"
               style={{
                 color: "#ffffff",
                 textShadow: `

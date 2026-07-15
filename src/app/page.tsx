@@ -121,6 +121,9 @@ export default function Home() {
               Pekmezoğlu
             </h1>
 
+            <p className="text-sm md:text-base italic text-white/70 -mt-2 mb-2 tracking-widest">
+              1973&apos;den beri
+            </p>
             <p className="text-lg md:text-xl font-semibold text-red-400 uppercase tracking-widest mb-6">
               Motorlu Araçlar
             </p>

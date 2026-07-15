@@ -105,7 +105,7 @@ export default function FotoGalerisi({ fotolar, baslik }: Props) {
         {fotolar.length > 1 && (
           <>
             <button
-              onClick={onceki}
+              onClick={(e) => { e.stopPropagation(); onceki(); }}
               className="absolute left-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-black/50 hover:bg-black/75 text-white rounded-full flex items-center justify-center transition-colors z-10"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -113,7 +113,7 @@ export default function FotoGalerisi({ fotolar, baslik }: Props) {
               </svg>
             </button>
             <button
-              onClick={sonraki}
+              onClick={(e) => { e.stopPropagation(); sonraki(); }}
               className="absolute right-3 top-1/2 -translate-y-1/2 w-9 h-9 bg-black/50 hover:bg-black/75 text-white rounded-full flex items-center justify-center transition-colors z-10"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -5,22 +5,35 @@ import Footer from "@/components/Footer";
 import WhatsappButton from "@/components/WhatsappButton";
 
 export const metadata: Metadata = {
-  title: "Pekmezoğlu Motorlu Araçlar - Traktör Satış ve Servis",
+  title: {
+    default: "Pekmezoğlu Motorlu Araçlar | Başak Traktör Bayii | Eskişehir",
+    template: "%s | Pekmezoğlu Motorlu Araçlar",
+  },
   description:
-    "Pekmezoğlu Motorlu Araçlar ve Ticaret Ltd. Şti. — Kaliteli traktör satışı, servis ve yedek parça hizmetleri.",
+    "Eskişehir'de Başak Traktör yetkili bayii. Sıfır ve ikinci el traktör satışı, servis ve yedek parça. 1973'den beri güvenilir hizmet.",
+  keywords: ["traktör", "Başak traktör", "Eskişehir traktör", "ikinci el traktör", "Pekmezoğlu"],
   icons: {
     icon: "/icon",
     apple: "/icon",
+  },
+  openGraph: {
+    title: "Pekmezoğlu Motorlu Araçlar | Başak Traktör Bayii",
+    description: "Eskişehir'de Başak Traktör yetkili bayii. Sıfır ve ikinci el traktör satışı.",
+    url: "https://www.pekmezoglu.com",
+    siteName: "Pekmezoğlu Motorlu Araçlar",
+    locale: "tr_TR",
+    type: "website",
   },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "Organization",
+  "@type": "AutoDealer",
   name: "Pekmezoğlu Motorlu Araçlar",
   url: "https://www.pekmezoglu.com",
   logo: "https://www.pekmezoglu.com/icon",
   telephone: "+905457280424",
+  foundingDate: "1973",
   address: {
     "@type": "PostalAddress",
     addressLocality: "Eskişehir",

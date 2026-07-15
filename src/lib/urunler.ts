@@ -115,11 +115,11 @@ export const urunler: Urun[] = [
     textColor: "text-blue-700",
     badge: "",
     fotolar: [
-      "/tractors/nh-td5100-16.jpg",
+      "/tractors/nh-td5100-12.jpg",
       "/tractors/nh-td5100-18.jpg",
       "/tractors/nh-td5100-19.jpg",
       "/tractors/nh-td5100-17.jpg",
-      "/tractors/nh-td5100-12.jpg",
+      "/tractors/nh-td5100-16.jpg",
       "/tractors/nh-td5100-14.jpg",
       "/tractors/nh-td5100-15.jpg",
       "/tractors/nh-td5100-13.jpg",

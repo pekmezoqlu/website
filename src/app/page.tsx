@@ -72,13 +72,22 @@ export default function Home() {
       <div className="flex flex-col md:min-h-[calc(100vh-64px)]">
       {/* Hero */}
       <section className="relative bg-gray-900 text-white overflow-hidden md:flex-1 flex flex-col justify-center">
-        {/* Arka plan fotoğrafı */}
+        {/* Masaüstü arka plan */}
         <Image
           src="/hero4.png"
           alt="Pekmezoğlu Motorlu Araçlar showroom"
           fill
           priority
-          className="object-cover object-center"
+          className="hidden md:block object-cover object-center"
+          quality={90}
+        />
+        {/* Mobil arka plan */}
+        <Image
+          src="/hero-mobile.png"
+          alt="Pekmezoğlu Motorlu Araçlar showroom"
+          fill
+          priority
+          className="block md:hidden object-cover object-center"
           quality={90}
         />
         {/* Karartma katmanı */}

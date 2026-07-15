@@ -204,8 +204,8 @@ export const urunler: Urun[] = [
     textColor: "text-red-700",
     badge: "",
     fotolar: [
-      "/tractors/basak-2055-1.jpg",
       "/tractors/basak-2055-2.jpg",
+      "/tractors/basak-2055-1.jpg",
       "/tractors/basak-2055-3.jpg",
       "/tractors/basak-2055-4.jpg",
       "/tractors/basak-2055-5.jpg",

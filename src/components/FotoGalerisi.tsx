@@ -35,7 +35,7 @@ export default function FotoGalerisi({ fotolar, baslik }: Props) {
           src={fotolar[aktif]}
           alt={`${baslik} - ${aktif + 1}`}
           fill
-          className="object-contain lg:object-cover"
+          className="object-contain"
           priority
         />
 

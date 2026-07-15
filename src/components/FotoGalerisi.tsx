@@ -29,8 +29,8 @@ export default function FotoGalerisi({ fotolar, baslik }: Props) {
 
   return (
     <div className="space-y-2">
-      {/* Ana fotoğraf — landscape container */}
-      <div className="relative bg-black rounded-xl overflow-hidden" style={{ aspectRatio: "4/3" }}>
+      {/* Ana fotoğraf */}
+      <div className="relative bg-white rounded-xl overflow-hidden" style={{ aspectRatio: "9/16" }}>
         <Image
           src={fotolar[aktif]}
           alt={`${baslik} - ${aktif + 1}`}

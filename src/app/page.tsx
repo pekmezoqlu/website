@@ -100,7 +100,7 @@ export default function Home() {
 
             {/* 3D Pekmezoğlu başlığı */}
             <h1
-              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight mb-3 leading-none mt-10 md:mt-0"
+              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight mb-3 leading-none mt-20 md:mt-0"
               style={{
                 color: "#ffffff",
                 textShadow: `
@@ -121,7 +121,7 @@ export default function Home() {
             <p className="text-lg md:text-xl font-semibold text-red-400 uppercase tracking-widest mb-6">
               Motorlu Araçlar
             </p>
-            <p className="text-lg md:text-xl text-gray-300 mt-44 md:mt-0 mb-8 leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-300 mt-52 md:mt-0 mb-8 leading-relaxed">
               Başak yetkili bayisi olarak sıfır traktörde en iyi fiyat garantisi sunuyoruz.
               Tüm marka ve modellerde 2. el traktör alım & satımı yapıyoruz.
             </p>

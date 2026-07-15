@@ -78,7 +78,7 @@ export default function Home() {
           alt="Pekmezoğlu Motorlu Araçlar showroom"
           fill
           priority
-          className="object-contain md:object-cover object-center"
+          className="object-cover object-center"
           quality={90}
         />
         {/* Karartma katmanı */}

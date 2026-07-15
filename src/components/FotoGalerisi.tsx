@@ -30,12 +30,12 @@ export default function FotoGalerisi({ fotolar, baslik }: Props) {
   return (
     <div className="space-y-2">
       {/* Ana fotoğraf */}
-      <div className="relative bg-white rounded-xl overflow-hidden" style={{ aspectRatio: "9/16" }}>
+      <div className="relative bg-white rounded-xl overflow-hidden aspect-[9/16] lg:aspect-[4/3]">
         <Image
           src={fotolar[aktif]}
           alt={`${baslik} - ${aktif + 1}`}
           fill
-          className="object-contain"
+          className="object-contain lg:object-cover"
           priority
         />
 

@@ -43,25 +43,28 @@ const ozellikler = [
 
 const onecikarilan = [
   {
-    ad: "New Holland T5.120",
-    kategori: "Çift Çeker Traktör",
-    beygir: "120 HP",
-    fiyat: "Fiyat için arayın",
+    id: 7,
+    ad: "New Holland TD5.100",
+    kategori: "2. El Traktör",
+    detay: "100 HP • 768 Saat • 2022",
+    foto: "/tractors/nh-td5100-12.jpg",
     renk: "bg-blue-50",
   },
   {
-    ad: "Massey Ferguson 5S.145",
-    kategori: "Çift Çeker Traktör",
-    beygir: "145 HP",
-    fiyat: "Fiyat için arayın",
-    renk: "bg-red-50",
+    id: 5,
+    ad: "Massey Ferguson 5430",
+    kategori: "2. El Traktör",
+    detay: "92 HP • 6.000 Saat • 2012",
+    foto: "/tractors/mf5430-1.jpg",
+    renk: "bg-orange-50",
   },
   {
-    ad: "John Deere 5090R",
-    kategori: "Çift Çeker Traktör",
-    beygir: "90 HP",
-    fiyat: "Fiyat için arayın",
-    renk: "bg-green-50",
+    id: 10,
+    ad: "Başak 2055",
+    kategori: "2. El Traktör",
+    detay: "55 HP • 185 Saat • 2023",
+    foto: "/tractors/basak-2055-2.jpg",
+    renk: "bg-red-50",
   },
 ];
 
@@ -208,31 +211,31 @@ export default function Home() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {onecikarilan.map((urun) => (
-              <div
-                key={urun.ad}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100"
+              <Link
+                key={urun.id}
+                href={`/urunler/${urun.id}`}
+                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group"
               >
-                <div className={`${urun.renk} h-52 flex items-center justify-center`}>
-                  <svg className="w-28 h-28 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10l2 2h10l2-2h1a1 1 0 001-1v-3a1 1 0 00-.293-.707L16 9.586A1 1 0 0015.293 9H13" />
-                  </svg>
+                <div className={`${urun.renk} h-52 relative overflow-hidden`}>
+                  <Image
+                    src={urun.foto}
+                    alt={urun.ad}
+                    fill
+                    className="object-contain group-hover:scale-105 transition-transform duration-300"
+                  />
                 </div>
                 <div className="p-6">
                   <span className="text-xs text-red-600 font-semibold uppercase tracking-wide">{urun.kategori}</span>
                   <h3 className="text-lg font-bold text-gray-900 mt-1 mb-1">{urun.ad}</h3>
-                  <p className="text-gray-500 text-sm mb-4">{urun.beygir} • Dizel</p>
+                  <p className="text-gray-500 text-sm mb-4">{urun.detay}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-red-600 font-bold">{urun.fiyat}</span>
-                    <Link
-                      href="/iletisim"
-                      className="text-sm bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
-                    >
-                      Teklif Al
-                    </Link>
+                    <span className="text-red-600 font-bold">Fiyat için arayın</span>
+                    <span className="text-sm bg-red-600 text-white px-4 py-2 rounded-lg group-hover:bg-red-700 transition-colors">
+                      İncele
+                    </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
 

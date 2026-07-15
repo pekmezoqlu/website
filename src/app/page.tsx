@@ -69,9 +69,9 @@ export default function Home() {
   return (
     <>
       {/* Hero + İstatistik bar birlikte tam ekran */}
-      <div className="flex flex-col" style={{ minHeight: "calc(100vh - 64px)" }}>
+      <div className="flex flex-col md:min-h-[calc(100vh-64px)]">
       {/* Hero */}
-      <section className="relative bg-gray-900 text-white overflow-hidden flex-1 flex flex-col justify-center">
+      <section className="relative bg-gray-900 text-white overflow-hidden md:flex-1 flex flex-col justify-center">
         {/* Arka plan fotoğrafı */}
         <Image
           src="/hero4.png"
@@ -82,8 +82,8 @@ export default function Home() {
           quality={90}
         />
         {/* Karartma katmanı */}
-        <div className="absolute inset-0 bg-gradient-to-b md:bg-gradient-to-r from-gray-900/85 via-gray-900/60 to-gray-900/30" />
-        <div className="relative w-full pb-16 md:pb-36 px-5 sm:px-10 md:pl-24 md:pr-10 text-center md:text-left" style={{ marginTop: "-12px" }}>
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 md:bg-gradient-to-r md:from-gray-900/80 md:via-gray-900/40 md:to-gray-900/10" />
+        <div className="relative w-full py-16 md:pb-36 md:pt-0 px-5 sm:px-10 md:pl-24 md:pr-10 text-center md:text-left" style={{ marginTop: "0px" }}>
           <div className="max-w-2xl mx-auto md:mx-0">
             <span className="inline-block bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full mb-4 uppercase tracking-wider">
               Türkiye&apos;nin Güvenilir Traktör Satıcısı

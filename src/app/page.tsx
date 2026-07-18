@@ -77,7 +77,7 @@ export default function Home() {
       <section className="relative bg-gray-900 text-white overflow-hidden flex-1 flex flex-col justify-start md:justify-center min-h-[calc(100vh-64px)] md:min-h-0">
         {/* Masaüstü arka plan — inset negatif ile zoom-out efekti */}
         <div className="absolute inset-0 hidden md:block overflow-hidden">
-          <div className="absolute inset-[-30%]">
+          <div className="absolute inset-[-5%]">
             <Image
               src="/hero4.png"
               alt="Pekmezoğlu Motorlu Araçlar showroom"

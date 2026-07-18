@@ -75,15 +75,19 @@ export default function Home() {
       <div className="flex flex-col md:min-h-[calc(100vh-64px)]">
       {/* Hero */}
       <section className="relative bg-gray-900 text-white overflow-hidden flex-1 flex flex-col justify-start md:justify-center min-h-[calc(100vh-64px)] md:min-h-0">
-        {/* Masaüstü arka plan */}
-        <Image
-          src="/hero4.png"
-          alt="Pekmezoğlu Motorlu Araçlar showroom"
-          fill
-          priority
-          className="hidden md:block object-cover object-center"
-          quality={90}
-        />
+        {/* Masaüstü arka plan — inset negatif ile zoom-out efekti */}
+        <div className="absolute inset-0 hidden md:block overflow-hidden">
+          <div className="absolute inset-[-12%]">
+            <Image
+              src="/hero4.png"
+              alt="Pekmezoğlu Motorlu Araçlar showroom"
+              fill
+              priority
+              className="object-cover object-center"
+              quality={90}
+            />
+          </div>
+        </div>
         {/* Mobil arka plan */}
         <Image
           src="/hero-mobile.png"
@@ -94,9 +98,9 @@ export default function Home() {
           quality={90}
         />
         {/* Karartma katmanı */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/60 md:bg-gradient-to-r md:from-gray-900/80 md:via-gray-900/40 md:to-gray-900/10" />
-        <div className="relative w-full pt-8 pb-16 md:pb-36 md:pt-0 px-5 sm:px-10 md:pl-24 md:pr-10 text-center md:text-left">
-          <div className="max-w-2xl mx-auto md:mx-0">
+        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+        <div className="relative w-full pt-8 pb-16 px-5 sm:px-10 text-center">
+          <div className="max-w-2xl mx-auto">
             <span className="inline-block bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wider mt-20 md:mt-0">
               Türkiye&apos;nin Güvenilir Traktör Satıcısı
             </span>
@@ -131,7 +135,7 @@ export default function Home() {
               Sıfır traktörde en iyi fiyat garantisi sunuyoruz.
               Tüm marka ve modellerde 2. el traktör alım & satımı yapıyoruz.
             </p>
-            <div className="flex flex-wrap gap-4 justify-center md:justify-start">
+            <div className="flex flex-wrap gap-4 justify-center">
               <Link
                 href="/urunler"
                 className="bg-red-600 hover:bg-red-700 text-white font-semibold px-7 py-3 rounded-lg transition-colors text-sm md:text-base"

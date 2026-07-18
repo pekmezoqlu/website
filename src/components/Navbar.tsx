@@ -9,6 +9,7 @@ const links = [
   { href: "/urunler", label: "Ürünlerimiz" },
   { href: "/hakkimizda", label: "Hakkımızda" },
   { href: "/iletisim", label: "İletişim" },
+  { href: "/teklif", label: "Teklif Al" },
 ];
 
 export default function Navbar() {
@@ -46,7 +47,7 @@ export default function Navbar() {
               </Link>
             ))}
             <Link
-              href="/iletisim"
+              href="/teklif"
               className="bg-red-600 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
             >
               Teklif Al

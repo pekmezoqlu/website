@@ -1,78 +1,20 @@
-"use client";
+import type { Metadata } from "next";
+import Link from "next/link";
 
-import { useState, useRef } from "react";
-import type { FormEvent, DragEvent } from "react";
-
-type Foto = { name: string; data: string; type: string; preview: string };
+export const metadata: Metadata = {
+  title: "İletişim — Pekmezoğlu Motorlu Araçlar",
+  description: "Eskişehir Odunpazarı'nda traktör satış ve servis. Adres, telefon ve harita bilgileri.",
+};
 
 export default function Iletisim() {
-  const [gonderildi, setGonderildi] = useState(false);
-  const [yukleniyor, setYukleniyor] = useState(false);
-  const [hata, setHata] = useState("");
-  const [form, setForm] = useState({ ad: "", telefon: "", email: "", konu: "", mesaj: "" });
-  const [fotolar, setFotolar] = useState<Foto[]>([]);
-  const [surukle, setSurukle] = useState(false);
-  const fileRef = useRef<HTMLInputElement>(null);
-
-  function dosyaEkle(files: FileList | null) {
-    if (!files) return;
-    const yeniList = [...fotolar];
-    for (const file of Array.from(files)) {
-      if (yeniList.length >= 5) break;
-      if (!file.type.startsWith("image/")) continue;
-      if (file.size > 3 * 1024 * 1024) { setHata("Her fotoğraf en fazla 3 MB olabilir."); continue; }
-      setHata("");
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const data = e.target?.result as string;
-        setFotolar((prev) => prev.length < 5 ? [...prev, { name: file.name, data, type: file.type, preview: data }] : prev);
-      };
-      reader.readAsDataURL(file);
-      yeniList.push({ name: file.name, data: "", type: file.type, preview: "" });
-    }
-  }
-
-  function fotoCikar(i: number) {
-    setFotolar((prev) => prev.filter((_, idx) => idx !== i));
-  }
-
-  function onDrop(e: DragEvent) {
-    e.preventDefault();
-    setSurukle(false);
-    dosyaEkle(e.dataTransfer.files);
-  }
-
-  async function handleSubmit(e: FormEvent) {
-    e.preventDefault();
-    setYukleniyor(true);
-    setHata("");
-    try {
-      const res = await fetch("/api/iletisim", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          ...form,
-          fotolar: fotolar.map(({ name, data, type }) => ({ name, data, type })),
-        }),
-      });
-      if (!res.ok) throw new Error();
-      setGonderildi(true);
-    } catch {
-      setHata("Mesaj gönderilemedi, lütfen tekrar deneyin.");
-    } finally {
-      setYukleniyor(false);
-    }
-  }
-
   return (
     <>
-      {/* Başlık */}
       <section className="bg-gray-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <p className="text-red-400 text-sm font-semibold uppercase tracking-widest mb-3">Bize Yazın</p>
+          <p className="text-red-400 text-sm font-semibold uppercase tracking-widest mb-3">Bize Ulaşın</p>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">İletişim</h1>
           <p className="text-gray-400 text-lg max-w-xl">
-            Traktör teklifi, servis randevusu veya herhangi bir konuda bize ulaşın — en kısa sürede dönüş yapalım.
+            Eskişehir Odunpazarı'nda hizmetinizdeyiz. Arayın, yazın veya ziyaret edin.
           </p>
         </div>
       </section>
@@ -80,11 +22,12 @@ export default function Iletisim() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid md:grid-cols-2 gap-16">
-            {/* İletişim bilgileri */}
+
+            {/* Bilgiler */}
             <div>
               <h2 className="text-2xl font-bold text-gray-900 mb-8">Bilgilerimiz</h2>
-
               <div className="space-y-6">
+
                 <div className="flex gap-4">
                   <div className="w-12 h-12 bg-red-100 rounded-xl flex items-center justify-center shrink-0">
                     <svg className="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -153,8 +96,23 @@ export default function Iletisim() {
                 </div>
               </div>
 
-              {/* Google Maps */}
-              <div className="mt-10 rounded-2xl overflow-hidden shadow-sm border border-gray-200 h-56">
+              {/* Teklif Al CTA */}
+              <div className="mt-10 bg-red-50 border border-red-100 rounded-2xl p-6">
+                <p className="font-semibold text-gray-900 mb-1">Fiyat teklifi mi almak istiyorsunuz?</p>
+                <p className="text-gray-500 text-sm mb-4">Traktörünüzün bilgilerini ve fotoğraflarını gönderin, sizi arayalım.</p>
+                <Link
+                  href="/teklif"
+                  className="inline-block bg-red-600 hover:bg-red-700 text-white font-semibold px-6 py-2.5 rounded-xl text-sm transition-colors"
+                >
+                  Teklif Al →
+                </Link>
+              </div>
+            </div>
+
+            {/* Harita */}
+            <div>
+              <h2 className="text-2xl font-bold text-gray-900 mb-8">Konum</h2>
+              <div className="rounded-2xl overflow-hidden shadow-sm border border-gray-200 h-96">
                 <iframe
                   src="https://maps.google.com/maps?q=39.7394427,30.614442&z=16&output=embed"
                   width="100%"
@@ -177,178 +135,6 @@ export default function Iletisim() {
                 </svg>
                 Google Maps&apos;te Aç
               </a>
-            </div>
-
-            {/* Form */}
-            <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8">
-              {gonderildi ? (
-                <div className="text-center py-12">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <h3 className="text-xl font-bold text-gray-900 mb-2">Mesajınız Alındı!</h3>
-                  <p className="text-gray-500">En kısa sürede size dönüş yapacağız.</p>
-                  <button
-                    onClick={() => { setGonderildi(false); setForm({ ad: "", telefon: "", email: "", konu: "", mesaj: "" }); setFotolar([]); }}
-                    className="mt-6 text-red-600 font-semibold text-sm hover:underline"
-                  >
-                    Yeni mesaj gönder
-                  </button>
-                </div>
-              ) : (
-                <>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Fiyat Teklifi Al</h2>
-                  <form onSubmit={handleSubmit} className="space-y-5">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1.5">Ad Soyad *</label>
-                        <input
-                          required
-                          type="text"
-                          value={form.ad}
-                          onChange={(e) => setForm({ ...form, ad: e.target.value })}
-                          placeholder="Adınız Soyadınız"
-                          className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                        />
-                      </div>
-                      <div>
-                        <label className="block text-sm font-medium text-gray-700 mb-1.5">Telefon *</label>
-                        <input
-                          required
-                          type="tel"
-                          value={form.telefon}
-                          onChange={(e) => setForm({ ...form, telefon: e.target.value })}
-                          placeholder="0xxx xxx xx xx"
-                          className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                        />
-                      </div>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">E-posta</label>
-                      <input
-                        type="email"
-                        value={form.email}
-                        onChange={(e) => setForm({ ...form, email: e.target.value })}
-                        placeholder="ornek@email.com"
-                        className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                      />
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">Konu *</label>
-                      <select
-                        required
-                        value={form.konu}
-                        onChange={(e) => setForm({ ...form, konu: e.target.value })}
-                        className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
-                      >
-                        <option value="">Konu seçin</option>
-                        <option>Sıfır traktör fiyat teklifi</option>
-                        <option>2. el traktör satın almak istiyorum</option>
-                        <option>2. el traktörümü satmak istiyorum</option>
-                        <option>Servis & bakım randevusu</option>
-                        <option>Genel bilgi</option>
-                        <option>Diğer</option>
-                      </select>
-                    </div>
-
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">Mesajınız *</label>
-                      <textarea
-                        required
-                        rows={3}
-                        value={form.mesaj}
-                        onChange={(e) => setForm({ ...form, mesaj: e.target.value })}
-                        placeholder="Traktörün markası, modeli, yılı, saati vb. bilgileri yazın..."
-                        className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent resize-none"
-                      />
-                    </div>
-
-                    {/* Fotoğraf yükleme */}
-                    <div>
-                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                        Traktör Fotoğrafları
-                        <span className="text-gray-400 font-normal ml-1">(isteğe bağlı, max 5 foto)</span>
-                      </label>
-
-                      {/* Dropzone */}
-                      <div
-                        onDragOver={(e) => { e.preventDefault(); setSurukle(true); }}
-                        onDragLeave={() => setSurukle(false)}
-                        onDrop={onDrop}
-                        onClick={() => fotolar.length < 5 && fileRef.current?.click()}
-                        className={`relative border-2 border-dashed rounded-xl p-6 text-center transition-colors cursor-pointer ${
-                          surukle ? "border-red-400 bg-red-50" : "border-gray-300 hover:border-red-400 hover:bg-gray-50"
-                        } ${fotolar.length >= 5 ? "opacity-50 cursor-not-allowed" : ""}`}
-                      >
-                        <input
-                          ref={fileRef}
-                          type="file"
-                          accept="image/*"
-                          multiple
-                          className="hidden"
-                          onChange={(e) => dosyaEkle(e.target.files)}
-                        />
-                        <svg className="w-8 h-8 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-                        </svg>
-                        <p className="text-sm text-gray-500">
-                          {fotolar.length >= 5
-                            ? "Maksimum fotoğraf sayısına ulaşıldı"
-                            : "Fotoğrafları buraya sürükleyin veya tıklayın"}
-                        </p>
-                        <p className="text-xs text-gray-400 mt-1">JPG, PNG — max 3 MB/foto</p>
-                      </div>
-
-                      {/* Önizlemeler */}
-                      {fotolar.length > 0 && (
-                        <div className="mt-3 grid grid-cols-5 gap-2">
-                          {fotolar.map((f, i) => (
-                            <div key={i} className="relative aspect-square rounded-lg overflow-hidden border border-gray-200 bg-gray-100">
-                              {f.preview && (
-                                // eslint-disable-next-line @next/next/no-img-element
-                                <img src={f.preview} alt="" className="w-full h-full object-cover" />
-                              )}
-                              <button
-                                type="button"
-                                onClick={() => fotoCikar(i)}
-                                className="absolute top-0.5 right-0.5 w-5 h-5 bg-red-600 text-white rounded-full text-xs flex items-center justify-center hover:bg-red-700"
-                              >
-                                ×
-                              </button>
-                            </div>
-                          ))}
-                        </div>
-                      )}
-                    </div>
-
-                    {hata && (
-                      <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2">
-                        {hata}
-                      </p>
-                    )}
-
-                    <button
-                      type="submit"
-                      disabled={yukleniyor}
-                      className="w-full bg-red-600 hover:bg-red-700 disabled:bg-red-400 text-white font-semibold py-3.5 rounded-xl transition-colors text-sm flex items-center justify-center gap-2"
-                    >
-                      {yukleniyor ? (
-                        <>
-                          <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
-                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
-                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
-                          </svg>
-                          Gönderiliyor...
-                        </>
-                      ) : "Teklif İste"}
-                    </button>
-                  </form>
-                </>
-              )}
             </div>
           </div>
         </div>

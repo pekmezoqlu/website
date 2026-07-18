@@ -51,7 +51,6 @@ export default function Iletisim() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">Telefon</p>
-                    <a href="tel:+905457280424" className="block text-gray-700 text-sm font-medium hover:text-red-600 transition-colors">0545 728 04 24</a>
                     <a href="tel:+905359878980" className="block text-gray-700 text-sm font-medium hover:text-red-600 transition-colors">0535 987 89 80</a>
                   </div>
                 </div>
@@ -64,7 +63,6 @@ export default function Iletisim() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">WhatsApp</p>
-                    <a href="https://wa.me/905457280424" target="_blank" rel="noopener noreferrer" className="block text-gray-700 text-sm font-medium hover:text-red-600 transition-colors">0545 728 04 24</a>
                     <a href="https://wa.me/905359878980" target="_blank" rel="noopener noreferrer" className="block text-gray-700 text-sm font-medium hover:text-red-600 transition-colors">0535 987 89 80</a>
                   </div>
                 </div>

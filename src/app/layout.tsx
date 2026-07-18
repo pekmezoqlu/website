@@ -13,7 +13,10 @@ export const metadata: Metadata = {
     "Eskişehir'de Başak Traktör yetkili bayii. Sıfır ve ikinci el traktör satışı, servis ve yedek parça. 1973'den beri güvenilir hizmet.",
   keywords: ["traktör", "Başak traktör", "Eskişehir traktör", "ikinci el traktör", "Pekmezoğlu"],
   icons: {
-    icon: [{ url: "/favicon.png", type: "image/png" }],
+    icon: [
+      { url: "/favicon.ico", type: "image/x-icon" },
+      { url: "/favicon.png", type: "image/png" },
+    ],
     apple: [{ url: "/favicon.png", type: "image/png" }],
   },
   openGraph: {

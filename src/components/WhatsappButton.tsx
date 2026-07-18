@@ -3,7 +3,6 @@
 import { useState } from "react";
 
 const NUMARALAR = [
-  { label: "0545 728 04 24", href: "https://wa.me/905457280424" },
   { label: "0535 987 89 80", href: "https://wa.me/905359878980" },
 ];
 

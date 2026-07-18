@@ -9,7 +9,6 @@ const links = [
   { href: "/urunler", label: "Ürünlerimiz" },
   { href: "/hakkimizda", label: "Hakkımızda" },
   { href: "/iletisim", label: "İletişim" },
-  { href: "/teklif", label: "Teklif Al" },
 ];
 
 export default function Navbar() {

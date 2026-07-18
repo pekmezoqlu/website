@@ -1,16 +1,67 @@
 "use client";
 
-import { useState } from "react";
-import type { FormEvent } from "react";
+import { useState, useRef } from "react";
+import type { FormEvent, DragEvent } from "react";
+
+type Foto = { name: string; data: string; type: string; preview: string };
 
 export default function Iletisim() {
   const [gonderildi, setGonderildi] = useState(false);
+  const [yukleniyor, setYukleniyor] = useState(false);
+  const [hata, setHata] = useState("");
   const [form, setForm] = useState({ ad: "", telefon: "", email: "", konu: "", mesaj: "" });
+  const [fotolar, setFotolar] = useState<Foto[]>([]);
+  const [surukle, setSurukle] = useState(false);
+  const fileRef = useRef<HTMLInputElement>(null);
 
-  function handleSubmit(e: FormEvent) {
+  function dosyaEkle(files: FileList | null) {
+    if (!files) return;
+    const yeniList = [...fotolar];
+    for (const file of Array.from(files)) {
+      if (yeniList.length >= 5) break;
+      if (!file.type.startsWith("image/")) continue;
+      if (file.size > 3 * 1024 * 1024) { setHata("Her fotoğraf en fazla 3 MB olabilir."); continue; }
+      setHata("");
+      const reader = new FileReader();
+      reader.onload = (e) => {
+        const data = e.target?.result as string;
+        setFotolar((prev) => prev.length < 5 ? [...prev, { name: file.name, data, type: file.type, preview: data }] : prev);
+      };
+      reader.readAsDataURL(file);
+      yeniList.push({ name: file.name, data: "", type: file.type, preview: "" });
+    }
+  }
+
+  function fotoCikar(i: number) {
+    setFotolar((prev) => prev.filter((_, idx) => idx !== i));
+  }
+
+  function onDrop(e: DragEvent) {
     e.preventDefault();
-    // Gerçek gönderim için bir API endpoint bağlayın
-    setGonderildi(true);
+    setSurukle(false);
+    dosyaEkle(e.dataTransfer.files);
+  }
+
+  async function handleSubmit(e: FormEvent) {
+    e.preventDefault();
+    setYukleniyor(true);
+    setHata("");
+    try {
+      const res = await fetch("/api/iletisim", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          ...form,
+          fotolar: fotolar.map(({ name, data, type }) => ({ name, data, type })),
+        }),
+      });
+      if (!res.ok) throw new Error();
+      setGonderildi(true);
+    } catch {
+      setHata("Mesaj gönderilemedi, lütfen tekrar deneyin.");
+    } finally {
+      setYukleniyor(false);
+    }
   }
 
   return (
@@ -57,16 +108,11 @@ export default function Iletisim() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">Telefon</p>
-                    <a href="tel:+905457280424" className="block text-gray-700 text-sm font-medium hover:text-red-600 transition-colors">
-                      0545 728 04 24
-                    </a>
-                    <a href="tel:+905359878980" className="block text-gray-700 text-sm font-medium hover:text-red-600 transition-colors">
-                      0535 987 89 80
-                    </a>
+                    <a href="tel:+905457280424" className="block text-gray-700 text-sm font-medium hover:text-red-600 transition-colors">0545 728 04 24</a>
+                    <a href="tel:+905359878980" className="block text-gray-700 text-sm font-medium hover:text-red-600 transition-colors">0535 987 89 80</a>
                   </div>
                 </div>
 
-                {/* WhatsApp */}
                 <div className="flex gap-4">
                   <div className="w-12 h-12 bg-green-100 rounded-xl flex items-center justify-center shrink-0">
                     <svg className="w-6 h-6 text-green-600" fill="currentColor" viewBox="0 0 24 24">
@@ -75,22 +121,8 @@ export default function Iletisim() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900 mb-1">WhatsApp</p>
-                    <a
-                      href="https://wa.me/905457280424"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-gray-700 text-sm font-medium hover:text-green-600 transition-colors"
-                    >
-                      0545 728 04 24
-                    </a>
-                    <a
-                      href="https://wa.me/905359878980"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="block text-gray-700 text-sm font-medium hover:text-green-600 transition-colors"
-                    >
-                      0535 987 89 80
-                    </a>
+                    <a href="https://wa.me/905457280424" target="_blank" rel="noopener noreferrer" className="block text-gray-700 text-sm font-medium hover:text-green-600 transition-colors">0545 728 04 24</a>
+                    <a href="https://wa.me/905359878980" target="_blank" rel="noopener noreferrer" className="block text-gray-700 text-sm font-medium hover:text-green-600 transition-colors">0535 987 89 80</a>
                   </div>
                 </div>
 
@@ -102,30 +134,8 @@ export default function Iletisim() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">E-posta</p>
-                    <a
-                      href="mailto:pekmezoglu@hotmail.com.tr"
-                      className="text-gray-700 text-sm mt-0.5 font-medium hover:text-red-600 transition-colors"
-                    >
+                    <a href="mailto:pekmezoglu@hotmail.com.tr" className="text-gray-700 text-sm mt-0.5 font-medium hover:text-red-600 transition-colors">
                       pekmezoglu@hotmail.com.tr
-                    </a>
-                  </div>
-                </div>
-
-                <div className="flex gap-4">
-                  <div className="w-12 h-12 bg-gray-900 rounded-xl flex items-center justify-center shrink-0">
-                    <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                      <path d="M19.59 6.69a4.83 4.83 0 01-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 01-2.88 2.5 2.89 2.89 0 01-2.89-2.89 2.89 2.89 0 012.89-2.89c.28 0 .54.04.79.1V9.01a6.27 6.27 0 00-.79-.05 6.34 6.34 0 00-6.34 6.34 6.34 6.34 0 006.34 6.34 6.34 6.34 0 006.33-6.34V8.69a8.18 8.18 0 004.78 1.52V6.79a4.85 4.85 0 01-1.01-.1z"/>
-                    </svg>
-                  </div>
-                  <div>
-                    <p className="font-semibold text-gray-900">TikTok</p>
-                    <a
-                      href="https://www.tiktok.com/@pekmezoqlu"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="text-gray-700 text-sm mt-0.5 font-medium hover:text-gray-900 transition-colors"
-                    >
-                      @pekmezoqlu
                     </a>
                   </div>
                 </div>
@@ -138,9 +148,7 @@ export default function Iletisim() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">Çalışma Saatleri</p>
-                    <p className="text-gray-500 text-sm mt-0.5">
-                      08:00 – 18:00
-                    </p>
+                    <p className="text-gray-500 text-sm mt-0.5">08:00 – 18:00</p>
                   </div>
                 </div>
               </div>
@@ -183,7 +191,7 @@ export default function Iletisim() {
                   <h3 className="text-xl font-bold text-gray-900 mb-2">Mesajınız Alındı!</h3>
                   <p className="text-gray-500">En kısa sürede size dönüş yapacağız.</p>
                   <button
-                    onClick={() => { setGonderildi(false); setForm({ ad: "", telefon: "", email: "", konu: "", mesaj: "" }); }}
+                    onClick={() => { setGonderildi(false); setForm({ ad: "", telefon: "", email: "", konu: "", mesaj: "" }); setFotolar([]); }}
                     className="mt-6 text-red-600 font-semibold text-sm hover:underline"
                   >
                     Yeni mesaj gönder
@@ -191,7 +199,7 @@ export default function Iletisim() {
                 </div>
               ) : (
                 <>
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Mesaj Gönderin</h2>
+                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Fiyat Teklifi Al</h2>
                   <form onSubmit={handleSubmit} className="space-y-5">
                     <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
                       <div>
@@ -251,19 +259,92 @@ export default function Iletisim() {
                       <label className="block text-sm font-medium text-gray-700 mb-1.5">Mesajınız *</label>
                       <textarea
                         required
-                        rows={4}
+                        rows={3}
                         value={form.mesaj}
                         onChange={(e) => setForm({ ...form, mesaj: e.target.value })}
-                        placeholder="Detaylı bilgi yazın..."
+                        placeholder="Traktörün markası, modeli, yılı, saati vb. bilgileri yazın..."
                         className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent resize-none"
                       />
                     </div>
 
+                    {/* Fotoğraf yükleme */}
+                    <div>
+                      <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                        Traktör Fotoğrafları
+                        <span className="text-gray-400 font-normal ml-1">(isteğe bağlı, max 5 foto)</span>
+                      </label>
+
+                      {/* Dropzone */}
+                      <div
+                        onDragOver={(e) => { e.preventDefault(); setSurukle(true); }}
+                        onDragLeave={() => setSurukle(false)}
+                        onDrop={onDrop}
+                        onClick={() => fotolar.length < 5 && fileRef.current?.click()}
+                        className={`relative border-2 border-dashed rounded-xl p-6 text-center transition-colors cursor-pointer ${
+                          surukle ? "border-red-400 bg-red-50" : "border-gray-300 hover:border-red-400 hover:bg-gray-50"
+                        } ${fotolar.length >= 5 ? "opacity-50 cursor-not-allowed" : ""}`}
+                      >
+                        <input
+                          ref={fileRef}
+                          type="file"
+                          accept="image/*"
+                          multiple
+                          className="hidden"
+                          onChange={(e) => dosyaEkle(e.target.files)}
+                        />
+                        <svg className="w-8 h-8 text-gray-400 mx-auto mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <p className="text-sm text-gray-500">
+                          {fotolar.length >= 5
+                            ? "Maksimum fotoğraf sayısına ulaşıldı"
+                            : "Fotoğrafları buraya sürükleyin veya tıklayın"}
+                        </p>
+                        <p className="text-xs text-gray-400 mt-1">JPG, PNG — max 3 MB/foto</p>
+                      </div>
+
+                      {/* Önizlemeler */}
+                      {fotolar.length > 0 && (
+                        <div className="mt-3 grid grid-cols-5 gap-2">
+                          {fotolar.map((f, i) => (
+                            <div key={i} className="relative aspect-square rounded-lg overflow-hidden border border-gray-200 bg-gray-100">
+                              {f.preview && (
+                                // eslint-disable-next-line @next/next/no-img-element
+                                <img src={f.preview} alt="" className="w-full h-full object-cover" />
+                              )}
+                              <button
+                                type="button"
+                                onClick={() => fotoCikar(i)}
+                                className="absolute top-0.5 right-0.5 w-5 h-5 bg-red-600 text-white rounded-full text-xs flex items-center justify-center hover:bg-red-700"
+                              >
+                                ×
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      )}
+                    </div>
+
+                    {hata && (
+                      <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded-lg px-4 py-2">
+                        {hata}
+                      </p>
+                    )}
+
                     <button
                       type="submit"
-                      className="w-full bg-red-600 hover:bg-red-700 text-white font-semibold py-3.5 rounded-xl transition-colors text-sm"
+                      disabled={yukleniyor}
+                      className="w-full bg-red-600 hover:bg-red-700 disabled:bg-red-400 text-white font-semibold py-3.5 rounded-xl transition-colors text-sm flex items-center justify-center gap-2"
                     >
-                      Mesajı Gönder
+                      {yukleniyor ? (
+                        <>
+                          <svg className="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                            <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                            <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                          </svg>
+                          Gönderiliyor...
+                        </>
+                      ) : "Teklif İste"}
                     </button>
                   </form>
                 </>

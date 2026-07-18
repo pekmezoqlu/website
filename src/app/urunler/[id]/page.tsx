@@ -88,7 +88,7 @@ export default async function UrunDetay({ params }: Props) {
             </div>
             <div>
               <p className="font-bold text-sm text-gray-900">Pekmezoğlu Motorlu Araçlar</p>
-              <p className="text-xs text-gray-400 mt-0.5">Başak Yetkili Bayii</p>
+              <p className="text-xs text-gray-400 mt-0.5">Eskişehir</p>
             </div>
           </div>
         </div>
@@ -219,7 +219,7 @@ export default async function UrunDetay({ params }: Props) {
                   </div>
                   <div>
                     <p className="font-bold text-sm text-gray-900">Pekmezoğlu Motorlu Araçlar</p>
-                    <p className="text-xs text-gray-400 mt-0.5">Başak Yetkili Bayii</p>
+                    <p className="text-xs text-gray-400 mt-0.5">Eskişehir</p>
                   </div>
                 </div>
                 <div className="flex flex-col gap-2.5">

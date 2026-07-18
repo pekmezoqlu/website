@@ -6,12 +6,12 @@ import WhatsappButton from "@/components/WhatsappButton";
 
 export const metadata: Metadata = {
   title: {
-    default: "Pekmezoğlu Motorlu Araçlar | Başak Traktör Bayii | Eskişehir",
+    default: "Pekmezoğlu Motorlu Araçlar | Traktör Satış & Servis | Eskişehir",
     template: "%s | Pekmezoğlu Motorlu Araçlar",
   },
   description:
-    "Eskişehir'de Başak Traktör yetkili bayii. Sıfır ve ikinci el traktör satışı, servis ve yedek parça. 1973'den beri güvenilir hizmet.",
-  keywords: ["traktör", "Başak traktör", "Eskişehir traktör", "ikinci el traktör", "Pekmezoğlu"],
+    "Eskişehir'de traktör satışı ve servisi. Sıfır ve ikinci el traktör alım & satım, servis ve yedek parça. 1973'den beri güvenilir hizmet.",
+  keywords: ["traktör", "Eskişehir traktör", "ikinci el traktör", "sıfır traktör", "Pekmezoğlu"],
   icons: {
     icon: [
       { url: "/favicon.ico", type: "image/x-icon" },
@@ -20,8 +20,8 @@ export const metadata: Metadata = {
     apple: [{ url: "/favicon.png", type: "image/png" }],
   },
   openGraph: {
-    title: "Pekmezoğlu Motorlu Araçlar | Başak Traktör Bayii",
-    description: "Eskişehir'de Başak Traktör yetkili bayii. Sıfır ve ikinci el traktör satışı.",
+    title: "Pekmezoğlu Motorlu Araçlar | Traktör Satış & Servis",
+    description: "Eskişehir'de traktör satışı ve servisi. Sıfır ve ikinci el traktör alım & satım.",
     url: "https://www.pekmezoglu.com",
     siteName: "Pekmezoğlu Motorlu Araçlar",
     locale: "tr_TR",

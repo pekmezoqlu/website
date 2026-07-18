@@ -31,8 +31,7 @@ const degerler = [
 ];
 
 const hizmetler = [
-  "Başak traktör yetkili bayiliği",
-  "Yeni Başak traktör satışı",
+  "Sıfır traktör satışı (tüm marka ve modeller)",
   "2. el traktör alım & satım (tüm marka ve modeller)",
   "Periyodik bakım & servis",
   "Garanti kapsamı onarımlar",
@@ -67,8 +66,7 @@ export default function Hakkimizda() {
                   tek amacımız çiftçilerimize en kaliteli traktörleri en uygun koşullarla ulaştırmak olmuştur.
                 </p>
                 <p>
-                  <span className="font-semibold text-gray-900">Başak</span> markasının yetkili bayisi olarak
-                  sıfır traktörde en geniş model yelpazesini ve en iyi fiyat garantisini sunuyoruz. Her müşterimizin
+                  Sıfır traktörde en geniş model yelpazesini ve en iyi fiyat garantisini sunuyoruz. Her müşterimizin
                   tarla büyüklüğünü, arazi yapısını ve bütçesini göz önünde bulundurarak en doğru çözümü birlikte belirliyoruz.
                 </p>
                 <p>

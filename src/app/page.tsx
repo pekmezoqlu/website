@@ -128,7 +128,7 @@ export default function Home() {
               Motorlu Araçlar
             </p>
             <p className="text-lg md:text-xl text-gray-300 mt-40 md:mt-0 mb-8 leading-relaxed">
-              Başak yetkili bayisi olarak sıfır traktörde en iyi fiyat garantisi sunuyoruz.
+              Sıfır traktörde en iyi fiyat garantisi sunuyoruz.
               Tüm marka ve modellerde 2. el traktör alım & satımı yapıyoruz.
             </p>
             <div className="flex flex-wrap gap-4 justify-center md:justify-start">

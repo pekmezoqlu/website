@@ -3,7 +3,7 @@ import UrunlerClient from "@/components/UrunlerClient";
 
 export const metadata: Metadata = {
   title: "Ürünlerimiz — Pekmezoğlu Motorlu Araçlar",
-  description: "Başak yetkili bayii — sıfır ve 2. el traktör satışı. Tüm marka ve modeller.",
+  description: "Sıfır ve 2. el traktör satışı. Tüm marka ve modeller — Eskişehir.",
 };
 
 export default function Urunler() {
@@ -15,7 +15,7 @@ export default function Urunler() {
           <p className="text-red-400 text-sm font-semibold uppercase tracking-widest mb-3">Katalog</p>
           <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Traktör Ürünlerimiz</h1>
           <p className="text-gray-400 text-lg max-w-xl">
-            Başak yetkili bayii — sıfır traktör satışı ve tüm markalarda 2. el alım & satım.
+            Sıfır traktör satışı ve tüm markalarda 2. el alım & satım.
           </p>
         </div>
       </section>

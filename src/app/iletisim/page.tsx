@@ -238,7 +238,7 @@ export default function Iletisim() {
                         className="w-full border border-gray-300 rounded-xl px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-red-500 focus:border-transparent"
                       >
                         <option value="">Konu seçin</option>
-                        <option>Başak sıfır traktör teklifi</option>
+                        <option>Sıfır traktör fiyat teklifi</option>
                         <option>2. el traktör satın almak istiyorum</option>
                         <option>2. el traktörümü satmak istiyorum</option>
                         <option>Servis & bakım randevusu</option>

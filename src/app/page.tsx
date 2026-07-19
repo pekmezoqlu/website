@@ -74,7 +74,7 @@ export default function Home() {
   return (
     <>
       {/* Hero + Stats — tam ekran */}
-      <div className="flex flex-col h-[calc(100vh-80px)]">
+      <div className="flex flex-col h-[calc(100dvh-80px)]">
       {/* Hero */}
       <section className="relative bg-white overflow-hidden flex-1 min-h-0 flex flex-col md:flex-row md:items-center">
 

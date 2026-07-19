@@ -18,7 +18,7 @@ export default function Navbar() {
   return (
     <header className="sticky top-0 z-50 bg-white shadow-md">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="flex items-center h-12">
+        <div className="flex items-center h-20">
           {/* Sol — linkler */}
           <nav className="hidden md:flex items-center gap-8 flex-1">
             {links.map((link) => (

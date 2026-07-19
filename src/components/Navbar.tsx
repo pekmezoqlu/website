@@ -37,13 +37,13 @@ export default function Navbar() {
           </nav>
 
           {/* Orta — logo */}
-          <Link href="/" className="flex items-center gap-2 absolute left-1/2 -translate-x-1/2">
-            <div className="w-9 h-9 bg-red-600 rounded-lg flex items-center justify-center">
-              <span className="text-white font-bold text-lg">P</span>
+          <Link href="/" className="flex items-center gap-2.5 absolute left-1/2 -translate-x-1/2">
+            <div className="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center">
+              <span className="text-white font-bold text-xl">P</span>
             </div>
             <div className="leading-tight">
-              <p className="font-bold text-gray-900 text-sm leading-none">Pekmezoğlu</p>
-              <p className="text-xs text-gray-500 leading-none">Motorlu Araçlar</p>
+              <p className="font-bold text-gray-900 text-base leading-none">Pekmezoğlu</p>
+              <p className="text-xs text-gray-500 leading-none mt-0.5">Motorlu Araçlar</p>
             </div>
           </Link>
 

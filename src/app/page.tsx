@@ -100,14 +100,14 @@ export default function Home() {
               1973&apos;ten Bugüne
               <span className="inline-block w-8 h-0.5 bg-gray-900" />
             </p>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase leading-tight mb-4 text-gray-900">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase mb-4 text-gray-900" style={{ lineHeight: "0.95" }}>
               Pekmezoğlu<br />
               Çiftçilerine<br />
               Özel<br />
               Teklifler.
             </h1>
             <p className="text-gray-500 text-base mb-8 max-w-sm leading-relaxed">
-              Türkiye&apos;nin güvenilir traktör satıcısında sıfır ve ikinci el modeller için size özel avantajları keşfedin.
+              Sıfır ve ikinci el traktörlerde size özel kampanyaları, takas fırsatlarını ve avantajlı fiyatları keşfedin.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link

@@ -76,9 +76,43 @@ export default function Home() {
       {/* Hero + Stats — tam ekran */}
       <div className="flex flex-col h-[calc(100vh-80px)]">
       {/* Hero */}
-      <section className="relative bg-white overflow-hidden flex items-center flex-1 min-h-0">
-        {/* Sağ — traktör fotoğrafı */}
-        <div className="absolute top-0 right-0 w-[60%] h-full z-10 hidden md:block anim-slide-right">
+      <section className="relative bg-white overflow-hidden flex-1 min-h-0 flex flex-col md:flex-row md:items-center">
+
+        {/* MOBİL: fotoğraf üstte, metin altta */}
+        <div className="md:hidden flex flex-col h-full">
+          {/* Fotoğraf */}
+          <div className="relative flex-1 min-h-0">
+            <Image
+              src="/hero-traktor.png"
+              alt="Pekmezoğlu traktörler"
+              fill
+              priority
+              className="object-contain object-center"
+              quality={90}
+            />
+            <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent z-10" />
+          </div>
+          {/* Metin */}
+          <div className="px-5 pb-6 pt-2 text-center anim-slide-left">
+            <h1 className="text-3xl font-black uppercase text-gray-900 mb-3" style={{ lineHeight: "1.15" }}>
+              Pekmezoğlu<br />Çiftçilerine<br />Özel Teklifler.
+            </h1>
+            <p className="text-gray-500 text-sm mb-5 leading-relaxed">
+              1973&apos;ten bu yana güvenilir satış, takas desteği ve size özel avantajlar.
+            </p>
+            <div className="flex gap-3 justify-center">
+              <Link href="/urunler" className="bg-red-600 hover:bg-red-700 text-white font-semibold px-5 py-2.5 rounded-lg text-sm transition-colors">
+                Ürünleri İncele
+              </Link>
+              <Link href="/iletisim" className="border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white font-semibold px-5 py-2.5 rounded-lg text-sm transition-colors">
+                Bize Ulaşın
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* MASAÜSTÜ: fotoğraf sağda, metin solda */}
+        <div className="hidden md:block absolute top-0 right-0 w-[60%] h-full z-10 anim-slide-right">
           <Image
             src="/hero-traktor.png"
             alt="Pekmezoğlu traktörler"
@@ -87,17 +121,12 @@ export default function Home() {
             className="object-contain object-center"
             quality={90}
           />
-          {/* Sol kenar yumuşatma */}
           <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-white to-transparent z-20" />
-          {/* Üst kenar yumuşatma */}
           <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white to-transparent z-20" />
-          {/* Alt kenar yumuşatma */}
           <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent z-20" />
         </div>
-
-        {/* İçerik — sadece sol yarı */}
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-2 lg:px-4">
-          <div className="md:w-1/2 py-14 md:py-20 anim-slide-left">
+        <div className="hidden md:flex relative z-20 w-full max-w-7xl mx-auto px-2 lg:px-4">
+          <div className="w-1/2 py-20 anim-slide-left">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase mb-4 text-gray-900" style={{ lineHeight: "1.15" }}>
               Pekmezoğlu<br />
               Çiftçilerine<br />
@@ -108,33 +137,16 @@ export default function Home() {
               1973&apos;ten bu yana sıfır ve ikinci el traktörlerde güvenilir satış, takas desteği ve size özel avantajlar sunuyoruz.
             </p>
             <div className="flex flex-wrap gap-4">
-              <Link
-                href="/urunler"
-                className="bg-red-600 hover:bg-red-700 text-white font-semibold px-7 py-3 rounded-lg transition-colors flex items-center gap-2"
-              >
+              <Link href="/urunler" className="bg-red-600 hover:bg-red-700 text-white font-semibold px-7 py-3 rounded-lg transition-colors flex items-center gap-2">
                 Ürünleri İncele <span>›</span>
               </Link>
-              <Link
-                href="/iletisim"
-                className="border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white font-semibold px-7 py-3 rounded-lg transition-colors flex items-center gap-2"
-              >
+              <Link href="/iletisim" className="border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white font-semibold px-7 py-3 rounded-lg transition-colors flex items-center gap-2">
                 Bize Ulaşın <span>›</span>
               </Link>
             </div>
           </div>
-
-          {/* Mobil fotoğraf */}
-          <div className="md:hidden w-full">
-            <Image
-              src="/hero-traktor.png"
-              alt="Pekmezoğlu traktörler"
-              width={600}
-              height={400}
-              className="w-full h-auto object-contain"
-              quality={90}
-            />
-          </div>
         </div>
+
       </section>
 
       <StatsBar />

@@ -78,33 +78,34 @@ export default function Home() {
       {/* Hero */}
       <section className="relative bg-white overflow-hidden flex-1 min-h-0 flex flex-col md:flex-row md:items-center">
 
-        {/* MOBİL: fotoğraf tam ekran, metin altta overlay */}
-        <div className="md:hidden absolute inset-0">
-          <Image
-            src="/hero-traktor.png"
-            alt="Pekmezoğlu traktörler"
-            fill
-            priority
-            className="object-contain object-top"
-            quality={90}
-          />
-          {/* Alt gradient */}
-          <div className="absolute inset-x-0 bottom-0 h-2/5 bg-gradient-to-t from-white via-white/90 to-transparent" />
-        </div>
-        <div className="md:hidden absolute bottom-0 left-0 right-0 px-5 pb-6 text-center anim-slide-left">
-          <h1 className="text-3xl font-black uppercase text-gray-900 mb-3" style={{ lineHeight: "1.15" }}>
-            Pekmezoğlu<br />Çiftçilerine<br />Özel Teklifler.
-          </h1>
-          <p className="text-gray-500 text-sm mb-5 leading-relaxed">
-            1973&apos;ten bu yana güvenilir satış, takas desteği ve size özel avantajlar.
-          </p>
-          <div className="flex gap-3 justify-center">
-            <Link href="/urunler" className="bg-red-600 hover:bg-red-700 text-white font-semibold px-5 py-2.5 rounded-lg text-sm transition-colors">
-              Ürünleri İncele
-            </Link>
-            <Link href="/iletisim" className="border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white font-semibold px-5 py-2.5 rounded-lg text-sm transition-colors">
-              Bize Ulaşın
-            </Link>
+        {/* MOBİL: fotoğraf üstte (flex akışında), metin altta */}
+        <div className="md:hidden flex flex-col w-full h-full">
+          <div className="relative min-h-0" style={{ flex: "1 1 0" }}>
+            <Image
+              src="/hero-traktor.png"
+              alt="Pekmezoğlu traktörler"
+              fill
+              priority
+              className="object-contain object-top"
+              quality={90}
+            />
+            <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-white to-transparent z-10" />
+          </div>
+          <div className="shrink-0 px-5 pb-5 pt-1 text-center anim-slide-left">
+            <h1 className="text-2xl font-black uppercase text-gray-900 mb-2" style={{ lineHeight: "1.15" }}>
+              Pekmezoğlu<br />Çiftçilerine Özel Teklifler.
+            </h1>
+            <p className="text-gray-500 text-xs mb-4 leading-relaxed">
+              1973&apos;ten bu yana güvenilir satış, takas desteği ve size özel avantajlar.
+            </p>
+            <div className="flex gap-3 justify-center">
+              <Link href="/urunler" className="bg-red-600 hover:bg-red-700 text-white font-semibold px-4 py-2 rounded-lg text-sm transition-colors">
+                Ürünleri İncele
+              </Link>
+              <Link href="/iletisim" className="border-2 border-red-600 text-red-600 font-semibold px-4 py-2 rounded-lg text-sm transition-colors">
+                Bize Ulaşın
+              </Link>
+            </div>
           </div>
         </div>
 

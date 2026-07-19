@@ -79,7 +79,7 @@ export default function Home() {
       <section className="relative bg-white overflow-hidden flex-1 min-h-0 flex flex-col md:flex-row md:items-center">
 
         {/* MOBİL: fotoğraf üstte (flex akışında), metin altta */}
-        <div className="md:hidden flex flex-col w-full flex-1 min-h-0">
+        <div className="md:hidden flex flex-col w-full flex-1 min-h-0 justify-between">
           <div className="w-full shrink-0">
             <Image
               src="/hero-traktor.png"
@@ -91,9 +91,7 @@ export default function Home() {
               quality={90}
             />
           </div>
-          {/* Boşluk doldurucu — metni aşağı iter */}
-          <div className="flex-1" />
-          <div className="shrink-0 px-5 pb-5 pt-3 text-center anim-slide-left">
+          <div className="shrink-0 px-5 pb-8 pt-4 text-center anim-slide-left">
             <h1 className="text-2xl font-black uppercase text-gray-900 mb-2" style={{ lineHeight: "1.15" }}>
               Pekmezoğlu<br />Çiftçilerine Özel Teklifler.
             </h1>

@@ -74,12 +74,12 @@ export default function Home() {
   return (
     <>
       {/* Hero + Stats — tam ekran */}
-      <div className="flex flex-col h-[calc(100dvh-80px)]">
+      <div className="flex flex-col overflow-hidden" style={{ height: 'calc(100dvh - 80px)' }}>
       {/* Hero */}
       <section className="relative bg-white overflow-hidden flex-1 min-h-0 flex flex-col md:flex-row md:items-center">
 
         {/* MOBİL: fotoğraf üstte (flex akışında), metin altta */}
-        <div className="md:hidden flex flex-col w-full h-full">
+        <div className="md:hidden flex flex-col w-full flex-1 min-h-0">
           <div className="w-full shrink-0">
             <Image
               src="/hero-traktor.png"

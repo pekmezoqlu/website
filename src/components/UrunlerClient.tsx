@@ -106,7 +106,7 @@ export default function UrunlerClient() {
                   </div>
 
                   <div className="p-5">
-                    <span className={`text-xs font-bold uppercase tracking-wide ${urun.textColor}`}>
+                    <span className="text-xs font-bold uppercase tracking-wide text-gray-500">
                       {urun.marka}
                     </span>
                     <h3 className="text-lg font-bold text-gray-900 mt-0.5 mb-3">{urun.model}</h3>

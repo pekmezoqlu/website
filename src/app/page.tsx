@@ -71,10 +71,8 @@ const onecikarilan = [
 export default function Home() {
   return (
     <>
-      {/* Hero + İstatistik bar birlikte tam ekran */}
-      <div className="flex flex-col md:min-h-[calc(100vh-64px)]">
       {/* Hero */}
-      <section className="relative bg-white overflow-hidden flex-1 flex items-center min-h-[calc(100vh-64px)] md:min-h-0">
+      <section className="relative bg-white overflow-hidden flex items-center min-h-[75vh]">
         {/* Sağ — traktör fotoğrafı */}
         <div className="absolute top-0 right-0 w-[60%] h-full z-10 hidden md:block">
           <Image
@@ -85,6 +83,12 @@ export default function Home() {
             className="object-contain object-center"
             quality={90}
           />
+          {/* Sol kenar yumuşatma */}
+          <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-white to-transparent z-20" />
+          {/* Üst kenar yumuşatma */}
+          <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white to-transparent z-20" />
+          {/* Alt kenar yumuşatma */}
+          <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent z-20" />
         </div>
 
         {/* İçerik — sadece sol yarı */}
@@ -135,7 +139,7 @@ export default function Home() {
       </section>
 
       {/* İstatistik bar */}
-      <section className="bg-red-600 text-white shrink-0">
+      <section className="bg-red-600 text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
             {[
@@ -152,7 +156,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-      </div>
 
       {/* Özellikler */}
       <section className="py-20 bg-white">

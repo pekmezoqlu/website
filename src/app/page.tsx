@@ -85,7 +85,7 @@ export default function Home() {
             alt="Pekmezoğlu traktörler"
             fill
             priority
-            className="object-contain object-center"
+            className="object-contain object-top"
             quality={90}
           />
           {/* Alt gradient */}

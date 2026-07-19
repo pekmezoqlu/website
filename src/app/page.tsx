@@ -75,14 +75,8 @@ export default function Home() {
       <div className="flex flex-col md:min-h-[calc(100vh-64px)]">
       {/* Hero */}
       <section className="relative bg-white overflow-hidden flex-1 flex items-center min-h-[calc(100vh-64px)] md:min-h-0">
-        {/* Kırmızı diyagonal alan — section genişliğine göre */}
-        <div
-          className="absolute inset-0 bg-red-600 hidden md:block"
-          style={{ clipPath: "polygon(55% 0%, 100% 0%, 100% 100%, 35% 100%)" }}
-        />
-
-        {/* Sağ — traktör fotoğrafı tam yarı ekran */}
-        <div className="absolute top-0 right-0 w-1/2 h-full z-10 hidden md:block">
+        {/* Sağ — traktör fotoğrafı */}
+        <div className="absolute top-0 right-0 w-[60%] h-full z-10 hidden md:block">
           <Image
             src="/hero-traktor.png"
             alt="Pekmezoğlu traktörler"

@@ -107,7 +107,7 @@ export default function Home() {
               Teklifler.
             </h1>
             <p className="text-gray-500 text-base mb-8 max-w-sm leading-relaxed">
-              Sıfır ve ikinci el traktörlerde size özel kampanyaları, takas fırsatlarını ve avantajlı fiyatları keşfedin.
+              1973&apos;ten bu yana sıfır ve ikinci el traktörlerde güvenilir satış, takas desteği ve size özel avantajlar sunuyoruz.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link

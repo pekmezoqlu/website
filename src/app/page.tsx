@@ -81,7 +81,7 @@ export default function Home() {
         {/* MOBİL: fotoğraf üstte, metin altta */}
         <div className="md:hidden flex flex-col h-full">
           {/* Fotoğraf */}
-          <div className="relative flex-1 min-h-0">
+          <div className="relative min-h-0" style={{ flex: "3" }}>
             <Image
               src="/hero-traktor.png"
               alt="Pekmezoğlu traktörler"
@@ -93,7 +93,7 @@ export default function Home() {
             <div className="absolute inset-x-0 bottom-0 h-16 bg-gradient-to-t from-white to-transparent z-10" />
           </div>
           {/* Metin */}
-          <div className="px-5 pb-6 pt-2 text-center anim-slide-left">
+          <div className="px-5 pb-10 pt-2 text-center anim-slide-left">
             <h1 className="text-3xl font-black uppercase text-gray-900 mb-3" style={{ lineHeight: "1.15" }}>
               Pekmezoğlu<br />Çiftçilerine<br />Özel Teklifler.
             </h1>

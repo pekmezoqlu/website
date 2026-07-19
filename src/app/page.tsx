@@ -100,15 +100,14 @@ export default function Home() {
               1973&apos;ten Bugüne
               <span className="inline-block w-8 h-0.5 bg-red-600" />
             </p>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black uppercase leading-tight mb-4">
-              <span className="text-gray-900">Türkiye&apos;nin</span><br />
-              <span className="text-red-600">Güvenilir</span><br />
-              <span className="text-gray-900">Traktör</span><br />
-              <span className="text-red-600">Satıcısı</span>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black uppercase leading-tight mb-4 text-gray-900">
+              Pekmezoğlu<br />
+              Çiftçilerine<br />
+              Özel<br />
+              <span className="text-red-600">Teklifler.</span>
             </h1>
             <p className="text-gray-500 text-base mb-8 max-w-sm leading-relaxed">
-              Sıfır traktörde en iyi fiyat garantisi sunuyoruz.
-              Tüm marka ve modellerde 2. el alım & satım.
+              Türkiye&apos;nin güvenilir traktör satıcısında sıfır ve ikinci el modeller için size özel avantajları keşfedin.
             </p>
             <div className="flex flex-wrap gap-4">
               <Link

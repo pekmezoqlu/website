@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Footer() {
   return (
-    <footer className="bg-white text-gray-600 border-t border-gray-100">
+    <footer className="bg-black text-gray-400">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
           {/* Brand */}
@@ -12,18 +12,18 @@ export default function Footer() {
                 <span className="text-white font-bold text-lg">P</span>
               </div>
               <div className="leading-tight">
-                <p className="font-bold text-gray-900 text-sm leading-none">Pekmezoğlu</p>
-                <p className="text-xs text-gray-500 leading-none">Motorlu Araçlar</p>
+                <p className="font-bold text-white text-sm leading-none">Pekmezoğlu</p>
+                <p className="text-xs text-gray-400 leading-none">Motorlu Araçlar</p>
               </div>
             </div>
-            <p className="text-sm text-gray-500 leading-relaxed">
+            <p className="text-sm text-gray-400 leading-relaxed">
               Pekmezoğlu Motorlu Araçlar ve Ticaret Ltd. Şti. — Güvenilir traktör satışı ve servis hizmetleri.
             </p>
           </div>
 
           {/* Linkler */}
           <div>
-            <h3 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wider">Sayfalar</h3>
+            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Sayfalar</h3>
             <ul className="space-y-2 text-sm">
               {[
                 { href: "/", label: "Ana Sayfa" },
@@ -42,8 +42,8 @@ export default function Footer() {
 
           {/* İletişim */}
           <div>
-            <h3 className="text-gray-900 font-semibold mb-4 text-sm uppercase tracking-wider">İletişim</h3>
-            <ul className="space-y-2 text-sm text-gray-500">
+            <h3 className="text-white font-semibold mb-4 text-sm uppercase tracking-wider">İletişim</h3>
+            <ul className="space-y-2 text-sm text-gray-400">
               <li className="flex items-start gap-2">
                 <svg className="w-4 h-4 mt-0.5 text-red-500 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
@@ -76,8 +76,8 @@ export default function Footer() {
         </div>
 
         {/* Alt çizgi */}
-        <div className="border-t border-gray-200 mt-10 pt-6">
-          <p className="text-xs text-gray-400 text-center sm:text-left">
+        <div className="border-t border-gray-800 mt-10 pt-6">
+          <p className="text-xs text-gray-500 text-center sm:text-left">
             © {new Date().getFullYear()} Pekmezoğlu Motorlu Araçlar ve Ticaret Ltd. Şti. Tüm hakları saklıdır.
           </p>
         </div>

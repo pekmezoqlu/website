@@ -91,6 +91,8 @@ export default function Home() {
               quality={90}
             />
           </div>
+          {/* Boşluk doldurucu — metni aşağı iter */}
+          <div className="flex-1" />
           <div className="shrink-0 px-5 pb-5 pt-3 text-center anim-slide-left">
             <h1 className="text-2xl font-black uppercase text-gray-900 mb-2" style={{ lineHeight: "1.15" }}>
               Pekmezoğlu<br />Çiftçilerine Özel Teklifler.

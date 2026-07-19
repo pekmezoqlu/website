@@ -100,7 +100,7 @@ export default function Home() {
               1973&apos;ten Bugüne
               <span className="inline-block w-8 h-0.5 bg-gray-900" />
             </p>
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase mb-4 text-gray-900" style={{ lineHeight: "0.95" }}>
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase mb-4 text-gray-900" style={{ lineHeight: "1.15" }}>
               Pekmezoğlu<br />
               Çiftçilerine<br />
               Özel<br />

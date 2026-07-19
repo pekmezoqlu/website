@@ -96,9 +96,9 @@ export default function Home() {
         {/* İçerik — sadece sol yarı */}
         <div className="relative z-20 w-full max-w-7xl mx-auto px-2 lg:px-4">
           <div className="md:w-1/2 py-14 md:py-20">
-            <p className="text-red-600 text-sm font-semibold mb-4 flex items-center gap-2">
+            <p className="text-gray-900 text-sm font-semibold mb-4 flex items-center gap-2">
               1973&apos;ten Bugüne
-              <span className="inline-block w-8 h-0.5 bg-red-600" />
+              <span className="inline-block w-8 h-0.5 bg-gray-900" />
             </p>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase leading-tight mb-4 text-gray-900">
               Pekmezoğlu<br />

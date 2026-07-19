@@ -80,7 +80,7 @@ export default function Home() {
 
         {/* MOBİL: fotoğraf üstte (flex akışında), metin altta */}
         <div className="md:hidden flex flex-col w-full">
-          <div className="w-full shrink-0">
+          <div className="w-full shrink-0 relative">
             <Image
               src="/hero-traktor.png"
               alt="Pekmezoğlu traktörler"
@@ -90,6 +90,10 @@ export default function Home() {
               className="w-full h-auto"
               quality={90}
             />
+            <div className="absolute inset-y-0 left-0 w-10 bg-gradient-to-r from-white to-transparent" />
+            <div className="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white to-transparent" />
+            <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-white to-transparent" />
+            <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-white to-transparent" />
           </div>
           <div className="px-5 pb-8 pt-4 text-center anim-slide-left">
             <h1 className="text-2xl font-black uppercase text-gray-900 mb-2" style={{ lineHeight: "1.15" }}>

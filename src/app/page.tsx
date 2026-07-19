@@ -80,16 +80,22 @@ export default function Home() {
           className="absolute inset-0 bg-red-600 hidden md:block"
           style={{ clipPath: "polygon(55% 0%, 100% 0%, 100% 100%, 35% 100%)" }}
         />
-        {/* Beyaz diyagonal şerit */}
-        <div
-          className="absolute inset-0 bg-white hidden md:block"
-          style={{ clipPath: "polygon(50% 0%, 59% 0%, 39% 100%, 30% 100%)" }}
-        />
 
-        {/* İçerik */}
-        <div className="relative w-full max-w-7xl mx-auto px-6 lg:px-12 grid md:grid-cols-[1fr_1.5fr] items-center">
-          {/* Sol — metin */}
-          <div className="py-14 md:py-20 z-10">
+        {/* Sağ — traktör fotoğrafı tam yarı ekran */}
+        <div className="absolute top-0 right-0 w-1/2 h-full z-10 hidden md:block">
+          <Image
+            src="/hero-traktor.png"
+            alt="Pekmezoğlu traktörler"
+            fill
+            priority
+            className="object-contain object-center"
+            quality={90}
+          />
+        </div>
+
+        {/* İçerik — sadece sol yarı */}
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-6 lg:px-12">
+          <div className="md:w-1/2 py-14 md:py-20">
             <p className="text-red-600 text-sm font-semibold mb-4 flex items-center gap-2">
               1973&apos;ten Bugüne
               <span className="inline-block w-8 h-0.5 bg-red-600" />
@@ -120,14 +126,13 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Sağ — traktör fotoğrafı büyük */}
-          <div className="relative z-10 flex items-end justify-center md:-mr-12 md:-mb-0">
+          {/* Mobil fotoğraf */}
+          <div className="md:hidden w-full">
             <Image
               src="/hero-traktor.png"
               alt="Pekmezoğlu traktörler"
-              width={1000}
-              height={680}
-              priority
+              width={600}
+              height={400}
               className="w-full h-auto object-contain"
               quality={90}
             />

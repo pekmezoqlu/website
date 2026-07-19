@@ -71,8 +71,10 @@ const onecikarilan = [
 export default function Home() {
   return (
     <>
+      {/* Hero + Stats — tam ekran */}
+      <div className="flex flex-col min-h-[calc(100vh-64px)]">
       {/* Hero */}
-      <section className="relative bg-white overflow-hidden flex items-center min-h-[75vh]">
+      <section className="relative bg-white overflow-hidden flex items-center flex-1">
         {/* Sağ — traktör fotoğrafı */}
         <div className="absolute top-0 right-0 w-[60%] h-full z-10 hidden md:block">
           <Image
@@ -156,6 +158,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      </div>
 
       {/* Özellikler */}
       <section className="py-20 bg-white">

@@ -4,6 +4,7 @@ import { useState, useMemo } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { urunler } from "@/lib/urunler";
+import FadeIn from "@/components/FadeIn";
 
 const markalar = [
   "Tümü", "Sıfır", "2. El",
@@ -62,11 +63,11 @@ export default function UrunlerClient() {
             </div>
           ) : (
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-              {filtrelenmis.map((urun) => (
+              {filtrelenmis.map((urun, i) => (
+                <FadeIn key={urun.id} delay={(i % 4) * 80}>
                 <Link
-                  key={urun.id}
                   href={`/urunler/${urun.id}`}
-                  className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 border border-gray-100 group"
+                  className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 border border-gray-100 group block"
                 >
                   <div
                     className={`${urun.fotolar.length > 0 ? "bg-black" : urun.renk} relative overflow-hidden`}
@@ -134,6 +135,7 @@ export default function UrunlerClient() {
                     </div>
                   </div>
                 </Link>
+                </FadeIn>
               ))}
             </div>
           )}

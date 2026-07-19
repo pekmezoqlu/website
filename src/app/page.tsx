@@ -1,5 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
+import FadeIn from "@/components/FadeIn";
+import StatsBar from "@/components/StatsBar";
 
 const ozellikler = [
   {
@@ -76,7 +78,7 @@ export default function Home() {
       {/* Hero */}
       <section className="relative bg-white overflow-hidden flex items-center flex-1 min-h-0">
         {/* Sağ — traktör fotoğrafı */}
-        <div className="absolute top-0 right-0 w-[60%] h-full z-10 hidden md:block">
+        <div className="absolute top-0 right-0 w-[60%] h-full z-10 hidden md:block anim-slide-right">
           <Image
             src="/hero-traktor.png"
             alt="Pekmezoğlu traktörler"
@@ -95,7 +97,7 @@ export default function Home() {
 
         {/* İçerik — sadece sol yarı */}
         <div className="relative z-20 w-full max-w-7xl mx-auto px-2 lg:px-4">
-          <div className="md:w-1/2 py-14 md:py-20">
+          <div className="md:w-1/2 py-14 md:py-20 anim-slide-left">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase mb-4 text-gray-900" style={{ lineHeight: "1.15" }}>
               Pekmezoğlu<br />
               Çiftçilerine<br />
@@ -135,37 +137,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* İstatistik bar */}
-      <section className="bg-red-600 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 text-center">
-            {[
-              {
-                sayi: "50+", label: "Yıllık Deneyim",
-                icon: <svg className="w-5 h-5 mx-auto mb-1 text-red-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" /></svg>
-              },
-              {
-                sayi: "100+", label: "Traktör Modeli",
-                icon: <svg className="w-5 h-5 mx-auto mb-1 text-red-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>
-              },
-              {
-                sayi: "5000+", label: "Mutlu Müşteri",
-                icon: <svg className="w-5 h-5 mx-auto mb-1 text-red-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-              },
-              {
-                sayi: "7/24", label: "Teknik Destek",
-                icon: <svg className="w-5 h-5 mx-auto mb-1 text-red-200" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>
-              },
-            ].map((item) => (
-              <div key={item.label}>
-                {item.icon}
-                <p className="text-2xl font-extrabold">{item.sayi}</p>
-                <p className="text-red-100 text-xs mt-0.5">{item.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <StatsBar />
       </div>
 
       {/* Özellikler */}
@@ -178,15 +150,14 @@ export default function Home() {
             </p>
           </div>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-            {ozellikler.map((o) => (
-              <div
-                key={o.baslik}
-                className="bg-gray-50 rounded-2xl p-7 hover:shadow-lg transition-shadow border border-gray-100"
-              >
-                <div className="mb-4">{o.icon}</div>
-                <h3 className="font-bold text-gray-900 mb-2">{o.baslik}</h3>
-                <p className="text-gray-500 text-sm leading-relaxed">{o.aciklama}</p>
-              </div>
+            {ozellikler.map((o, i) => (
+              <FadeIn key={o.baslik} delay={i * 100}>
+                <div className="bg-gray-50 rounded-2xl p-7 hover:shadow-lg transition-shadow border border-gray-100">
+                  <div className="mb-4">{o.icon}</div>
+                  <h3 className="font-bold text-gray-900 mb-2">{o.baslik}</h3>
+                  <p className="text-gray-500 text-sm leading-relaxed">{o.aciklama}</p>
+                </div>
+              </FadeIn>
             ))}
           </div>
         </div>
@@ -212,11 +183,11 @@ export default function Home() {
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {onecikarilan.map((urun) => (
+            {onecikarilan.map((urun, i) => (
+              <FadeIn key={urun.id} delay={i * 120}>
               <Link
-                key={urun.id}
                 href={`/urunler/${urun.id}`}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group"
+                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group block"
               >
                 <div className={`${urun.renk} h-52 relative overflow-hidden`}>
                   <Image
@@ -238,6 +209,7 @@ export default function Home() {
                   </div>
                 </div>
               </Link>
+              </FadeIn>
             ))}
           </div>
 

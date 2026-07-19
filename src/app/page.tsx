@@ -81,7 +81,7 @@ export default function Home() {
         {/* MOBİL: fotoğraf üstte, metin altta */}
         <div className="md:hidden flex flex-col h-full">
           {/* Fotoğraf */}
-          <div className="relative min-h-0" style={{ flex: "3" }}>
+          <div className="relative min-h-0" style={{ flex: "5" }}>
             <Image
               src="/hero-traktor.png"
               alt="Pekmezoğlu traktörler"

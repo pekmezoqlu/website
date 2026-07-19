@@ -222,7 +222,7 @@ export default function Home() {
       </section>
 
       {/* CTA */}
-      <section className="bg-black py-20">
+      <section className="bg-gray-900 py-20">
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Doğru Traktörü Seçmekte Kararsız mısınız?</h2>
           <p className="text-gray-400 mb-8 text-lg">

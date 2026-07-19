@@ -80,13 +80,14 @@ export default function Home() {
 
         {/* MOBİL: fotoğraf üstte (flex akışında), metin altta */}
         <div className="md:hidden flex flex-col w-full h-full">
-          <div className="relative min-h-0" style={{ flex: "3 1 0" }}>
+          <div className="w-full shrink-0">
             <Image
               src="/hero-traktor.png"
               alt="Pekmezoğlu traktörler"
-              fill
+              width={800}
+              height={533}
               priority
-              className="object-contain object-top"
+              className="w-full h-auto"
               quality={90}
             />
           </div>

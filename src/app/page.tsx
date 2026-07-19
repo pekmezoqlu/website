@@ -100,7 +100,7 @@ export default function Home() {
               1973&apos;ten Bugüne
               <span className="inline-block w-8 h-0.5 bg-red-600" />
             </p>
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase leading-tight mb-4 text-gray-900">
+            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase leading-tight mb-4 text-gray-900">
               Pekmezoğlu<br />
               Çiftçilerine<br />
               Özel<br />

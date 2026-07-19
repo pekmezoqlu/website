@@ -72,9 +72,9 @@ export default function Home() {
   return (
     <>
       {/* Hero + Stats — tam ekran */}
-      <div className="flex flex-col min-h-[calc(100vh-64px)]">
+      <div className="flex flex-col h-[calc(100vh-64px)]">
       {/* Hero */}
-      <section className="relative bg-white overflow-hidden flex items-center flex-1">
+      <section className="relative bg-white overflow-hidden flex items-center flex-1 min-h-0">
         {/* Sağ — traktör fotoğrafı */}
         <div className="absolute top-0 right-0 w-[60%] h-full z-10 hidden md:block">
           <Image

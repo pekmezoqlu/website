@@ -74,83 +74,67 @@ export default function Home() {
       {/* Hero + İstatistik bar birlikte tam ekran */}
       <div className="flex flex-col md:min-h-[calc(100vh-64px)]">
       {/* Hero */}
-      <section className="relative bg-gray-900 text-white overflow-hidden flex-1 flex flex-col justify-start md:justify-center min-h-[calc(100vh-64px)] md:min-h-0">
-        {/* Masaüstü arka plan — inset negatif ile zoom-out efekti */}
-        <div className="absolute inset-0 hidden md:block overflow-hidden">
-          <div className="absolute inset-0">
+      <section className="relative bg-white overflow-hidden flex-1 flex items-center min-h-[calc(100vh-64px)] md:min-h-0">
+        {/* Kırmızı köşe dekorasyonu */}
+        <div
+          className="absolute top-0 right-0 w-1/2 h-full bg-red-600 hidden md:block"
+          style={{ clipPath: "polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%)" }}
+        />
+        <div
+          className="absolute top-0 right-0 w-1/2 h-full bg-white/90 hidden md:block"
+          style={{ clipPath: "polygon(40% 0%, 65% 0%, 25% 100%, 0% 100%)" }}
+        />
+
+        {/* İçerik */}
+        <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-12 md:py-0 grid md:grid-cols-2 gap-8 items-center">
+          {/* Sol — metin */}
+          <div>
+            <p className="text-red-600 text-sm font-semibold mb-4 flex items-center gap-2">
+              1973&apos;ten Bugüne
+              <span className="inline-block w-8 h-0.5 bg-red-600" />
+            </p>
+            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black uppercase leading-tight mb-4">
+              <span className="text-gray-900">Türkiye&apos;nin</span><br />
+              <span className="text-red-600">Güvenilir</span><br />
+              <span className="text-gray-900">Traktör</span><br />
+              <span className="text-red-600">Satıcısı</span>
+            </h1>
+            <p className="text-gray-500 text-base mb-8 max-w-sm leading-relaxed">
+              Sıfır traktörde en iyi fiyat garantisi sunuyoruz.
+              Tüm marka ve modellerde 2. el alım & satım.
+            </p>
+            <div className="flex flex-wrap gap-4">
+              <Link
+                href="/urunler"
+                className="bg-red-600 hover:bg-red-700 text-white font-semibold px-7 py-3 rounded-lg transition-colors flex items-center gap-2"
+              >
+                Ürünleri İncele <span>›</span>
+              </Link>
+              <Link
+                href="/iletisim"
+                className="border-2 border-red-600 text-red-600 hover:bg-red-600 hover:text-white font-semibold px-7 py-3 rounded-lg transition-colors flex items-center gap-2"
+              >
+                Bize Ulaşın <span>›</span>
+              </Link>
+            </div>
+          </div>
+
+          {/* Sağ — traktör fotoğrafı */}
+          <div className="relative flex items-center justify-center">
             <Image
-              src="/hero4.png"
-              alt="Pekmezoğlu Motorlu Araçlar showroom"
-              fill
+              src="/hero-traktor.png"
+              alt="Pekmezoğlu traktörler"
+              width={780}
+              height={520}
               priority
-              className="object-cover object-center"
+              className="relative z-10 w-full h-auto object-contain drop-shadow-2xl"
               quality={90}
             />
           </div>
         </div>
-        {/* Mobil arka plan */}
-        <Image
-          src="/hero-mobile.png"
-          alt="Pekmezoğlu Motorlu Araçlar showroom"
-          fill
-          priority
-          className="block md:hidden object-cover object-center"
-          quality={90}
-        />
-        {/* Karartma katmanı */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
-        <div className="relative w-full pt-8 pb-16 px-5 sm:px-10 text-center">
-          <div className="max-w-2xl mx-auto">
-            <span className="inline-block bg-red-600 text-white text-xs font-semibold px-3 py-1 rounded-full mb-3 uppercase tracking-wider mt-20 md:mt-0">
-              Türkiye&apos;nin Güvenilir Traktör Satıcısı
-            </span>
 
-            {/* 3D Pekmezoğlu başlığı */}
-            <h1
-              className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-black uppercase tracking-tight mb-3 leading-none"
-              style={{
-                color: "#ffffff",
-                textShadow: `
-                  1px 1px 0px #b91c1c,
-                  2px 2px 0px #b91c1c,
-                  3px 3px 0px #991b1b,
-                  4px 4px 0px #991b1b,
-                  5px 5px 0px #7f1d1d,
-                  6px 6px 0px #7f1d1d,
-                  7px 7px 0px #6b1c1c,
-                  8px 8px 16px rgba(0,0,0,0.6)
-                `,
-              }}
-            >
-              Pekmezoğlu
-            </h1>
-
-            <p className="text-sm md:text-base italic text-white/70 -mt-2 mb-2 tracking-widest">
-              1973&apos;den beri
-            </p>
-            <p className="text-lg md:text-xl font-semibold text-red-400 uppercase tracking-widest mb-6">
-              Motorlu Araçlar
-            </p>
-            <p className="text-lg md:text-xl text-gray-300 mt-40 md:mt-0 mb-8 leading-relaxed">
-              Sıfır traktörde en iyi fiyat garantisi sunuyoruz.
-              Tüm marka ve modellerde 2. el traktör alım & satımı yapıyoruz.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <Link
-                href="/urunler"
-                className="bg-red-600 hover:bg-red-700 text-white font-semibold px-7 py-3 rounded-lg transition-colors text-sm md:text-base"
-              >
-                Ürünleri İncele
-              </Link>
-              <Link
-                href="/iletisim"
-                className="bg-white/10 hover:bg-white/20 border border-white/30 text-white font-semibold px-7 py-3 rounded-lg transition-colors text-sm md:text-base"
-              >
-                Bize Ulaşın
-              </Link>
-            </div>
-          </div>
-        </div>
+        {/* Mobil için alttan arka plan rengi */}
+        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gray-50 md:hidden -z-10" />
       </section>
 
       {/* İstatistik bar */}

@@ -75,20 +75,21 @@ export default function Home() {
       <div className="flex flex-col md:min-h-[calc(100vh-64px)]">
       {/* Hero */}
       <section className="relative bg-white overflow-hidden flex-1 flex items-center min-h-[calc(100vh-64px)] md:min-h-0">
-        {/* Kırmızı köşe dekorasyonu */}
+        {/* Kırmızı diyagonal alan — section genişliğine göre */}
         <div
-          className="absolute top-0 right-0 w-1/2 h-full bg-red-600 hidden md:block"
-          style={{ clipPath: "polygon(40% 0%, 100% 0%, 100% 100%, 0% 100%)" }}
+          className="absolute inset-0 bg-red-600 hidden md:block"
+          style={{ clipPath: "polygon(55% 0%, 100% 0%, 100% 100%, 35% 100%)" }}
         />
+        {/* Beyaz diyagonal şerit */}
         <div
-          className="absolute top-0 right-0 w-1/2 h-full bg-white/90 hidden md:block"
-          style={{ clipPath: "polygon(40% 0%, 65% 0%, 25% 100%, 0% 100%)" }}
+          className="absolute inset-0 bg-white hidden md:block"
+          style={{ clipPath: "polygon(50% 0%, 59% 0%, 39% 100%, 30% 100%)" }}
         />
 
         {/* İçerik */}
-        <div className="relative w-full max-w-7xl mx-auto px-6 sm:px-10 lg:px-16 py-12 md:py-0 grid md:grid-cols-2 gap-8 items-center">
+        <div className="relative w-full max-w-7xl mx-auto px-6 lg:px-12 grid md:grid-cols-[1fr_1.5fr] items-center">
           {/* Sol — metin */}
-          <div>
+          <div className="py-14 md:py-20 z-10">
             <p className="text-red-600 text-sm font-semibold mb-4 flex items-center gap-2">
               1973&apos;ten Bugüne
               <span className="inline-block w-8 h-0.5 bg-red-600" />
@@ -119,22 +120,19 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Sağ — traktör fotoğrafı */}
-          <div className="relative flex items-center justify-center">
+          {/* Sağ — traktör fotoğrafı büyük */}
+          <div className="relative z-10 flex items-end justify-center md:-mr-12 md:-mb-0">
             <Image
               src="/hero-traktor.png"
               alt="Pekmezoğlu traktörler"
-              width={780}
-              height={520}
+              width={1000}
+              height={680}
               priority
-              className="relative z-10 w-full h-auto object-contain drop-shadow-2xl"
+              className="w-full h-auto object-contain"
               quality={90}
             />
           </div>
         </div>
-
-        {/* Mobil için alttan arka plan rengi */}
-        <div className="absolute bottom-0 left-0 right-0 h-1/3 bg-gray-50 md:hidden -z-10" />
       </section>
 
       {/* İstatistik bar */}

@@ -100,10 +100,8 @@ export default function Home() {
               1973&apos;ten Bugüne
               <span className="inline-block w-8 h-0.5 bg-red-600" />
             </p>
-            <h1 className="text-5xl sm:text-6xl lg:text-7xl font-black uppercase leading-tight mb-4 text-gray-900">
-              <span style={{ textShadow: "2px 2px 0 #aaa, 4px 4px 0 #bbb, 6px 6px 0 #ccc, 8px 8px 0 #ddd" }}>
-                Pekmezoğlu
-              </span><br />
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase leading-tight mb-4 text-gray-900">
+              Pekmezoğlu<br />
               Çiftçilerine<br />
               Özel<br />
               Teklifler.

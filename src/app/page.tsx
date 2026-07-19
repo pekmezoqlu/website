@@ -94,7 +94,7 @@ export default function Home() {
         </div>
 
         {/* İçerik — sadece sol yarı */}
-        <div className="relative z-20 w-full max-w-7xl mx-auto px-6 lg:px-12">
+        <div className="relative z-20 w-full max-w-7xl mx-auto px-2 lg:px-4">
           <div className="md:w-1/2 py-14 md:py-20">
             <p className="text-red-600 text-sm font-semibold mb-4 flex items-center gap-2">
               1973&apos;ten Bugüne

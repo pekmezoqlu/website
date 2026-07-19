@@ -74,12 +74,12 @@ export default function Home() {
   return (
     <>
       {/* Hero + Stats — tam ekran */}
-      <div className="flex flex-col overflow-hidden" style={{ height: 'calc(100svh - 80px)' }}>
+      <div className="flex flex-col md:overflow-hidden md:h-[calc(100svh-80px)]">
       {/* Hero */}
       <section className="relative bg-white overflow-hidden flex-1 min-h-0 flex flex-col md:flex-row md:items-center">
 
         {/* MOBİL: fotoğraf üstte (flex akışında), metin altta */}
-        <div className="md:hidden flex flex-col w-full flex-1 min-h-0 justify-between">
+        <div className="md:hidden flex flex-col w-full">
           <div className="w-full shrink-0">
             <Image
               src="/hero-traktor.png"
@@ -91,7 +91,7 @@ export default function Home() {
               quality={90}
             />
           </div>
-          <div className="shrink-0 px-5 pb-8 pt-4 text-center anim-slide-left">
+          <div className="px-5 pb-8 pt-4 text-center anim-slide-left">
             <h1 className="text-2xl font-black uppercase text-gray-900 mb-2" style={{ lineHeight: "1.15" }}>
               Pekmezoğlu<br />Çiftçilerine Özel Teklifler.
             </h1>

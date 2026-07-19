@@ -37,7 +37,7 @@ export default function Navbar() {
           </nav>
 
           {/* Orta — logo */}
-          <Link href="/" className="flex items-center gap-2.5 absolute left-1/2 -translate-x-1/2">
+          <Link href="/" className="hidden md:flex items-center gap-2.5 absolute left-1/2 -translate-x-1/2">
             <div className="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-xl">P</span>
             </div>

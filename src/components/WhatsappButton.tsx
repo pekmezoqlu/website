@@ -10,7 +10,7 @@ export default function WhatsappButton() {
   const [acik, setAcik] = useState(false);
 
   return (
-    <div className="fixed bottom-4 right-7 z-50 flex flex-col items-end gap-2">
+    <div className="fixed bottom-2 right-3 z-50 flex flex-col items-end gap-2">
       {/* Numara seçim kutusu */}
       {acik && (
         <div className="bg-white rounded-2xl shadow-xl border border-gray-100 p-4 w-64 animate-in fade-in slide-in-from-bottom-2 duration-200">

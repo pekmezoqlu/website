@@ -6,7 +6,24 @@ import Image from "next/image";
 import { urunler } from "@/lib/urunler";
 import FadeIn from "@/components/FadeIn";
 
-const markaListesi = [...new Set(urunler.map((u) => u.marka))].sort();
+const markaListesi = [
+  "Başak",
+  "Case IH",
+  "Deutz-Fahr",
+  "Enter",
+  "Erkunt",
+  "Fiat",
+  "Hattat",
+  "John Deere",
+  "Kioti",
+  "Kubota",
+  "Landini",
+  "Massey Ferguson",
+  "New Holland",
+  "Taral",
+  "Tümosan",
+  "Valtra",
+];
 
 const MIN_YIL = Math.min(...urunler.map((u) => Number(u.modelYili)));
 const MAX_YIL = Math.max(...urunler.map((u) => Number(u.modelYili)));

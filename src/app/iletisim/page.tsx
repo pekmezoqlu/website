@@ -37,9 +37,14 @@ export default function Iletisim() {
                   </div>
                   <div>
                     <p className="font-semibold text-gray-900">Adres</p>
-                    <p className="text-gray-500 text-sm mt-0.5 leading-relaxed">
+                    <a
+                      href="https://maps.app.goo.gl/8RJnSBF5UYxgXKZu7"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-500 text-sm mt-0.5 leading-relaxed hover:text-red-600 transition-colors block"
+                    >
                       75. Yıl (Sultandere) Mah. Oto Galericiler Sitesi<br />No: 467/7 Odunpazarı / Eskişehir
-                    </p>
+                    </a>
                   </div>
                 </div>
 
@@ -123,7 +128,7 @@ export default function Iletisim() {
                 />
               </div>
               <a
-                href="https://maps.app.goo.gl/ZyAvh8jB3Efz8exY6"
+                href="https://maps.app.goo.gl/8RJnSBF5UYxgXKZu7"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-1.5 mt-3 text-red-600 text-sm font-medium hover:underline"

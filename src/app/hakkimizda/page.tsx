@@ -5,7 +5,7 @@ import FadeIn from "@/components/FadeIn";
 export const metadata: Metadata = {
   title: "Hakkımızda — Pekmezoğlu Motorlu Araçlar",
   description:
-    "30 yılı aşkın deneyimimizle Pekmezoğlu Motorlu Araçlar olarak çiftçilerimize en iyi hizmeti sunuyoruz.",
+    "50 yılı aşkın deneyimimizle Pekmezoğlu Motorlu Araçlar olarak çiftçilerimize en iyi hizmeti sunuyoruz.",
 };
 
 const degerler = [
@@ -50,7 +50,7 @@ export default function Hakkimizda() {
             <p className="text-red-400 text-sm font-semibold uppercase tracking-widest mb-3">Kurumsal</p>
             <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Hakkımızda</h1>
             <p className="text-gray-400 text-lg max-w-xl">
-              30 yılı aşkın deneyimimizle çiftçilerimize güvenilir traktör ve tarım makinesi çözümleri sunuyoruz.
+              50 yılı aşkın deneyimimizle çiftçilerimize güvenilir traktör ve tarım makinesi çözümleri sunuyoruz.
             </p>
           </FadeIn>
         </div>
@@ -66,7 +66,7 @@ export default function Hakkimizda() {
                 <div className="space-y-4 text-gray-600 leading-relaxed">
                   <p>
                     <span className="font-semibold text-gray-900">Pekmezoğlu Motorlu Araçlar ve Ticaret Ltd. Şti.</span>,
-                    30 yılı aşkın süredir Türkiye&apos;nin tarım sektörüne hizmet vermektedir. Kurulduğumuz günden bu yana
+                    50 yılı aşkın süredir Türkiye&apos;nin tarım sektörüne hizmet vermektedir. Kurulduğumuz günden bu yana
                     tek amacımız çiftçilerimize en kaliteli traktörleri en uygun koşullarla ulaştırmak olmuştur.
                   </p>
                   <p>
@@ -74,9 +74,8 @@ export default function Hakkimizda() {
                     tarla büyüklüğünü, arazi yapısını ve bütçesini göz önünde bulundurarak en doğru çözümü birlikte belirliyoruz.
                   </p>
                   <p>
-                    Bunun yanı sıra <span className="font-semibold text-gray-900">tüm marka ve modellerde 2. el traktör</span> alım
-                    ve satımı yapıyoruz. Elinizdeki traktörü satmak ya da ikinci el uygun fiyatlı bir traktör almak istiyorsanız
-                    doğru adrestesiniz.
+                    Bunun yanı sıra tüm marka ve modellerde 2. el traktör alım
+                    ve satımı yapıyoruz. Elinizdeki traktörü satmak ya da ikinci el uygun fiyatlı bir traktör almak istiyorsanız doğru adrestesiniz.
                   </p>
                 </div>
                 <Link
@@ -146,7 +145,7 @@ export default function Hakkimizda() {
 
             <div className="grid grid-cols-2 gap-6">
               {[
-                { sayi: "30+", label: "Yıllık Deneyim", aciklama: "Tarım sektöründe köklü geçmişimiz" },
+                { sayi: "50+", label: "Yıllık Deneyim", aciklama: "Tarım sektöründe köklü geçmişimiz" },
                 { sayi: "5000+", label: "Mutlu Müşteri", aciklama: "Memnun çiftçi ailesimiz büyüyor" },
                 { sayi: "100+", label: "Traktör Modeli", aciklama: "Farklı marka ve model seçenekleri" },
                 { sayi: "7/24", label: "Teknik Destek", aciklama: "Uzman ekibimizle her an yanınızdayız" },

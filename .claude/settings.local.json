@@ -1,7 +1,41 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx create-next-app@latest *)"
+      "Bash(npx create-next-app@latest *)",
+      "Bash(npm run *)",
+      "Bash(curl -s -o /dev/null -w \"%{http_code}\" http://localhost:3000)",
+      "WebFetch(domain:maps.app.goo.gl)",
+      "Bash(pkill -f \"next dev\")",
+      "Bash(cp /Users/sevketyesilpekmez/Desktop/erkunt80/IMG_7346.jpg /Users/sevketyesilpekmez/Desktop/website/public/tractors/erkunt-80t-1.jpg)",
+      "Bash(cp /Users/sevketyesilpekmez/Desktop/erkunt80/IMG_7347.jpg /Users/sevketyesilpekmez/Desktop/website/public/tractors/erkunt-80t-2.jpg)",
+      "Bash(cp /Users/sevketyesilpekmez/Desktop/erkunt80/IMG_7348.jpg /Users/sevketyesilpekmez/Desktop/website/public/tractors/erkunt-80t-3.jpg)",
+      "Bash(cp /Users/sevketyesilpekmez/Desktop/erkunt80/IMG_7349.jpg /Users/sevketyesilpekmez/Desktop/website/public/tractors/erkunt-80t-4.jpg)",
+      "Bash(cp /Users/sevketyesilpekmez/Desktop/erkunt80/IMG_7350.jpg /Users/sevketyesilpekmez/Desktop/website/public/tractors/erkunt-80t-5.jpg)",
+      "Bash(cp \"/Users/sevketyesilpekmez/Desktop/n1/IMG_7327.JPG\" \"/Users/sevketyesilpekmez/Desktop/website/public/tractors/nh-td5100-1.jpg\")",
+      "Bash(cp \"/Users/sevketyesilpekmez/Desktop/n1/IMG_7328.jpg\" \"/Users/sevketyesilpekmez/Desktop/website/public/tractors/nh-td5100-2.jpg\")",
+      "Bash(cp \"/Users/sevketyesilpekmez/Desktop/n1/IMG_7329.jpg\" \"/Users/sevketyesilpekmez/Desktop/website/public/tractors/nh-td5100-3.jpg\")",
+      "Bash(cp \"/Users/sevketyesilpekmez/Desktop/n1/IMG_7330.jpg\" \"/Users/sevketyesilpekmez/Desktop/website/public/tractors/nh-td5100-4.jpg\")",
+      "Bash(cp \"/Users/sevketyesilpekmez/Desktop/n1/IMG_7331.jpg\" \"/Users/sevketyesilpekmez/Desktop/website/public/tractors/nh-td5100-5.jpg\")",
+      "Bash(git remote *)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(gh auth *)",
+      "Bash(brew install *)",
+      "WebFetch(domain:website-eight-delta-33.vercel.app)",
+      "Bash(identify /Users/sevketyesilpekmez/Desktop/website/public/hero4.png)",
+      "Bash(sips -g pixelWidth -g pixelHeight /Users/sevketyesilpekmez/Desktop/website/public/hero4.png)",
+      "Bash(sips *)",
+      "Bash(node *)",
+      "Bash(convert --version)",
+      "Bash(python3 -c \"from PIL import Image; print\\('pillow var'\\)\")",
+      "Bash(python3 *)",
+      "Bash(git *)",
+      "Bash(npm install *)",
+      "WebSearch",
+      "WebFetch(domain:www.firmasec.com)",
+      "WebFetch(domain:eskisehirfirmarehberi.com.tr)",
+      "Bash(npx tsc *)"
     ]
   }
 }

@@ -2,7 +2,6 @@ import Link from "next/link";
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 import StatsBar from "@/components/StatsBar";
-import HeadlightFlash from "@/components/HeadlightFlash";
 
 const ozellikler = [
   {
@@ -95,7 +94,6 @@ export default function Home() {
             <div className="absolute inset-y-0 right-0 w-10 bg-gradient-to-l from-white to-transparent" />
             <div className="absolute inset-x-0 top-0 h-10 bg-gradient-to-b from-white to-transparent" />
             <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-white to-transparent" />
-            <HeadlightFlash />
           </div>
           <div className="px-5 pb-8 pt-4 text-center anim-slide-left">
             <h1 className="text-2xl font-black uppercase text-gray-900 mb-2" style={{ lineHeight: "1.15" }}>
@@ -125,7 +123,6 @@ export default function Home() {
             className="object-contain object-center"
             quality={90}
           />
-          <HeadlightFlash />
           <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-white to-transparent z-20" />
           <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white to-transparent z-20" />
           <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent z-20" />

@@ -43,3 +43,19 @@ html {
 .anim-slide-right { animation: slideFromRight 0.8s ease forwards; }
 .anim-fade-up     { animation: fadeInUp       0.7s ease forwards; }
 .anim-zoom-in     { animation: zoomIn         0.6s ease forwards; }
+
+@keyframes headlightFlash {
+  0%   { opacity: 0; }
+  5%   { opacity: 1; }
+  14%  { opacity: 0; }
+  20%  { opacity: 1; }
+  29%  { opacity: 0; }
+  35%  { opacity: 1; }
+  55%  { opacity: 1; }
+  100% { opacity: 0; }
+}
+.anim-headlight {
+  animation: headlightFlash 3.2s ease-out forwards;
+  animation-delay: 0.4s;
+  opacity: 0;
+}

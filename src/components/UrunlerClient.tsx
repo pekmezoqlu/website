@@ -7,28 +7,40 @@ import { urunler } from "@/lib/urunler";
 import FadeIn from "@/components/FadeIn";
 
 const markaListesi = [...new Set(urunler.map((u) => u.marka))].sort();
-const yilListesi = [...new Set(urunler.map((u) => u.modelYili))].sort((a, b) => Number(b) - Number(a));
 
-type SaatAralik = "" | "0-500" | "500-2000" | "2000+" | "bilinmiyor";
+const MIN_YIL = Math.min(...urunler.map((u) => Number(u.modelYili)));
+const MAX_YIL = Math.max(...urunler.map((u) => Number(u.modelYili)));
+
+function parseSaat(s: string): number | null {
+  if (s === "-") return null;
+  return Number(s.replace(/[^\d]/g, ""));
+}
+const saatDegerleri = urunler.map((u) => parseSaat(u.saat)).filter((v): v is number => v !== null);
+const MIN_SAAT = 0;
+const MAX_SAAT = Math.max(...saatDegerleri);
+
 type Durum = "" | "Sıfır" | "2. El";
-
 type Filters = {
   durum: Durum;
   markalar: string[];
-  yillar: string[];
-  saat: SaatAralik;
+  yilAralik: [number, number];
+  saatAralik: [number, number];
+  saatBilinmiyor: boolean;
 };
 
-const BOSH: Filters = { durum: "", markalar: [], yillar: [], saat: "" };
+const BOSH: Filters = {
+  durum: "",
+  markalar: [],
+  yilAralik: [MIN_YIL, MAX_YIL],
+  saatAralik: [MIN_SAAT, MAX_SAAT],
+  saatBilinmiyor: true,
+};
 
-function saatEsles(deger: string, aralik: SaatAralik): boolean {
-  if (aralik === "") return true;
-  if (aralik === "bilinmiyor") return deger === "-";
-  if (deger === "-") return false;
-  const n = Number(deger.replace(/[^\d]/g, ""));
-  if (aralik === "0-500") return n <= 500;
-  if (aralik === "500-2000") return n > 500 && n <= 2000;
-  return n > 2000;
+function yilFiltresiAktif(f: Filters) {
+  return f.yilAralik[0] !== MIN_YIL || f.yilAralik[1] !== MAX_YIL;
+}
+function saatFiltresiAktif(f: Filters) {
+  return f.saatAralik[0] !== MIN_SAAT || f.saatAralik[1] !== MAX_SAAT || !f.saatBilinmiyor;
 }
 
 export default function UrunlerClient() {
@@ -38,8 +50,8 @@ export default function UrunlerClient() {
   const aktifSayi = [
     filters.durum !== "",
     filters.markalar.length > 0,
-    filters.yillar.length > 0,
-    filters.saat !== "",
+    yilFiltresiAktif(filters),
+    saatFiltresiAktif(filters),
   ].filter(Boolean).length;
 
   const filtrelenmis = useMemo(
@@ -47,15 +59,24 @@ export default function UrunlerClient() {
       urunler.filter((u) => {
         if (filters.durum && u.durum !== filters.durum) return false;
         if (filters.markalar.length > 0 && !filters.markalar.includes(u.marka)) return false;
-        if (filters.yillar.length > 0 && !filters.yillar.includes(u.modelYili)) return false;
-        if (!saatEsles(u.saat, filters.saat)) return false;
+        const yil = Number(u.modelYili);
+        if (yil < filters.yilAralik[0] || yil > filters.yilAralik[1]) return false;
+        const saat = parseSaat(u.saat);
+        if (saat === null) {
+          if (!filters.saatBilinmiyor) return false;
+        } else {
+          if (saat < filters.saatAralik[0] || saat > filters.saatAralik[1]) return false;
+        }
         return true;
       }),
     [filters]
   );
 
-  function toggleArr<T>(arr: T[], val: T): T[] {
-    return arr.includes(val) ? arr.filter((x) => x !== val) : [...arr, val];
+  function toggleMarka(m: string) {
+    setFilters((f) => ({
+      ...f,
+      markalar: f.markalar.includes(m) ? f.markalar.filter((x) => x !== m) : [...f.markalar, m],
+    }));
   }
 
   function temizle() { setFilters(BOSH); }
@@ -65,8 +86,6 @@ export default function UrunlerClient() {
       {/* ── Sticky filtre barı ── */}
       <section className="bg-white border-b border-gray-200 sticky top-16 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-3">
-
-          {/* 3-çizgi filtre butonu */}
           <button
             onClick={() => setPanelAcik(true)}
             className={`flex items-center gap-2 shrink-0 text-sm font-semibold px-4 py-1.5 rounded-full border transition-colors ${
@@ -86,60 +105,50 @@ export default function UrunlerClient() {
             )}
           </button>
 
-          {/* Aktif etiketler */}
           <div className="flex gap-2 overflow-x-auto min-w-0" style={{ scrollbarWidth: "none" }}>
             {filters.durum && (
               <Tag label={filters.durum} onRemove={() => setFilters((f) => ({ ...f, durum: "" }))} />
             )}
             {filters.markalar.map((m) => (
-              <Tag key={m} label={m} onRemove={() => setFilters((f) => ({ ...f, markalar: toggleArr(f.markalar, m) }))} />
+              <Tag key={m} label={m} onRemove={() => toggleMarka(m)} />
             ))}
-            {filters.yillar.map((y) => (
-              <Tag key={y} label={y} onRemove={() => setFilters((f) => ({ ...f, yillar: toggleArr(f.yillar, y) }))} />
-            ))}
-            {filters.saat && (
-              <Tag label={saatLabel(filters.saat)} onRemove={() => setFilters((f) => ({ ...f, saat: "" }))} />
+            {yilFiltresiAktif(filters) && (
+              <Tag
+                label={`${filters.yilAralik[0]}–${filters.yilAralik[1]}`}
+                onRemove={() => setFilters((f) => ({ ...f, yilAralik: [MIN_YIL, MAX_YIL] }))}
+              />
+            )}
+            {saatFiltresiAktif(filters) && (
+              <Tag
+                label={`${filters.saatAralik[0].toLocaleString("tr")}–${filters.saatAralik[1].toLocaleString("tr")} saat`}
+                onRemove={() => setFilters((f) => ({ ...f, saatAralik: [MIN_SAAT, MAX_SAAT], saatBilinmiyor: true }))}
+              />
             )}
           </div>
 
           {aktifSayi > 0 && (
-            <button
-              onClick={temizle}
-              className="shrink-0 ml-auto text-xs text-gray-400 hover:text-red-600 transition-colors"
-            >
+            <button onClick={temizle} className="shrink-0 ml-auto text-xs text-gray-400 hover:text-red-600 transition-colors">
               Temizle
             </button>
           )}
         </div>
       </section>
 
-      {/* ── Filtre paneli (slide-in) ── */}
+      {/* ── Filtre paneli ── */}
       {panelAcik && (
         <div className="fixed inset-0 z-50 flex">
-          {/* Overlay */}
-          <div
-            className="absolute inset-0 bg-black/40 backdrop-blur-sm"
-            onClick={() => setPanelAcik(false)}
-          />
-
-          {/* Panel */}
+          <div className="absolute inset-0 bg-black/40 backdrop-blur-sm" onClick={() => setPanelAcik(false)} />
           <div className="relative bg-white w-80 max-w-[90vw] h-full flex flex-col shadow-2xl overflow-hidden">
-            {/* Başlık */}
             <div className="flex items-center justify-between px-5 py-4 border-b border-gray-100">
               <span className="font-bold text-gray-900 text-base">Filtrele</span>
-              <button
-                onClick={() => setPanelAcik(false)}
-                className="p-1 text-gray-400 hover:text-gray-700 transition-colors"
-              >
+              <button onClick={() => setPanelAcik(false)} className="p-1 text-gray-400 hover:text-gray-700 transition-colors">
                 <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
                 </svg>
               </button>
             </div>
 
-            {/* İçerik */}
             <div className="flex-1 overflow-y-auto p-5 space-y-7">
-
               {/* Durum */}
               <div>
                 <SectionTitle>Durum</SectionTitle>
@@ -165,12 +174,7 @@ export default function UrunlerClient() {
                 <SectionTitle>Marka</SectionTitle>
                 <div className="space-y-2.5">
                   {markaListesi.map((m) => (
-                    <Checkbox
-                      key={m}
-                      label={m}
-                      checked={filters.markalar.includes(m)}
-                      onChange={() => setFilters((f) => ({ ...f, markalar: toggleArr(f.markalar, m) }))}
-                    />
+                    <Checkbox key={m} label={m} checked={filters.markalar.includes(m)} onChange={() => toggleMarka(m)} />
                   ))}
                 </div>
               </div>
@@ -178,53 +182,50 @@ export default function UrunlerClient() {
               {/* Model Yılı */}
               <div>
                 <SectionTitle>Model Yılı</SectionTitle>
-                <div className="flex flex-wrap gap-2">
-                  {yilListesi.map((y) => (
-                    <button
-                      key={y}
-                      onClick={() => setFilters((f) => ({ ...f, yillar: toggleArr(f.yillar, y) }))}
-                      className={`text-sm px-3 py-1 rounded-lg border transition-colors ${
-                        filters.yillar.includes(y)
-                          ? "bg-red-600 text-white border-red-600"
-                          : "text-gray-600 border-gray-300 hover:border-red-400 hover:text-red-600"
-                      }`}
-                    >
-                      {y}
-                    </button>
-                  ))}
-                </div>
+                <RangeSlider
+                  min={MIN_YIL}
+                  max={MAX_YIL}
+                  step={1}
+                  value={filters.yilAralik}
+                  onChange={(v) => setFilters((f) => ({ ...f, yilAralik: v }))}
+                  format={(v) => String(v)}
+                />
               </div>
 
-              {/* Saat */}
+              {/* Çalışma Saati */}
               <div>
                 <SectionTitle>Çalışma Saati</SectionTitle>
-                <div className="space-y-2">
-                  {(
-                    [
-                      { val: "" as SaatAralik, label: "Tümü" },
-                      { val: "0-500" as SaatAralik, label: "500 saat altı" },
-                      { val: "500-2000" as SaatAralik, label: "500 – 2.000 saat" },
-                      { val: "2000+" as SaatAralik, label: "2.000+ saat" },
-                      { val: "bilinmiyor" as SaatAralik, label: "Belirtilmemiş" },
-                    ]
-                  ).map(({ val, label }) => (
-                    <button
-                      key={val}
-                      onClick={() => setFilters((f) => ({ ...f, saat: val }))}
-                      className={`w-full text-left text-sm px-4 py-2.5 rounded-xl border transition-colors ${
-                        filters.saat === val
-                          ? "bg-red-600 text-white border-red-600"
-                          : "text-gray-600 border-gray-200 hover:border-red-400 hover:text-red-600"
-                      }`}
-                    >
-                      {label}
-                    </button>
-                  ))}
-                </div>
+                <RangeSlider
+                  min={MIN_SAAT}
+                  max={MAX_SAAT}
+                  step={50}
+                  value={filters.saatAralik}
+                  onChange={(v) => setFilters((f) => ({ ...f, saatAralik: v }))}
+                  format={(v) => v.toLocaleString("tr") + " s"}
+                />
+                <label className="flex items-center gap-2.5 mt-4 cursor-pointer group">
+                  <div
+                    onClick={() => setFilters((f) => ({ ...f, saatBilinmiyor: !f.saatBilinmiyor }))}
+                    className={`w-5 h-5 rounded border-2 flex items-center justify-center shrink-0 transition-colors ${
+                      filters.saatBilinmiyor ? "bg-red-600 border-red-600" : "border-gray-300 group-hover:border-red-400"
+                    }`}
+                  >
+                    {filters.saatBilinmiyor && (
+                      <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
+                    )}
+                  </div>
+                  <span
+                    onClick={() => setFilters((f) => ({ ...f, saatBilinmiyor: !f.saatBilinmiyor }))}
+                    className="text-sm text-gray-600 group-hover:text-red-600 transition-colors select-none"
+                  >
+                    Saati belirtilmeyenleri göster
+                  </span>
+                </label>
               </div>
             </div>
 
-            {/* Footer */}
             <div className="px-5 py-4 border-t border-gray-100 flex gap-3">
               <button
                 onClick={temizle}
@@ -249,10 +250,7 @@ export default function UrunlerClient() {
           {filtrelenmis.length === 0 ? (
             <div className="text-center py-20">
               <p className="text-gray-500 text-lg mb-2">Bu filtrede ürün bulunamadı.</p>
-              <button
-                onClick={temizle}
-                className="text-red-600 font-semibold hover:underline"
-              >
+              <button onClick={temizle} className="text-red-600 font-semibold hover:underline">
                 Filtreleri temizle
               </button>
             </div>
@@ -269,12 +267,7 @@ export default function UrunlerClient() {
                       style={{ aspectRatio: "9/16" }}
                     >
                       {urun.fotolar.length > 0 ? (
-                        <Image
-                          src={urun.fotolar[0]}
-                          alt={`${urun.marka} ${urun.model}`}
-                          fill
-                          className="object-contain"
-                        />
+                        <Image src={urun.fotolar[0]} alt={`${urun.marka} ${urun.model}`} fill className="object-contain" />
                       ) : (
                         <svg className="w-20 h-20 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />
@@ -286,11 +279,7 @@ export default function UrunlerClient() {
                           {urun.badge}
                         </span>
                       )}
-                      <span
-                        className={`absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full z-10 ${
-                          urun.durum === "Sıfır" ? "bg-green-100 text-green-700" : "bg-blue-100 text-blue-700"
-                        }`}
-                      >
+                      <span className={`absolute top-3 right-3 text-xs font-bold px-2.5 py-1 rounded-full z-10 ${urun.durum === "Sıfır" ? "bg-green-100 text-green-700" : "bg-blue-100 text-blue-700"}`}>
                         {urun.durum}
                       </span>
                       {urun.fotolar.length > 1 && (
@@ -299,20 +288,16 @@ export default function UrunlerClient() {
                         </span>
                       )}
                     </div>
-
                     <div className="p-5">
-                      <span className="text-xs font-bold uppercase tracking-wide text-gray-500">
-                        {urun.marka}
-                      </span>
+                      <span className="text-xs font-bold uppercase tracking-wide text-gray-500">{urun.marka}</span>
                       <h3 className="text-lg font-bold text-gray-900 mt-0.5 mb-3">{urun.model}</h3>
-
                       <div className="space-y-1.5 mb-5">
                         {[
-                          { label: "Model Yılı",          value: urun.modelYili },
-                          { label: "Güç",                 value: urun.guc },
-                          { label: "Saat",                value: urun.saat },
-                          { label: "Vites",               value: urun.vites },
-                          { label: "Kuyruk Mili",         value: urun.kuyrukMili },
+                          { label: "Model Yılı", value: urun.modelYili },
+                          { label: "Güç", value: urun.guc },
+                          { label: "Saat", value: urun.saat },
+                          { label: "Vites", value: urun.vites },
+                          { label: "Kuyruk Mili", value: urun.kuyrukMili },
                           { label: "Kaldırma Kapasitesi", value: urun.kaldirmaKapasitesi },
                         ].map((item) => (
                           <div key={item.label} className="flex justify-between items-center text-xs border-b border-gray-50 pb-1.5">
@@ -321,7 +306,6 @@ export default function UrunlerClient() {
                           </div>
                         ))}
                       </div>
-
                       <div className="flex items-center justify-between text-sm text-red-600 font-semibold">
                         <span>Detayları Gör</span>
                         <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -340,10 +324,7 @@ export default function UrunlerClient() {
             <p className="text-gray-700 font-medium mb-4">
               Stoğumuzda listelenmemiş tüm marka ve modeller için teklif verebiliyoruz.
             </p>
-            <Link
-              href="/iletisim"
-              className="inline-block bg-red-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-red-700 transition-colors"
-            >
+            <Link href="/iletisim" className="inline-block bg-red-600 text-white font-semibold px-6 py-3 rounded-xl hover:bg-red-700 transition-colors">
               Özel Sipariş / 2. El Talep Et
             </Link>
           </div>
@@ -353,22 +334,72 @@ export default function UrunlerClient() {
   );
 }
 
-/* ── Yardımcı bileşenler ── */
+/* ── Çift kollu range slider ── */
+function RangeSlider({
+  min, max, step, value, onChange, format,
+}: {
+  min: number;
+  max: number;
+  step: number;
+  value: [number, number];
+  onChange: (v: [number, number]) => void;
+  format?: (v: number) => string;
+}) {
+  const [lo, hi] = value;
+  const pctLo = ((lo - min) / (max - min)) * 100;
+  const pctHi = ((hi - min) / (max - min)) * 100;
+  const fmt = format ?? ((v: number) => String(v));
 
-function SectionTitle({ children }: { children: React.ReactNode }) {
   return (
-    <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">{children}</p>
+    <div>
+      <div className="flex justify-between text-sm font-semibold text-gray-700 mb-3">
+        <span>{fmt(lo)}</span>
+        <span>{fmt(hi)}</span>
+      </div>
+      <div className="relative h-5 flex items-center range-wrap">
+        {/* Arka plan çubuğu */}
+        <div className="absolute w-full h-1.5 rounded-full bg-gray-200">
+          <div
+            className="absolute h-full rounded-full bg-red-500"
+            style={{ left: `${pctLo}%`, right: `${100 - pctHi}%` }}
+          />
+        </div>
+        {/* Alt kol */}
+        <input
+          type="range"
+          min={min} max={max} step={step}
+          value={lo}
+          onChange={(e) => {
+            const v = Math.min(Number(e.target.value), hi);
+            onChange([v, hi]);
+          }}
+          style={{ zIndex: lo >= hi ? 5 : 3 }}
+        />
+        {/* Üst kol */}
+        <input
+          type="range"
+          min={min} max={max} step={step}
+          value={hi}
+          onChange={(e) => {
+            const v = Math.max(Number(e.target.value), lo);
+            onChange([lo, v]);
+          }}
+          style={{ zIndex: 4 }}
+        />
+      </div>
+    </div>
   );
+}
+
+/* ── Yardımcı bileşenler ── */
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return <p className="text-xs font-bold text-gray-400 uppercase tracking-widest mb-3">{children}</p>;
 }
 
 function Checkbox({ label, checked, onChange }: { label: string; checked: boolean; onChange: () => void }) {
   return (
     <button onClick={onChange} className="flex items-center gap-3 group w-full text-left">
-      <div
-        className={`w-5 h-5 rounded border-2 flex items-center justify-center shrink-0 transition-colors ${
-          checked ? "bg-red-600 border-red-600" : "border-gray-300 group-hover:border-red-400"
-        }`}
-      >
+      <div className={`w-5 h-5 rounded border-2 flex items-center justify-center shrink-0 transition-colors ${checked ? "bg-red-600 border-red-600" : "border-gray-300 group-hover:border-red-400"}`}>
         {checked && (
           <svg className="w-3 h-3 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
@@ -389,12 +420,4 @@ function Tag({ label, onRemove }: { label: string; onRemove: () => void }) {
       <button onClick={onRemove} className="hover:text-red-800 font-bold leading-none">×</button>
     </span>
   );
-}
-
-function saatLabel(val: SaatAralik): string {
-  if (val === "0-500") return "≤500 saat";
-  if (val === "500-2000") return "500–2K saat";
-  if (val === "2000+") return "2K+ saat";
-  if (val === "bilinmiyor") return "Saat belirtilmemiş";
-  return "";
 }

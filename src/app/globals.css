@@ -24,6 +24,40 @@ html {
   overflow-x: hidden;
 }
 
+/* ── Çift kollu range slider ── */
+.range-wrap input[type="range"] {
+  pointer-events: none;
+  -webkit-appearance: none;
+  background: transparent;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+}
+.range-wrap input[type="range"]::-webkit-slider-thumb {
+  pointer-events: all;
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  background: #dc2626;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0,0,0,.25);
+  cursor: pointer;
+}
+.range-wrap input[type="range"]::-moz-range-thumb {
+  pointer-events: all;
+  width: 18px;
+  height: 18px;
+  background: #dc2626;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  box-shadow: 0 1px 4px rgba(0,0,0,.25);
+  cursor: pointer;
+}
+.range-wrap input[type="range"]::-webkit-slider-runnable-track { background: transparent; }
+.range-wrap input[type="range"]::-moz-range-track { background: transparent; }
+
 @keyframes slideFromLeft {
   from { opacity: 0; transform: translateX(-60px); }
   to   { opacity: 1; transform: translateX(0); }

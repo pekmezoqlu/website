@@ -219,9 +219,16 @@ export default function UrunlerClient() {
               <div>
                 <SectionTitle>Marka</SectionTitle>
                 <div className="space-y-2.5">
-                  {markaListesi.map((m) => (
-                    <Checkbox key={m} label={m} checked={filters.markalar.includes(m)} onChange={() => toggleMarka(m)} />
-                  ))}
+                  <Checkbox
+                    label="Tüm Markalar"
+                    checked={filters.markalar.length === 0}
+                    onChange={() => setFilters((f) => ({ ...f, markalar: [] }))}
+                  />
+                  <div className="border-t border-gray-100 pt-2.5 space-y-2.5">
+                    {markaListesi.map((m) => (
+                      <Checkbox key={m} label={m} checked={filters.markalar.includes(m)} onChange={() => toggleMarka(m)} />
+                    ))}
+                  </div>
                 </div>
               </div>
 

@@ -39,6 +39,15 @@ html {
   to   { opacity: 1; transform: scale(1); }
 }
 
+@keyframes beaconSpin {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+@keyframes beaconGlow {
+  0%, 100% { transform: scale(0.85); opacity: 0.4; }
+  50%       { transform: scale(1.25); opacity: 1; }
+}
+
 .anim-slide-left  { animation: slideFromLeft  0.8s ease forwards; }
 .anim-slide-right { animation: slideFromRight 0.8s ease forwards; }
 .anim-fade-up     { animation: fadeInUp       0.7s ease forwards; }

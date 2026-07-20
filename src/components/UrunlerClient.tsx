@@ -24,8 +24,8 @@ type Siralama = "varsayilan" | "yeni-eklenen" | "en-yeni" | "en-eski" | "fiyat-a
 const SIRALAMA_ETIKET: Record<Siralama, string> = {
   "varsayilan":    "Sıralama",
   "yeni-eklenen":  "Yeni Eklenen",
-  "en-yeni":       "En Yeni",
-  "en-eski":       "En Eski",
+  "en-yeni":       "Model: En Yeni",
+  "en-eski":       "Model: En Eski",
   "fiyat-artan":   "Fiyat: Artan",
   "fiyat-azalan":  "Fiyat: Azalan",
 };

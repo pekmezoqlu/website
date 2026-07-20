@@ -67,7 +67,7 @@ export default function StatsBar() {
   return (
     <section ref={ref} className="bg-red-600 text-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
           {items.map((item) => (
             <CounterItem key={item.label} item={item} started={started} />
           ))}

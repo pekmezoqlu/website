@@ -20,7 +20,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="flex items-center h-20">
           {/* Sol — linkler */}
-          <nav className="hidden md:flex items-center gap-8 flex-1">
+          <nav className="hidden lg:flex items-center gap-8 flex-1">
             {links.map((link) => (
               <Link
                 key={link.href}
@@ -37,7 +37,7 @@ export default function Navbar() {
           </nav>
 
           {/* Orta — logo */}
-          <Link href="/" className="hidden md:flex items-center gap-2.5 absolute left-1/2 -translate-x-1/2">
+          <Link href="/" className="hidden lg:flex items-center gap-2.5 absolute left-1/2 -translate-x-1/2">
             <div className="w-10 h-10 bg-red-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-xl">P</span>
             </div>
@@ -48,7 +48,7 @@ export default function Navbar() {
           </Link>
 
           {/* Sağ — Teklif Al */}
-          <div className="hidden md:flex flex-1 justify-end">
+          <div className="hidden lg:flex flex-1 justify-end">
             <Link
               href="/teklif"
               className="bg-red-600 text-white text-sm font-semibold px-4 py-2 rounded-lg hover:bg-red-700 transition-colors"
@@ -58,7 +58,7 @@ export default function Navbar() {
           </div>
 
           {/* Mobil — logo (sol) + hamburger (sağ) */}
-          <Link href="/" className="flex md:hidden items-center gap-2">
+          <Link href="/" className="flex lg:hidden items-center gap-2">
             <div className="w-9 h-9 bg-red-600 rounded-lg flex items-center justify-center">
               <span className="text-white font-bold text-lg">P</span>
             </div>
@@ -67,9 +67,9 @@ export default function Navbar() {
               <p className="text-xs text-gray-500 leading-none">Motorlu Araçlar</p>
             </div>
           </Link>
-          <div className="flex-1 md:hidden" />
+          <div className="flex-1 lg:hidden" />
           <button
-            className="md:hidden p-2 rounded-md text-gray-600 hover:text-red-600"
+            className="lg:hidden p-2 rounded-md text-gray-600 hover:text-red-600"
             onClick={() => setOpen(!open)}
             aria-label="Menüyü aç/kapat"
           >
@@ -88,7 +88,7 @@ export default function Navbar() {
 
       {/* Mobile menu */}
       {open && (
-        <div className="md:hidden bg-white border-t border-gray-100 px-4 py-3 flex flex-col gap-3">
+        <div className="lg:hidden bg-white border-t border-gray-100 px-4 py-3 flex flex-col gap-3">
           {links.map((link) => (
             <Link
               key={link.href}

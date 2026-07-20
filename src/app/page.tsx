@@ -74,12 +74,12 @@ export default function Home() {
   return (
     <>
       {/* Hero + Stats — tam ekran */}
-      <div className="flex flex-col md:overflow-hidden md:h-[calc(100svh-80px)]">
+      <div className="flex flex-col lg:overflow-hidden lg:h-[calc(100svh-80px)]">
       {/* Hero */}
-      <section className="relative bg-white overflow-hidden flex-1 min-h-0 flex flex-col md:flex-row md:items-center">
+      <section className="relative bg-white overflow-hidden flex-1 min-h-0 flex flex-col lg:flex-row lg:items-center">
 
         {/* MOBİL: fotoğraf üstte (flex akışında), metin altta */}
-        <div className="md:hidden flex flex-col w-full">
+        <div className="lg:hidden flex flex-col w-full">
           <div className="w-full shrink-0 relative">
             <Image
               src="/hero-traktor.png"
@@ -114,7 +114,7 @@ export default function Home() {
         </div>
 
         {/* MASAÜSTÜ: fotoğraf sağda, metin solda */}
-        <div className="hidden md:block absolute top-0 right-0 w-[60%] h-full z-10 anim-slide-right">
+        <div className="hidden lg:block absolute top-0 right-0 w-[60%] h-full z-10 anim-slide-right">
           <Image
             src="/hero-traktor.png"
             alt="Pekmezoğlu traktörler"
@@ -127,7 +127,7 @@ export default function Home() {
           <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white to-transparent z-20" />
           <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent z-20" />
         </div>
-        <div className="hidden md:flex relative z-20 w-full max-w-7xl mx-auto px-2 lg:px-4">
+        <div className="hidden lg:flex relative z-20 w-full max-w-7xl mx-auto px-2 lg:px-4">
           <div className="w-1/2 py-20 anim-slide-left">
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase mb-4 text-gray-900" style={{ lineHeight: "1.15" }}>
               Pekmezoğlu<br />

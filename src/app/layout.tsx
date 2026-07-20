@@ -27,6 +27,20 @@ export const metadata: Metadata = {
     siteName: "Pekmezoğlu Motorlu Araçlar",
     locale: "tr_TR",
     type: "website",
+    images: [
+      {
+        url: "https://www.pekmezoglu.com/hero-traktor.png",
+        width: 1200,
+        height: 630,
+        alt: "Pekmezoğlu Motorlu Araçlar",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Pekmezoğlu Motorlu Araçlar | Traktör Satış & Servis",
+    description: "Eskişehir'de traktör satışı ve servisi. Sıfır ve ikinci el traktör alım & satım.",
+    images: ["https://www.pekmezoglu.com/hero-traktor.png"],
   },
 };
 

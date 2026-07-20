@@ -67,7 +67,7 @@ export default function UrunlerClient() {
                 <FadeIn key={urun.id} delay={(i % 4) * 80}>
                 <Link
                   href={`/urunler/${urun.id}`}
-                  className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all hover:-translate-y-1 border border-gray-100 group block"
+                  className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-red-100 hover:scale-[1.02] hover:-translate-y-1 transition-all duration-300 border border-gray-100 hover:border-red-200 group block"
                 >
                   <div
                     className={`${urun.fotolar.length > 0 ? "bg-black" : urun.renk} relative overflow-hidden`}

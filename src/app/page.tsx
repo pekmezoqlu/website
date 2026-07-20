@@ -166,7 +166,7 @@ export default function Home() {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {ozellikler.map((o, i) => (
               <FadeIn key={o.baslik} delay={i * 100}>
-                <div className="bg-gray-50 rounded-2xl p-7 hover:shadow-lg transition-shadow border border-gray-100">
+                <div className="bg-gray-50 rounded-2xl p-7 hover:shadow-xl hover:shadow-red-100 hover:scale-[1.02] hover:border-red-200 transition-all duration-300 border border-gray-100">
                   <div className="mb-4">{o.icon}</div>
                   <h3 className="font-bold text-gray-900 mb-2">{o.baslik}</h3>
                   <p className="text-gray-500 text-sm leading-relaxed">{o.aciklama}</p>
@@ -201,7 +201,7 @@ export default function Home() {
               <FadeIn key={urun.id} delay={i * 120}>
               <Link
                 href={`/urunler/${urun.id}`}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-shadow border border-gray-100 group block"
+                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-red-100 hover:scale-[1.02] hover:-translate-y-1 hover:border-red-200 transition-all duration-300 border border-gray-100 group block"
               >
                 <div className={`${urun.renk} h-52 relative overflow-hidden`}>
                   <Image

@@ -96,8 +96,8 @@ export default function Home() {
             <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-white to-transparent" />
           </div>
           <div className="px-5 pb-8 pt-4 text-center anim-slide-left">
-            <h1 className="text-2xl font-black uppercase text-gray-900 mb-2" style={{ lineHeight: "1.15" }}>
-              Pekmezoğlu<br />Çiftçilerine Özel Teklifler.
+            <h1 className="text-3xl font-black uppercase text-gray-900 mb-2" style={{ lineHeight: "1.15" }}>
+              Pekmezoğlu<br />Çiftçilerine Özel Teklifler
             </h1>
             <p className="text-gray-500 text-xs mb-4 leading-relaxed">
               1973&apos;ten bu yana güvenilir satış, takas desteği ve size özel avantajlar.
@@ -129,11 +129,11 @@ export default function Home() {
         </div>
         <div className="hidden lg:flex relative z-20 w-full max-w-7xl mx-auto px-2 lg:px-4">
           <div className="w-1/2 py-20 anim-slide-left">
-            <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black uppercase mb-4 text-gray-900" style={{ lineHeight: "1.15" }}>
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase mb-4 text-gray-900" style={{ lineHeight: "1.15" }}>
               Pekmezoğlu<br />
               Çiftçilerine<br />
               Özel<br />
-              Teklifler.
+              Teklifler
             </h1>
             <p className="text-gray-500 text-base mb-8 max-w-sm leading-relaxed">
               1973&apos;ten bu yana sıfır ve ikinci el traktörlerde güvenilir satış, takas desteği ve size özel avantajlar sunuyoruz.

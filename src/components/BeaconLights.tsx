@@ -6,12 +6,13 @@ const IMG_W = 1316;
 const IMG_H = 877;
 
 // Görsel üzerinde tepe lambası konumları (0-1 arası kesir)
+// Orijinal 1316×877 piksel görsel üzerinden piksel koordinatı ölçüldü
 // New Holland 1 lamba, Başak 1 lamba, Massey Ferguson 2 lamba
 const BEACONS = [
-  { fx: 0.21, fy: 0.28, period: 1700, delay: 0 },    // New Holland
-  { fx: 0.50, fy: 0.22, period: 1650, delay: 350 },  // Başak (1 tane)
-  { fx: 0.75, fy: 0.22, period: 1600, delay: 180 },  // Massey Ferguson sol
-  { fx: 0.84, fy: 0.21, period: 1800, delay: 600 },  // Massey Ferguson sağ
+  { fx: 0.22, fy: 0.38, period: 1700, delay: 0 },    // New Holland
+  { fx: 0.50, fy: 0.31, period: 1650, delay: 350 },  // Başak (1 tane)
+  { fx: 0.74, fy: 0.29, period: 1600, delay: 180 },  // Massey Ferguson sol
+  { fx: 0.83, fy: 0.29, period: 1800, delay: 600 },  // Massey Ferguson sağ
 ];
 
 interface Rect { x: number; y: number; w: number; h: number }

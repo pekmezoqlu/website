@@ -13,6 +13,7 @@ export type Urun = {
   textColor: string;
   badge: string;
   fotolar: string[];
+  fiyat?: number;
 };
 
 export const urunler: Urun[] = [

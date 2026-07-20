@@ -19,6 +19,17 @@ const saatDegerleri = urunler.map((u) => parseSaat(u.saat)).filter((v): v is num
 const MIN_SAAT = 0;
 const MAX_SAAT = 15000;
 
+type Siralama = "varsayilan" | "yeni-eklenen" | "en-yeni" | "en-eski" | "fiyat-artan" | "fiyat-azalan";
+
+const SIRALAMA_ETIKET: Record<Siralama, string> = {
+  "varsayilan":    "Sıralama",
+  "yeni-eklenen":  "Yeni Eklenen",
+  "en-yeni":       "En Yeni",
+  "en-eski":       "En Eski",
+  "fiyat-artan":   "Fiyat: Artan",
+  "fiyat-azalan":  "Fiyat: Azalan",
+};
+
 type Durum = "" | "Sıfır" | "2. El";
 type Filters = {
   durum: Durum;
@@ -46,6 +57,7 @@ function saatFiltresiAktif(f: Filters) {
 export default function UrunlerClient() {
   const [panelAcik, setPanelAcik] = useState(false);
   const [filters, setFilters] = useState<Filters>(BOSH);
+  const [siralama, setSiralama] = useState<Siralama>("varsayilan");
 
   const aktifSayi = [
     filters.durum !== "",
@@ -54,23 +66,32 @@ export default function UrunlerClient() {
     saatFiltresiAktif(filters),
   ].filter(Boolean).length;
 
-  const filtrelenmis = useMemo(
-    () =>
-      urunler.filter((u) => {
-        if (filters.durum && u.durum !== filters.durum) return false;
-        if (filters.markalar.length > 0 && !filters.markalar.includes(u.marka)) return false;
-        const yil = Number(u.modelYili);
-        if (yil < filters.yilAralik[0] || yil > filters.yilAralik[1]) return false;
-        const saat = parseSaat(u.saat);
-        if (saat === null) {
-          if (!filters.saatBilinmiyor) return false;
-        } else {
-          if (saat < filters.saatAralik[0] || saat > filters.saatAralik[1]) return false;
-        }
-        return true;
-      }),
-    [filters]
-  );
+  const filtrelenmis = useMemo(() => {
+    const liste = urunler.filter((u) => {
+      if (filters.durum && u.durum !== filters.durum) return false;
+      if (filters.markalar.length > 0 && !filters.markalar.includes(u.marka)) return false;
+      const yil = Number(u.modelYili);
+      if (yil < filters.yilAralik[0] || yil > filters.yilAralik[1]) return false;
+      const saat = parseSaat(u.saat);
+      if (saat === null) {
+        if (!filters.saatBilinmiyor) return false;
+      } else {
+        if (saat < filters.saatAralik[0] || saat > filters.saatAralik[1]) return false;
+      }
+      return true;
+    });
+
+    return [...liste].sort((a, b) => {
+      switch (siralama) {
+        case "yeni-eklenen":  return b.id - a.id;
+        case "en-yeni":       return Number(b.modelYili) - Number(a.modelYili);
+        case "en-eski":       return Number(a.modelYili) - Number(b.modelYili);
+        case "fiyat-artan":   return (a.fiyat ?? Infinity) - (b.fiyat ?? Infinity);
+        case "fiyat-azalan":  return (b.fiyat ?? 0) - (a.fiyat ?? 0);
+        default:              return 0;
+      }
+    });
+  }, [filters, siralama]);
 
   function toggleMarka(m: string) {
     setFilters((f) => ({
@@ -126,11 +147,36 @@ export default function UrunlerClient() {
             )}
           </div>
 
-          {aktifSayi > 0 && (
-            <button onClick={temizle} className="shrink-0 ml-auto text-xs text-gray-400 hover:text-red-600 transition-colors">
-              Temizle
-            </button>
-          )}
+          <div className="ml-auto shrink-0 flex items-center gap-2">
+            {aktifSayi > 0 && (
+              <button onClick={temizle} className="text-xs text-gray-400 hover:text-red-600 transition-colors">
+                Temizle
+              </button>
+            )}
+            <div className="relative">
+              <select
+                value={siralama}
+                onChange={(e) => setSiralama(e.target.value as Siralama)}
+                className={`text-sm pl-3 pr-7 py-1.5 rounded-full border appearance-none cursor-pointer transition-colors outline-none ${
+                  siralama !== "varsayilan"
+                    ? "bg-red-600 text-white border-red-600"
+                    : "text-gray-600 border-gray-300 hover:border-red-400 hover:text-red-600 bg-white"
+                }`}
+              >
+                {(Object.keys(SIRALAMA_ETIKET) as Siralama[]).map((k) => (
+                  <option key={k} value={k} className="bg-white text-gray-900">
+                    {SIRALAMA_ETIKET[k]}
+                  </option>
+                ))}
+              </select>
+              <svg
+                className={`pointer-events-none absolute right-2 top-1/2 -translate-y-1/2 w-3.5 h-3.5 ${siralama !== "varsayilan" ? "text-white" : "text-gray-400"}`}
+                fill="none" stroke="currentColor" viewBox="0 0 24 24"
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M19 9l-7 7-7-7" />
+              </svg>
+            </div>
+          </div>
         </div>
       </section>
 

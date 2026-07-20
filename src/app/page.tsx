@@ -157,12 +157,14 @@ export default function Home() {
       {/* Özellikler */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-14">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Neden Bizi Seçmelisiniz?</h2>
-            <p className="text-gray-500 max-w-xl mx-auto">
-              Yılların deneyimi ve müşteri memnuniyeti odaklı hizmet anlayışımızla fark yaratıyoruz.
-            </p>
-          </div>
+          <FadeIn direction="up">
+            <div className="text-center mb-14">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Neden Bizi Seçmelisiniz?</h2>
+              <p className="text-gray-500 max-w-xl mx-auto">
+                Yılların deneyimi ve müşteri memnuniyeti odaklı hizmet anlayışımızla fark yaratıyoruz.
+              </p>
+            </div>
+          </FadeIn>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {ozellikler.map((o, i) => (
               <FadeIn key={o.baslik} delay={i * 100}>
@@ -180,6 +182,7 @@ export default function Home() {
       {/* Öne çıkan ürünler */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <FadeIn direction="up">
           <div className="flex items-end justify-between mb-12">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Öne Çıkan Traktörler</h2>
@@ -195,6 +198,7 @@ export default function Home() {
               </svg>
             </Link>
           </div>
+          </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {onecikarilan.map((urun, i) => (
@@ -237,18 +241,20 @@ export default function Home() {
 
       {/* CTA */}
       <section className="bg-gray-900 py-20">
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Doğru Traktörü Seçmekte Kararsız mısınız?</h2>
-          <p className="text-gray-400 mb-8 text-lg">
-            Uzman ekibimiz ihtiyacınıza en uygun modeli belirlemenize ücretsiz yardımcı olur.
-          </p>
-          <Link
-            href="/iletisim"
-            className="inline-block bg-red-600 hover:bg-red-700 text-white font-semibold px-10 py-4 rounded-xl transition-colors text-lg"
-          >
-            Ücretsiz Danışmanlık Al
-          </Link>
-        </div>
+        <FadeIn direction="zoom">
+          <div className="max-w-3xl mx-auto px-4 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Doğru Traktörü Seçmekte Kararsız mısınız?</h2>
+            <p className="text-gray-400 mb-8 text-lg">
+              Uzman ekibimiz ihtiyacınıza en uygun modeli belirlemenize ücretsiz yardımcı olur.
+            </p>
+            <Link
+              href="/iletisim"
+              className="inline-block bg-red-600 hover:bg-red-700 text-white font-semibold px-10 py-4 rounded-xl transition-colors text-lg"
+            >
+              Ücretsiz Danışmanlık Al
+            </Link>
+          </div>
+        </FadeIn>
       </section>
     </>
   );

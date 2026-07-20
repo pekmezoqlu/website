@@ -2,7 +2,7 @@
 
 import { useEffect, useRef, useState } from "react";
 
-type Direction = "up" | "left" | "right";
+type Direction = "up" | "left" | "right" | "zoom";
 
 interface Props {
   children: React.ReactNode;
@@ -36,6 +36,8 @@ export default function FadeIn({ children, delay = 0, direction = "up", classNam
       ? "anim-slide-left"
       : direction === "right"
       ? "anim-slide-right"
+      : direction === "zoom"
+      ? "anim-zoom-in"
       : "anim-fade-up"
     : "opacity-0";
 

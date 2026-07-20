@@ -17,7 +17,7 @@ function parseSaat(s: string): number | null {
 }
 const saatDegerleri = urunler.map((u) => parseSaat(u.saat)).filter((v): v is number => v !== null);
 const MIN_SAAT = 0;
-const MAX_SAAT = Math.max(...saatDegerleri);
+const MAX_SAAT = 15000;
 
 type Durum = "" | "Sıfır" | "2. El";
 type Filters = {

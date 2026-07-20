@@ -123,7 +123,6 @@ export default function Home() {
             className="object-contain object-center"
             quality={90}
           />
-          <BeaconLights />
           <div className="absolute inset-y-0 left-0 w-40 bg-gradient-to-r from-white to-transparent z-20" />
           <div className="absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white to-transparent z-20" />
           <div className="absolute inset-x-0 bottom-0 h-24 bg-gradient-to-t from-white to-transparent z-20" />

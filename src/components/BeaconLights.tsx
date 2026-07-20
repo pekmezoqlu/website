@@ -1,80 +1,90 @@
-// Tepe lambası (döner sarı ışık) — görselin aspect-ratio'suna göre tam konumlandırılır
+"use client";
+import { useEffect, useRef, useState } from "react";
 
-interface Beacon {
-  x: number; // görsel içinde soldan %
-  y: number; // görsel içinde yukarıdan %
-  period: number; // bir tam dönüş süresi (ms)
-  delay: number;  // animasyon gecikmesi (ms)
-}
+// Orijinal görsel boyutu (1316×877)
+const IMG_W = 1316;
+const IMG_H = 877;
 
-// Konumlar 1316×877 piksel orijinal görsel üzerinden tespit edildi
-const BEACONS: Beacon[] = [
-  { x: 22, y: 27, period: 1700, delay: 0 },    // New Holland
-  { x: 45, y: 22, period: 1650, delay: 350 },  // Başak sol
-  { x: 57, y: 22, period: 1750, delay: 800 },  // Başak sağ
-  { x: 74, y: 21, period: 1600, delay: 180 },  // Massey Ferguson sol
-  { x: 82, y: 21, period: 1800, delay: 600 },  // Massey Ferguson sağ
+// Görsel üzerinde tepe lambası konumları (0-1 arası kesir)
+// New Holland 1 lamba, Başak 1 lamba, Massey Ferguson 2 lamba
+const BEACONS = [
+  { fx: 0.21, fy: 0.28, period: 1700, delay: 0 },    // New Holland
+  { fx: 0.50, fy: 0.22, period: 1650, delay: 350 },  // Başak (1 tane)
+  { fx: 0.75, fy: 0.22, period: 1600, delay: 180 },  // Massey Ferguson sol
+  { fx: 0.84, fy: 0.21, period: 1800, delay: 600 },  // Massey Ferguson sağ
 ];
 
+interface Rect { x: number; y: number; w: number; h: number }
+
 export default function BeaconLights() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [rect, setRect] = useState<Rect | null>(null);
+
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+
+    const calc = () => {
+      const cw = el.offsetWidth;
+      const ch = el.offsetHeight;
+      const ratio = IMG_W / IMG_H;
+      let w, h, x, y;
+      if (ratio > cw / ch) {
+        // Genişlikle sınırlı (letterbox üst/alt)
+        w = cw; h = cw / ratio;
+        x = 0;  y = (ch - h) / 2;
+      } else {
+        // Yükseklikle sınırlı (letterbox sol/sağ)
+        h = ch; w = ch * ratio;
+        x = (cw - w) / 2; y = 0;
+      }
+      setRect({ x, y, w, h });
+    };
+
+    calc();
+    const ro = new ResizeObserver(calc);
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
   return (
-    // Overlay, görüntünün gerçek render alanıyla birebir eşleşen bir kutu oluşturur.
-    // object-contain ile aynı mantık: width:100% + maxHeight:100% + aspect-ratio
-    <div
-      className="absolute pointer-events-none z-20"
-      style={{
-        aspectRatio: "1316 / 877",
-        width: "100%",
-        maxHeight: "100%",
-        top: "50%",
-        left: "50%",
-        transform: "translate(-50%, -50%)",
-      }}
-    >
-      {BEACONS.map((b, i) => (
-        <div
-          key={i}
-          style={{ position: "absolute", left: `${b.x}%`, top: `${b.y}%` }}
-        >
-          {/* Titreşen ışık halesi */}
-          <div
-            style={{
+    <div ref={ref} className="absolute inset-0 z-30 pointer-events-none">
+      {rect && BEACONS.map((b, i) => {
+        const px = rect.x + b.fx * rect.w;
+        const py = rect.y + b.fy * rect.h;
+        return (
+          <div key={i} style={{ position: "absolute", left: px, top: py }}>
+            {/* Titreşen hale */}
+            <div style={{
               position: "absolute",
-              width: 38, height: 38,
-              marginLeft: -19, marginTop: -19,
+              width: 36, height: 36,
+              marginLeft: -18, marginTop: -18,
               borderRadius: "50%",
-              background:
-                "radial-gradient(circle, rgba(255,140,0,0.55) 0%, rgba(255,100,0,0.18) 50%, transparent 72%)",
+              background: "radial-gradient(circle, rgba(255,140,0,0.55) 0%, rgba(255,100,0,0.15) 50%, transparent 70%)",
               animation: `beaconGlow ${b.period}ms ease-in-out ${b.delay}ms infinite`,
-            }}
-          />
-          {/* Dönen ışık kovası */}
-          <div
-            style={{
+            }} />
+            {/* Dönen ışık kovası */}
+            <div style={{
               position: "absolute",
               width: 20, height: 20,
               marginLeft: -10, marginTop: -10,
               borderRadius: "50%",
               overflow: "hidden",
-              background:
-                "conic-gradient(rgba(255,175,0,0.95) 0deg, rgba(255,235,60,0.55) 50deg, transparent 108deg, transparent 360deg)",
+              background: "conic-gradient(rgba(255,175,0,0.95) 0deg, rgba(255,235,60,0.55) 50deg, transparent 108deg, transparent 360deg)",
               animation: `beaconSpin ${b.period}ms linear ${b.delay}ms infinite`,
-            }}
-          />
-          {/* Merkez lamba */}
-          <div
-            style={{
+            }} />
+            {/* Merkez nokta */}
+            <div style={{
               position: "absolute",
               width: 7, height: 7,
               marginLeft: -3.5, marginTop: -3.5,
               borderRadius: "50%",
-              background: "radial-gradient(circle, #ffffe0 0%, #ffb300 70%)",
-              boxShadow:
-                "0 0 5px 2px rgba(255,150,0,0.95), 0 0 12px 5px rgba(255,100,0,0.4)",
-            }}
-          />
-        </div>
-      ))}
+              background: "radial-gradient(circle, #ffffaa 0%, #ffb300 70%)",
+              boxShadow: "0 0 5px 2px rgba(255,150,0,0.95), 0 0 12px 5px rgba(255,100,0,0.4)",
+            }} />
+          </div>
+        );
+      })}
     </div>
   );
 }

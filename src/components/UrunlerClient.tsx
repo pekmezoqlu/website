@@ -385,7 +385,7 @@ export default function UrunlerClient() {
                       <div className="grid grid-cols-2 gap-2 text-sm font-semibold">
                         <Link
                           href={`/urunler/${urun.id}`}
-                          className="flex items-center justify-center gap-1 rounded-xl border border-red-200 px-3 py-2.5 text-red-600 hover:bg-red-50 transition-colors"
+                          className="flex items-center justify-center gap-1 rounded-xl border border-red-600 bg-red-600 px-3 py-2.5 text-white hover:bg-red-700 transition-colors"
                         >
                           Detayları Gör
                         </Link>

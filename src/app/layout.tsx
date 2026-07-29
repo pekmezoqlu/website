@@ -48,15 +48,49 @@ const jsonLd = {
   "@context": "https://schema.org",
   "@type": "AutoDealer",
   name: "Pekmezoğlu Motorlu Araçlar",
+  legalName: "Pekmezoğlu Motorlu Araçlar ve Ticaret Ltd. Şti.",
+  description:
+    "Eskişehir Odunpazarı'nda traktör satışı ve servisi. Sıfır ve ikinci el traktör alım-satım, takas ve servis hizmetleri.",
   url: "https://www.pekmezoglu.com",
   logo: "https://www.pekmezoglu.com/icon",
+  image: "https://www.pekmezoglu.com/hero-traktor.png",
   telephone: "+905359878980",
   foundingDate: "1973",
   address: {
     "@type": "PostalAddress",
-    addressLocality: "Eskişehir",
+    streetAddress: "75. Yıl (Sultandere) Mah. Oto Galericiler Sitesi No: 467/7",
+    addressLocality: "Odunpazarı",
+    addressRegion: "Eskişehir",
     addressCountry: "TR",
   },
+  geo: {
+    "@type": "GeoCoordinates",
+    latitude: 39.7394427,
+    longitude: 30.614442,
+  },
+  areaServed: {
+    "@type": "City",
+    name: "Eskişehir",
+  },
+  openingHoursSpecification: {
+    "@type": "OpeningHoursSpecification",
+    dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
+    opens: "08:00",
+    closes: "18:00",
+  },
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+905359878980",
+    contactType: "sales",
+    areaServed: "TR",
+    availableLanguage: ["Turkish"],
+  },
+  sameAs: ["https://wa.me/905359878980"],
+  makesOffer: [
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Traktör Satışı" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Traktör Takas" } },
+    { "@type": "Offer", itemOffered: { "@type": "Service", name: "Traktör Servisi" } },
+  ],
 };
 
 export default function RootLayout({

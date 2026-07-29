@@ -27,6 +27,45 @@ export default async function UrunDetay({ params }: Props) {
   if (!urun) notFound();
   const whatsappLink = urunWhatsappLink(urun);
 
+  const baseUrl = "https://www.pekmezoglu.com";
+  const urunUrl = `${baseUrl}/urunler/${urun.id}`;
+  const itemCondition = urun.durum === "Sıfır" ? "https://schema.org/NewCondition" : "https://schema.org/UsedCondition";
+
+  const ozellikler: { "@type": "PropertyValue"; name: string; value: string }[] = [
+    { "@type": "PropertyValue", name: "Model Yılı", value: urun.modelYili },
+  ];
+  if (urun.guc !== "-") ozellikler.push({ "@type": "PropertyValue", name: "Motor Gücü", value: urun.guc });
+  if (urun.saat !== "-") ozellikler.push({ "@type": "PropertyValue", name: "Çalışma Saati", value: urun.saat });
+  if (urun.vites !== "-") ozellikler.push({ "@type": "PropertyValue", name: "Vites", value: urun.vites });
+  if (urun.kuyrukMili !== "-") ozellikler.push({ "@type": "PropertyValue", name: "Kuyruk Mili", value: urun.kuyrukMili });
+  if (urun.kaldirmaKapasitesi !== "-") ozellikler.push({ "@type": "PropertyValue", name: "Kaldırma Kapasitesi", value: urun.kaldirmaKapasitesi });
+
+  const productJsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Product",
+    name: `${urun.marka} ${urun.model}`,
+    brand: { "@type": "Brand", name: urun.marka },
+    model: urun.model,
+    sku: String(urun.id),
+    url: urunUrl,
+    description: `${urun.modelYili} model ${urun.marka} ${urun.model} — ${urun.guc}, ${urun.durum}`,
+    image: urun.fotolar.map((f) => `${baseUrl}${f}`),
+    itemCondition,
+    additionalProperty: ozellikler,
+    offers: {
+      "@type": "Offer",
+      url: urunUrl,
+      availability: "https://schema.org/InStock",
+      itemCondition,
+      seller: {
+        "@type": "AutoDealer",
+        name: "Pekmezoğlu Motorlu Araçlar",
+        telephone: "+905359878980",
+        url: baseUrl,
+      },
+    },
+  };
+
   const tablo = [
     { label: "Fiyat",                value: "WhatsApp'tan Fiyat Sor", kirmizi: true },
     { label: "Marka",                value: urun.marka },
@@ -44,6 +83,10 @@ export default async function UrunDetay({ params }: Props) {
 
   return (
     <div className="bg-gray-100 min-h-screen">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(productJsonLd) }}
+      />
 
       {/* ═══════════════════════════════════
           MOBİL DÜZEN  (lg altı)

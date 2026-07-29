@@ -178,17 +178,9 @@ export default async function UrunDetay({ params }: Props) {
 
             {/* Sağ panel */}
             <div className="lg:col-span-2 flex flex-col gap-4">
-              {/* Fiyat */}
+              {/* Konum & Durum */}
               <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-200">
-                <a
-                  href={whatsappLink}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-xl font-extrabold text-green-600 hover:text-green-700 transition-colors"
-                >
-                  WhatsApp&apos;tan Fiyat Sor
-                </a>
-                <div className="flex items-center gap-1.5 text-sm text-gray-500 mt-2">
+                <div className="flex items-center gap-1.5 text-sm text-gray-500">
                   <svg className="w-4 h-4 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -203,22 +195,6 @@ export default async function UrunDetay({ params }: Props) {
                     <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-red-100 text-red-700">{urun.badge}</span>
                   )}
                 </div>
-              </div>
-
-              {/* Tablo */}
-              <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
-                <div className="px-4 py-3 border-b border-gray-100 bg-gray-50">
-                  <p className="text-xs font-bold text-gray-600 uppercase tracking-wider">Teknik Özellikler</p>
-                </div>
-                {tablo.filter(s => !s.kirmizi).map((satir, i, arr) => (
-                  <div
-                    key={satir.label}
-                    className={`flex items-center text-sm ${i < arr.length - 1 ? "border-b border-gray-100" : ""}`}
-                  >
-                    <div className="w-2/5 px-4 py-2.5 bg-gray-50 text-gray-500 font-medium text-xs">{satir.label}</div>
-                    <div className="w-3/5 px-4 py-2.5 text-gray-900 font-semibold">{satir.value}</div>
-                  </div>
-                ))}
               </div>
 
               {/* Satıcı & İletişim */}
@@ -251,6 +227,22 @@ export default async function UrunDetay({ params }: Props) {
                     <span className="text-sm">WhatsApp&apos;tan Fiyat Sor</span>
                   </a>
                 </div>
+              </div>
+
+              {/* Tablo */}
+              <div className="bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                <div className="px-4 py-3 border-b border-gray-100 bg-gray-50">
+                  <p className="text-xs font-bold text-gray-600 uppercase tracking-wider">Teknik Özellikler</p>
+                </div>
+                {tablo.filter(s => !s.kirmizi).map((satir, i, arr) => (
+                  <div
+                    key={satir.label}
+                    className={`flex items-center text-sm ${i < arr.length - 1 ? "border-b border-gray-100" : ""}`}
+                  >
+                    <div className="w-2/5 px-4 py-2.5 bg-gray-50 text-gray-500 font-medium text-xs">{satir.label}</div>
+                    <div className="w-3/5 px-4 py-2.5 text-gray-900 font-semibold">{satir.value}</div>
+                  </div>
+                ))}
               </div>
 
               <Link href="/urunler"

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import type { FormEvent, DragEvent } from "react";
 
 type Foto = { name: string; data: string; type: string; preview: string };
@@ -12,7 +12,11 @@ export default function Teklif() {
   const [form, setForm] = useState({ telefon: "", il: "", ilce: "", marka: "", model: "", yil: "", saat: "" });
   const [fotolar, setFotolar] = useState<Foto[]>([]);
   const [surukle, setSurukle] = useState(false);
+  const [web, setWeb] = useState("");
   const fileRef = useRef<HTMLInputElement>(null);
+  const acilisZamani = useRef(0);
+
+  useEffect(() => { acilisZamani.current = Date.now(); }, []);
 
   function dosyaEkle(files: FileList | null) {
     if (!files) return;
@@ -47,12 +51,15 @@ export default function Teklif() {
         body: JSON.stringify({
           ...form,
           fotolar: fotolar.map(({ name, data, type }) => ({ name, data, type })),
+          web,
+          sure: Date.now() - acilisZamani.current,
         }),
       });
-      if (!res.ok) throw new Error();
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data?.error || "Gönderim başarısız, lütfen tekrar deneyin.");
       setGonderildi(true);
-    } catch {
-      setHata("Gönderim başarısız, lütfen tekrar deneyin.");
+    } catch (err) {
+      setHata(err instanceof Error && err.message ? err.message : "Gönderim başarısız, lütfen tekrar deneyin.");
     } finally {
       setYukleniyor(false);
     }
@@ -83,7 +90,7 @@ export default function Teklif() {
                 <h3 className="text-xl font-bold text-gray-900 mb-2">Talebiniz Alındı!</h3>
                 <p className="text-gray-500">En kısa sürede sizi arayacağız.</p>
                 <button
-                  onClick={() => { setGonderildi(false); setForm({ telefon: "", il: "", ilce: "", marka: "", model: "", yil: "", saat: "" }); setFotolar([]); }}
+                  onClick={() => { setGonderildi(false); setForm({ telefon: "", il: "", ilce: "", marka: "", model: "", yil: "", saat: "" }); setFotolar([]); setWeb(""); acilisZamani.current = Date.now(); }}
                   className="mt-6 text-red-600 font-semibold text-sm hover:underline"
                 >
                   Yeni talep gönder
@@ -93,6 +100,18 @@ export default function Teklif() {
               <>
                 <h2 className="text-2xl font-bold text-gray-900 mb-6">Traktör Bilgileri</h2>
                 <form onSubmit={handleSubmit} className="space-y-5">
+
+                  {/* Honeypot: botlar bu alanı doldurur, insanlar görmez */}
+                  <input
+                    type="text"
+                    name="web_sitesi"
+                    value={web}
+                    onChange={(e) => setWeb(e.target.value)}
+                    tabIndex={-1}
+                    autoComplete="off"
+                    aria-hidden="true"
+                    className="absolute left-[-9999px] top-auto w-px h-px overflow-hidden"
+                  />
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1.5">Telefon Numarası *</label>

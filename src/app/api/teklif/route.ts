@@ -1,10 +1,13 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
+import { checkRateLimit, getClientIp } from "@/lib/rateLimit";
+
+const MIN_SUBMIT_MS = 3000;
 
 export async function POST(req: NextRequest) {
   try {
     const body = await req.json();
-    const { telefon, il, ilce, marka, model, yil, saat, fotolar } = body as {
+    const { telefon, il, ilce, marka, model, yil, saat, fotolar, web, sure } = body as {
       telefon: string;
       il: string;
       ilce: string;
@@ -13,7 +16,35 @@ export async function POST(req: NextRequest) {
       yil: string;
       saat: string;
       fotolar: { name: string; data: string; type: string }[];
+      web?: string;
+      sure?: number;
     };
+
+    // Honeypot: bu alanı sadece botlar doldurur. Dolu geldiyse sessizce "başarılı" dön.
+    if (web) {
+      return NextResponse.json({ ok: true });
+    }
+
+    // Form birkaç saniyeden kısa sürede gönderildiyse muhtemelen bottur.
+    if (typeof sure === "number" && sure < MIN_SUBMIT_MS) {
+      return NextResponse.json({ ok: true });
+    }
+
+    if (!telefon?.trim() || !il?.trim() || !ilce?.trim() || !marka?.trim() || !model?.trim() || !yil?.trim() || !saat?.trim()) {
+      return NextResponse.json({ error: "Lütfen tüm zorunlu alanları doldurun." }, { status: 400 });
+    }
+
+    if (telefon.replace(/\D/g, "").length < 10) {
+      return NextResponse.json({ error: "Lütfen geçerli bir telefon numarası girin." }, { status: 400 });
+    }
+
+    const ip = getClientIp(req);
+    if (!checkRateLimit(ip)) {
+      return NextResponse.json(
+        { error: "Çok fazla talep gönderdiniz. Lütfen birkaç dakika sonra tekrar deneyin." },
+        { status: 429 }
+      );
+    }
 
     const user = process.env.SMTP_USER;
     const pass = process.env.SMTP_PASS;

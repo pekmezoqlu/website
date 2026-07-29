@@ -320,6 +320,11 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/tumosan-7170-1.jpg",
+      "/tractors/tumosan-7170-2.jpg",
+      "/tractors/tumosan-7170-3.jpg",
+      "/tractors/tumosan-7170-4.jpg",
+      "/tractors/tumosan-7170-5.jpg",
+      "/tractors/tumosan-7170-6.jpg",
     ],
   },
   {
@@ -338,6 +343,11 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/tumosan-7070-1.jpg",
+      "/tractors/tumosan-7070-2.jpg",
+      "/tractors/tumosan-7070-3.jpg",
+      "/tractors/tumosan-7070-4.jpg",
+      "/tractors/tumosan-7070-5.jpg",
+      "/tractors/tumosan-7070-6.jpg",
     ],
   },
   {
@@ -356,6 +366,11 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/jd-5403-1.jpg",
+      "/tractors/jd-5403-2.jpg",
+      "/tractors/jd-5403-3.jpg",
+      "/tractors/jd-5403-4.jpg",
+      "/tractors/jd-5403-5.jpg",
+      "/tractors/jd-5403-6.jpg",
     ],
   },
   {
@@ -374,6 +389,9 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/mf-266g-1.jpg",
+      "/tractors/mf-266g-2.jpg",
+      "/tractors/mf-266g-3.jpg",
+      "/tractors/mf-266g-4.jpg",
     ],
   },
   {
@@ -392,6 +410,12 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/mf-240s-1.jpg",
+      "/tractors/mf-240s-2.jpg",
+      "/tractors/mf-240s-3.jpg",
+      "/tractors/mf-240s-4.jpg",
+      "/tractors/mf-240s-5.jpg",
+      "/tractors/mf-240s-6.jpg",
+      "/tractors/mf-240s-7.jpg",
     ],
   },
   {
@@ -410,6 +434,13 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/captain-24hp-1.jpg",
+      "/tractors/captain-24hp-2.jpg",
+      "/tractors/captain-24hp-3.jpg",
+      "/tractors/captain-24hp-4.jpg",
+      "/tractors/captain-24hp-5.jpg",
+      "/tractors/captain-24hp-6.jpg",
+      "/tractors/captain-24hp-7.jpg",
+      "/tractors/captain-24hp-8.jpg",
     ],
   },
   {
@@ -428,6 +459,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/same-tiger50-1.jpg",
+      "/tractors/same-tiger50-2.jpg",
+      "/tractors/same-tiger50-3.jpg",
     ],
   },
   {
@@ -446,6 +479,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/basak-2043s-1.jpg",
+      "/tractors/basak-2043s-2.jpg",
+      "/tractors/basak-2043s-3.jpg",
     ],
   },
   {
@@ -464,6 +499,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/fiat-640-1.jpg",
+      "/tractors/fiat-640-2.jpg",
+      "/tractors/fiat-640-3.jpg",
     ],
   },
   {
@@ -482,6 +519,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/fiat-480-1.jpg",
+      "/tractors/fiat-480-2.jpg",
+      "/tractors/fiat-480-3.jpg",
     ],
   },
   {
@@ -500,6 +539,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/steyr-8073-1.jpg",
+      "/tractors/steyr-8073-2.jpg",
+      "/tractors/steyr-8073-3.jpg",
     ],
   },
   {
@@ -518,6 +559,9 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/universal-530-1.jpg",
+      "/tractors/universal-530-2.jpg",
+      "/tractors/universal-530-3.jpg",
+      "/tractors/universal-530-4.jpg",
     ],
   },
   {
@@ -536,6 +580,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/universal-445-1.jpg",
+      "/tractors/universal-445-2.jpg",
+      "/tractors/universal-445-3.jpg",
+      "/tractors/universal-445-4.jpg",
+      "/tractors/universal-445-5.jpg",
     ],
   },
   {
@@ -554,6 +602,11 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/fiat-a50-1.jpg",
+      "/tractors/fiat-a50-2.jpg",
+      "/tractors/fiat-a50-3.jpg",
+      "/tractors/fiat-a50-4.jpg",
+      "/tractors/fiat-a50-5.jpg",
+      "/tractors/fiat-a50-6.jpg",
     ],
   },
   {
@@ -572,6 +625,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/mf-240s-2007-1.jpg",
+      "/tractors/mf-240s-2007-2.jpg",
+      "/tractors/mf-240s-2007-3.jpg",
     ],
   },
   {
@@ -590,6 +645,9 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/basak-2090-1.jpg",
+      "/tractors/basak-2090-2.jpg",
+      "/tractors/basak-2090-3.jpg",
+      "/tractors/basak-2090-4.jpg",
     ],
   },
   {
@@ -608,6 +666,9 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/fiat-640-1982-1.jpg",
+      "/tractors/fiat-640-1982-2.jpg",
+      "/tractors/fiat-640-1982-3.jpg",
+      "/tractors/fiat-640-1982-4.jpg",
     ],
   },
   {
@@ -626,6 +687,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/captain-26hp-1.jpg",
+      "/tractors/captain-26hp-2.jpg",
+      "/tractors/captain-26hp-3.jpg",
+      "/tractors/captain-26hp-4.jpg",
+      "/tractors/captain-26hp-5.jpg",
     ],
   },
   {
@@ -645,6 +710,9 @@ export const urunler: Urun[] = [
     fotolar: [
       "/tractors/mf-phantom-2005-1.jpg",
       "/tractors/mf-phantom-2005-2.jpg",
+      "/tractors/mf-phantom-2005-3.jpg",
+      "/tractors/mf-phantom-2005-4.jpg",
+      "/tractors/mf-phantom-2005-5.jpg",
     ],
   },
   {
@@ -663,6 +731,11 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/taral-855-1.jpg",
+      "/tractors/taral-855-2.jpg",
+      "/tractors/taral-855-3.jpg",
+      "/tractors/taral-855-4.jpg",
+      "/tractors/taral-855-5.jpg",
+      "/tractors/taral-855-6.jpg",
     ],
   },
   {
@@ -681,6 +754,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/mf-265-1.jpg",
+      "/tractors/mf-265-2.jpg",
+      "/tractors/mf-265-3.jpg",
     ],
   },
   {
@@ -699,6 +774,14 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/mf-265-1991-1.jpg",
+      "/tractors/mf-265-1991-2.jpg",
+      "/tractors/mf-265-1991-3.jpg",
+      "/tractors/mf-265-1991-4.jpg",
+      "/tractors/mf-265-1991-5.jpg",
+      "/tractors/mf-265-1991-6.jpg",
+      "/tractors/mf-265-1991-7.jpg",
+      "/tractors/mf-265-1991-8.jpg",
+      "/tractors/mf-265-1991-9.jpg",
     ],
   },
   {
@@ -717,6 +800,9 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/mf-240-1.jpg",
+      "/tractors/mf-240-2.jpg",
+      "/tractors/mf-240-3.jpg",
+      "/tractors/mf-240-4.jpg",
     ],
   },
   {
@@ -735,6 +821,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/ford-3000-1.jpg",
+      "/tractors/ford-3000-2.jpg",
+      "/tractors/ford-3000-3.jpg",
     ],
   },
   {
@@ -753,6 +841,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/ford-5000-1.jpg",
+      "/tractors/ford-5000-2.jpg",
+      "/tractors/ford-5000-3.jpg",
     ],
   },
   {
@@ -771,6 +861,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/basak-2073-1.jpg",
+      "/tractors/basak-2073-2.jpg",
+      "/tractors/basak-2073-3.jpg",
+      "/tractors/basak-2073-4.jpg",
+      "/tractors/basak-2073-5.jpg",
     ],
   },
   {
@@ -789,6 +883,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/basak-2073-2000-1.jpg",
+      "/tractors/basak-2073-2000-2.jpg",
+      "/tractors/basak-2073-2000-3.jpg",
+      "/tractors/basak-2073-2000-4.jpg",
+      "/tractors/basak-2073-2000-5.jpg",
     ],
   },
   {
@@ -807,6 +905,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/steyr-8073-1991-1.jpg",
+      "/tractors/steyr-8073-1991-2.jpg",
+      "/tractors/steyr-8073-1991-3.jpg",
+      "/tractors/steyr-8073-1991-4.jpg",
+      "/tractors/steyr-8073-1991-5.jpg",
     ],
   },
   {
@@ -825,6 +927,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/steyr-8073-1987-2-1.jpg",
+      "/tractors/steyr-8073-1987-2-2.jpg",
+      "/tractors/steyr-8073-1987-2-3.jpg",
+      "/tractors/steyr-8073-1987-2-4.jpg",
+      "/tractors/steyr-8073-1987-2-5.jpg",
     ],
   },
   {
@@ -843,6 +949,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/steyr-8073-1987-3-1.jpg",
+      "/tractors/steyr-8073-1987-3-2.jpg",
+      "/tractors/steyr-8073-1987-3-3.jpg",
+      "/tractors/steyr-8073-1987-3-4.jpg",
+      "/tractors/steyr-8073-1987-3-5.jpg",
     ],
   },
   {
@@ -861,6 +971,9 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/steyr-8053-1.jpg",
+      "/tractors/steyr-8053-2.jpg",
+      "/tractors/steyr-8053-3.jpg",
+      "/tractors/steyr-8053-4.jpg",
     ],
   },
   {
@@ -879,6 +992,9 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/steyr-768-1.jpg",
+      "/tractors/steyr-768-2.jpg",
+      "/tractors/steyr-768-3.jpg",
+      "/tractors/steyr-768-4.jpg",
     ],
   },
   {
@@ -897,6 +1013,12 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/jd-5403-kepceli-1.jpg",
+      "/tractors/jd-5403-kepceli-2.jpg",
+      "/tractors/jd-5403-kepceli-3.jpg",
+      "/tractors/jd-5403-kepceli-4.jpg",
+      "/tractors/jd-5403-kepceli-5.jpg",
+      "/tractors/jd-5403-kepceli-6.jpg",
+      "/tractors/jd-5403-kepceli-7.jpg",
     ],
   },
   {
@@ -915,6 +1037,11 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/steyr-768-1983-2-1.jpg",
+      "/tractors/steyr-768-1983-2-2.jpg",
+      "/tractors/steyr-768-1983-2-3.jpg",
+      "/tractors/steyr-768-1983-2-4.jpg",
+      "/tractors/steyr-768-1983-2-5.jpg",
+      "/tractors/steyr-768-1983-2-6.jpg",
     ],
   },
   {
@@ -933,6 +1060,9 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/mf-285-1.jpg",
+      "/tractors/mf-285-2.jpg",
+      "/tractors/mf-285-3.jpg",
+      "/tractors/mf-285-4.jpg",
     ],
   },
   {
@@ -951,6 +1081,11 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/hattat-h45-1.jpg",
+      "/tractors/hattat-h45-2.jpg",
+      "/tractors/hattat-h45-3.jpg",
+      "/tractors/hattat-h45-4.jpg",
+      "/tractors/hattat-h45-5.jpg",
+      "/tractors/hattat-h45-6.jpg",
     ],
   },
   {
@@ -969,6 +1104,11 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/fiat-70-56-1.jpg",
+      "/tractors/fiat-70-56-2.jpg",
+      "/tractors/fiat-70-56-3.jpg",
+      "/tractors/fiat-70-56-4.jpg",
+      "/tractors/fiat-70-56-5.jpg",
+      "/tractors/fiat-70-56-6.jpg",
     ],
   },
   {
@@ -987,6 +1127,7 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/deutz-68-1.jpg",
+      "/tractors/deutz-68-2.jpg",
     ],
   },
   {
@@ -1005,6 +1146,7 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/fendt-106-1.jpg",
+      "/tractors/fendt-106-2.jpg",
     ],
   },
   {
@@ -1023,6 +1165,7 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/ford-3000-1975-1.jpg",
+      "/tractors/ford-3000-1975-2.jpg",
     ],
   },
   {
@@ -1041,6 +1184,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/steyr-768-1981-1.jpg",
+      "/tractors/steyr-768-1981-2.jpg",
+      "/tractors/steyr-768-1981-3.jpg",
     ],
   },
   {
@@ -1059,6 +1204,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/steyr-768-1983-3-1.jpg",
+      "/tractors/steyr-768-1983-3-2.jpg",
+      "/tractors/steyr-768-1983-3-3.jpg",
     ],
   },
   {
@@ -1077,6 +1224,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/imt-1976-1.jpg",
+      "/tractors/imt-1976-2.jpg",
+      "/tractors/imt-1976-3.jpg",
     ],
   },
   {
@@ -1095,6 +1244,7 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/enter-444-1.jpg",
+      "/tractors/enter-444-2.jpg",
     ],
   },
   {
@@ -1113,6 +1263,7 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/enter-654-1.jpg",
+      "/tractors/enter-654-2.jpg",
     ],
   },
   {
@@ -1131,6 +1282,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/fiat-65-46-1.jpg",
+      "/tractors/fiat-65-46-2.jpg",
+      "/tractors/fiat-65-46-3.jpg",
+      "/tractors/fiat-65-46-4.jpg",
+      "/tractors/fiat-65-46-5.jpg",
     ],
   },
   {
@@ -1149,6 +1304,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/fiat-480-1977-1.jpg",
+      "/tractors/fiat-480-1977-2.jpg",
+      "/tractors/fiat-480-1977-3.jpg",
+      "/tractors/fiat-480-1977-4.jpg",
+      "/tractors/fiat-480-1977-5.jpg",
     ],
   },
   {
@@ -1167,6 +1326,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/nh-td65-1.jpg",
+      "/tractors/nh-td65-2.jpg",
+      "/tractors/nh-td65-3.jpg",
     ],
   },
   {
@@ -1185,6 +1346,9 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/valtra-a75-2012-1.jpg",
+      "/tractors/valtra-a75-2012-2.jpg",
+      "/tractors/valtra-a75-2012-3.jpg",
+      "/tractors/valtra-a75-2012-4.jpg",
     ],
   },
   {
@@ -1203,6 +1367,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/mf-3085-phantom-1.jpg",
+      "/tractors/mf-3085-phantom-2.jpg",
+      "/tractors/mf-3085-phantom-3.jpg",
+      "/tractors/mf-3085-phantom-4.jpg",
+      "/tractors/mf-3085-phantom-5.jpg",
     ],
   },
   {
@@ -1221,6 +1389,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/erkunt-kiymet90e-1.jpg",
+      "/tractors/erkunt-kiymet90e-2.jpg",
+      "/tractors/erkunt-kiymet90e-3.jpg",
+      "/tractors/erkunt-kiymet90e-4.jpg",
+      "/tractors/erkunt-kiymet90e-5.jpg",
     ],
   },
   {
@@ -1239,6 +1411,11 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/erkunt-nimet70-1.jpg",
+      "/tractors/erkunt-nimet70-2.jpg",
+      "/tractors/erkunt-nimet70-3.jpg",
+      "/tractors/erkunt-nimet70-4.jpg",
+      "/tractors/erkunt-nimet70-5.jpg",
+      "/tractors/erkunt-nimet70-6.jpg",
     ],
   },
   {
@@ -1257,6 +1434,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/nh-60-66s-1.jpg",
+      "/tractors/nh-60-66s-2.jpg",
+      "/tractors/nh-60-66s-3.jpg",
+      "/tractors/nh-60-66s-4.jpg",
+      "/tractors/nh-60-66s-5.jpg",
     ],
   },
   {
@@ -1275,6 +1456,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/mf-3075-phantom-1.jpg",
+      "/tractors/mf-3075-phantom-2.jpg",
+      "/tractors/mf-3075-phantom-3.jpg",
+      "/tractors/mf-3075-phantom-4.jpg",
+      "/tractors/mf-3075-phantom-5.jpg",
     ],
   },
   {
@@ -1293,6 +1478,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/mf-285s-1.jpg",
+      "/tractors/mf-285s-2.jpg",
+      "/tractors/mf-285s-3.jpg",
     ],
   },
   {
@@ -1311,6 +1498,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/mf-135-1.jpg",
+      "/tractors/mf-135-2.jpg",
+      "/tractors/mf-135-3.jpg",
     ],
   },
   {
@@ -1329,6 +1518,9 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/mf-285s-1993-1.jpg",
+      "/tractors/mf-285s-1993-2.jpg",
+      "/tractors/mf-285s-1993-3.jpg",
+      "/tractors/mf-285s-1993-4.jpg",
     ],
   },
   {
@@ -1347,6 +1539,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/fiat-60-56-1.jpg",
+      "/tractors/fiat-60-56-2.jpg",
+      "/tractors/fiat-60-56-3.jpg",
     ],
   },
   {
@@ -1365,6 +1559,9 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/fiat-70-56-1996-1.jpg",
+      "/tractors/fiat-70-56-1996-2.jpg",
+      "/tractors/fiat-70-56-1996-3.jpg",
+      "/tractors/fiat-70-56-1996-4.jpg",
     ],
   },
   {
@@ -1383,6 +1580,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/nh-60-66s-2002-1.jpg",
+      "/tractors/nh-60-66s-2002-2.jpg",
+      "/tractors/nh-60-66s-2002-3.jpg",
     ],
   },
   {
@@ -1401,6 +1600,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/mf-285s-1998-1.jpg",
+      "/tractors/mf-285s-1998-2.jpg",
+      "/tractors/mf-285s-1998-3.jpg",
+      "/tractors/mf-285s-1998-4.jpg",
+      "/tractors/mf-285s-1998-5.jpg",
     ],
   },
   {
@@ -1419,6 +1622,9 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/mf-398-1.jpg",
+      "/tractors/mf-398-2.jpg",
+      "/tractors/mf-398-3.jpg",
+      "/tractors/mf-398-4.jpg",
     ],
   },
   {
@@ -1437,6 +1643,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/fiat-480-1983-1.jpg",
+      "/tractors/fiat-480-1983-2.jpg",
+      "/tractors/fiat-480-1983-3.jpg",
     ],
   },
   {
@@ -1455,6 +1663,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/kubota-m7040-1.jpg",
+      "/tractors/kubota-m7040-2.jpg",
+      "/tractors/kubota-m7040-3.jpg",
+      "/tractors/kubota-m7040-4.jpg",
+      "/tractors/kubota-m7040-5.jpg",
     ],
   },
   {
@@ -1473,6 +1685,11 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/basak-2060-2020-1.jpg",
+      "/tractors/basak-2060-2020-2.jpg",
+      "/tractors/basak-2060-2020-3.jpg",
+      "/tractors/basak-2060-2020-4.jpg",
+      "/tractors/basak-2060-2020-5.jpg",
+      "/tractors/basak-2060-2020-6.jpg",
     ],
   },
   {
@@ -1491,6 +1708,13 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/case-jx70e-1.jpg",
+      "/tractors/case-jx70e-2.jpg",
+      "/tractors/case-jx70e-3.jpg",
+      "/tractors/case-jx70e-4.jpg",
+      "/tractors/case-jx70e-5.jpg",
+      "/tractors/case-jx70e-6.jpg",
+      "/tractors/case-jx70e-7.jpg",
+      "/tractors/case-jx70e-8.jpg",
     ],
   },
   {
@@ -1509,6 +1733,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/basak-2075-1.jpg",
+      "/tractors/basak-2075-2.jpg",
+      "/tractors/basak-2075-3.jpg",
+      "/tractors/basak-2075-4.jpg",
+      "/tractors/basak-2075-5.jpg",
     ],
   },
   {
@@ -1527,6 +1755,11 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/basak-5075-1.jpg",
+      "/tractors/basak-5075-2.jpg",
+      "/tractors/basak-5075-3.jpg",
+      "/tractors/basak-5075-4.jpg",
+      "/tractors/basak-5075-5.jpg",
+      "/tractors/basak-5075-6.jpg",
     ],
   },
   {
@@ -1545,6 +1778,8 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/basak-2060-2015-1.jpg",
+      "/tractors/basak-2060-2015-2.jpg",
+      "/tractors/basak-2060-2015-3.jpg",
     ],
   },
 ];

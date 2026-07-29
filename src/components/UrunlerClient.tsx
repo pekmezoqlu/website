@@ -337,7 +337,7 @@ export default function UrunlerClient() {
                     <Link href={`/urunler/${urun.id}`} className="block">
                       <div
                         className={`${urun.fotolar.length > 0 ? "bg-black" : urun.renk} relative overflow-hidden`}
-                        style={{ aspectRatio: "4/3" }}
+                        style={{ aspectRatio: "3/4" }}
                       >
                         {urun.fotolar.length > 0 ? (
                           <Image src={urun.fotolar[0]} alt={`${urun.marka} ${urun.model}`} fill className="object-contain" />

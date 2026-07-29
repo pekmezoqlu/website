@@ -149,9 +149,19 @@ export default async function UrunDetay({ params }: Props) {
               className="flex justify-between items-center px-4 py-3.5 border-b border-gray-100 last:border-0"
             >
               <span className="text-sm text-gray-500">{satir.label}</span>
-              <span className={`text-sm font-semibold ${satir.kirmizi ? "text-red-600" : "text-gray-900"}`}>
-                {satir.value}
-              </span>
+              {satir.kirmizi ? (
+                <a
+                  href={whatsappLink}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`${urun.marka} ${urun.model} için WhatsApp'tan fiyat sor`}
+                  className="text-sm font-semibold text-red-600 bg-red-50 px-3 py-1.5 rounded-full hover:bg-red-100 transition-colors"
+                >
+                  {satir.value}
+                </a>
+              ) : (
+                <span className="text-sm font-semibold text-gray-900">{satir.value}</span>
+              )}
             </div>
           ))}
         </div>

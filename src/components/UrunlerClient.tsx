@@ -340,7 +340,7 @@ export default function UrunlerClient() {
                         style={{ aspectRatio: "3/4" }}
                       >
                         {urun.fotolar.length > 0 ? (
-                          <Image src={urun.fotolar[0]} alt={`${urun.marka} ${urun.model}`} fill className="object-contain" />
+                          <Image src={urun.fotolar[0]} alt={`${urun.marka} ${urun.model}`} fill className="object-cover" />
                         ) : (
                           <svg className="w-20 h-20 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M9 17a2 2 0 11-4 0 2 2 0 014 0zM19 17a2 2 0 11-4 0 2 2 0 014 0z" />

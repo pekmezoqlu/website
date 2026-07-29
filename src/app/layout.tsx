@@ -50,7 +50,7 @@ const jsonLd = {
   name: "Pekmezoğlu Motorlu Araçlar",
   url: "https://www.pekmezoglu.com",
   logo: "https://www.pekmezoglu.com/icon",
-  telephone: "+905457280424",
+  telephone: "+905359878980",
   foundingDate: "1973",
   address: {
     "@type": "PostalAddress",

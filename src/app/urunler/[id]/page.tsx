@@ -178,25 +178,6 @@ export default async function UrunDetay({ params }: Props) {
 
             {/* Sağ panel */}
             <div className="lg:col-span-2 flex flex-col gap-4">
-              {/* Konum & Durum */}
-              <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-200">
-                <div className="flex items-center gap-1.5 text-sm text-gray-500">
-                  <svg className="w-4 h-4 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
-                  </svg>
-                  Odunpazarı / Eskişehir
-                </div>
-                <div className="flex gap-2 mt-3">
-                  <span className={`text-xs font-semibold px-2.5 py-1 rounded-full ${
-                    urun.durum === "Sıfır" ? "bg-green-100 text-green-700" : "bg-blue-100 text-blue-700"
-                  }`}>{urun.durum}</span>
-                  {urun.badge && (
-                    <span className="text-xs font-semibold px-2.5 py-1 rounded-full bg-red-100 text-red-700">{urun.badge}</span>
-                  )}
-                </div>
-              </div>
-
               {/* Satıcı & İletişim */}
               <div className="bg-white rounded-xl p-5 shadow-sm border border-gray-200">
                 <div className="flex items-center gap-3 pb-4 border-b border-gray-100 mb-4">

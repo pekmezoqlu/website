@@ -2,6 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import FadeIn from "@/components/FadeIn";
 import StatsBar from "@/components/StatsBar";
+import { urunWhatsappLink } from "@/lib/whatsapp";
 
 const ozellikler = [
   {
@@ -46,6 +47,9 @@ const ozellikler = [
 const onecikarilan = [
   {
     id: 7,
+    marka: "New Holland",
+    model: "TD5.100",
+    modelYili: "2022",
     ad: "New Holland TD5.100",
     kategori: "2. El Traktör",
     detay: "100 HP • 768 Saat • 2022",
@@ -54,6 +58,9 @@ const onecikarilan = [
   },
   {
     id: 5,
+    marka: "Massey Ferguson",
+    model: "5430",
+    modelYili: "2012",
     ad: "Massey Ferguson 5430",
     kategori: "2. El Traktör",
     detay: "92 HP • 6.000 Saat • 2012",
@@ -62,6 +69,9 @@ const onecikarilan = [
   },
   {
     id: 10,
+    marka: "Başak",
+    model: "2055",
+    modelYili: "2023",
     ad: "Başak 2055",
     kategori: "2. El Traktör",
     detay: "55 HP • 185 Saat • 2023",
@@ -203,30 +213,41 @@ export default function Home() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             {onecikarilan.map((urun, i) => (
               <FadeIn key={urun.id} delay={i * 120}>
-              <Link
-                href={`/urunler/${urun.id}`}
-                className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-red-100 hover:scale-[1.02] hover:-translate-y-1 hover:border-red-200 transition-all duration-300 border border-gray-100 group block"
-              >
-                <div className={`${urun.renk} h-52 relative overflow-hidden`}>
-                  <Image
-                    src={urun.foto}
-                    alt={urun.ad}
-                    fill
-                    className="object-contain group-hover:scale-105 transition-transform duration-300"
-                  />
-                </div>
+              <div className="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-2xl hover:shadow-red-100 hover:scale-[1.02] hover:-translate-y-1 hover:border-red-200 transition-all duration-300 border border-gray-100 group">
+                <Link href={`/urunler/${urun.id}`} className="block">
+                  <div className={`${urun.renk} h-52 relative overflow-hidden`}>
+                    <Image
+                      src={urun.foto}
+                      alt={urun.ad}
+                      fill
+                      className="object-contain group-hover:scale-105 transition-transform duration-300"
+                    />
+                  </div>
+                </Link>
                 <div className="p-6">
-                  <span className="text-xs text-red-600 font-semibold uppercase tracking-wide">{urun.kategori}</span>
-                  <h3 className="text-lg font-bold text-gray-900 mt-1 mb-1">{urun.ad}</h3>
+                  <Link href={`/urunler/${urun.id}`} className="block">
+                    <span className="text-xs text-red-600 font-semibold uppercase tracking-wide">{urun.kategori}</span>
+                    <h3 className="text-lg font-bold text-gray-900 mt-1 mb-1">{urun.ad}</h3>
+                  </Link>
                   <p className="text-gray-500 text-sm mb-4">{urun.detay}</p>
                   <div className="flex items-center justify-between">
-                    <span className="text-red-600 font-bold">Fiyat için arayın</span>
-                    <span className="text-sm bg-red-600 text-white px-4 py-2 rounded-lg group-hover:bg-red-700 transition-colors">
+                    <a
+                      href={urunWhatsappLink(urun)}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-green-600 font-bold hover:text-green-700 transition-colors"
+                    >
+                      WhatsApp&apos;tan Fiyat Sor
+                    </a>
+                    <Link
+                      href={`/urunler/${urun.id}`}
+                      className="text-sm bg-red-600 text-white px-4 py-2 rounded-lg group-hover:bg-red-700 transition-colors"
+                    >
                       İncele
-                    </span>
+                    </Link>
                   </div>
                 </div>
-              </Link>
+              </div>
               </FadeIn>
             ))}
           </div>

@@ -284,6 +284,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/tumosan-8280dt-1.jpg",
+      "/tractors/tumosan-8280dt-2.jpg",
+      "/tractors/tumosan-8280dt-3.jpg",
+      "/tractors/tumosan-8280dt-4.jpg",
+      "/tractors/tumosan-8280dt-5.jpg",
     ],
   },
   {
@@ -302,6 +306,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/landini-7860-1.jpg",
+      "/tractors/landini-7860-2.jpg",
+      "/tractors/landini-7860-3.jpg",
+      "/tractors/landini-7860-4.jpg",
+      "/tractors/landini-7860-5.jpg",
     ],
   },
   {

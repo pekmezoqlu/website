@@ -91,7 +91,7 @@ export default function FotoGalerisi({ fotolar, baslik }: Props) {
     <div className="space-y-2">
       {/* Ana fotoğraf */}
       <div
-        className="relative bg-white rounded-xl overflow-hidden aspect-[9/16] lg:aspect-[4/3] cursor-zoom-in"
+        className="relative bg-white rounded-xl overflow-hidden aspect-[4/3] cursor-zoom-in"
         onClick={() => setLightbox(true)}
       >
         <Image

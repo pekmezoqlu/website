@@ -10,7 +10,7 @@ import FadeIn from "@/components/FadeIn";
 const markaListesi = [
   "Başak",
   "Captain",
-  "Case IH",
+  "Case",
   "Deutz-Fahr",
   "Enter",
   "Erkunt",
@@ -18,15 +18,18 @@ const markaListesi = [
   "Fiat",
   "Ford",
   "Hattat",
+  "IMT",
   "John Deere",
   "Kioti",
   "Kubota",
   "Landini",
   "Massey Ferguson",
   "New Holland",
+  "Same",
   "Steyr",
   "Taral",
   "Tümosan",
+  "Universal",
   "Valtra",
 ];
 

@@ -144,7 +144,7 @@ export default function FotoGalerisi({ fotolar, baslik }: Props) {
               }`}
               style={{ width: 80, height: 60 }}
             >
-              <Image src={foto} alt={`${baslik} - ${i + 1}`} fill className="object-cover" />
+              <Image src={foto} alt={`${baslik} - ${i + 1}`} fill sizes="80px" className="object-cover" />
             </button>
           ))}
         </div>

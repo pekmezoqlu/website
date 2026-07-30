@@ -129,7 +129,7 @@ export default function Home() {
             src="/hero-traktor.webp"
             alt="Pekmezoğlu traktörler"
             fill
-            priority
+            sizes="60vw"
             className="object-contain object-center"
             quality={90}
           />

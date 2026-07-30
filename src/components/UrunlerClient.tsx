@@ -30,8 +30,9 @@ const markaListesi = [
   "Valtra",
 ];
 
-const MIN_YIL = Math.min(...urunler.map((u) => Number(u.modelYili)));
-const MAX_YIL = Math.max(...urunler.map((u) => Number(u.modelYili)));
+const gecerliYillar = urunler.map((u) => Number(u.modelYili)).filter((y) => !Number.isNaN(y));
+const MIN_YIL = Math.min(...gecerliYillar);
+const MAX_YIL = Math.max(...gecerliYillar);
 
 function parseSaat(s: string): number | null {
   if (s === "-") return null;

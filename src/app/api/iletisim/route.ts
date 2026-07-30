@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { checkRateLimit, getClientIp } from "@/lib/rateLimit";
 import { validateFotolar, FotoValidasyonHatasi } from "@/lib/fotoValidasyon";
+import { escapeHtml } from "@/lib/escapeHtml";
 
 const MIN_SUBMIT_MS = 3000;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -89,11 +90,11 @@ export async function POST(req: NextRequest) {
       html: `
         <h2>Yeni İletişim Formu Mesajı</h2>
         <table style="border-collapse:collapse;width:100%;max-width:600px">
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Ad Soyad</td><td style="padding:8px;border:1px solid #ddd">${ad}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Telefon</td><td style="padding:8px;border:1px solid #ddd">${telefon}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">E-posta</td><td style="padding:8px;border:1px solid #ddd">${email || "—"}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Konu</td><td style="padding:8px;border:1px solid #ddd">${konu}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Mesaj</td><td style="padding:8px;border:1px solid #ddd">${mesaj.replace(/\n/g, "<br>")}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Ad Soyad</td><td style="padding:8px;border:1px solid #ddd">${escapeHtml(ad)}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Telefon</td><td style="padding:8px;border:1px solid #ddd">${escapeHtml(telefon)}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">E-posta</td><td style="padding:8px;border:1px solid #ddd">${email ? escapeHtml(email) : "—"}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Konu</td><td style="padding:8px;border:1px solid #ddd">${escapeHtml(konu)}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Mesaj</td><td style="padding:8px;border:1px solid #ddd">${escapeHtml(mesaj).replace(/\n/g, "<br>")}</td></tr>
           <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Fotoğraf</td><td style="padding:8px;border:1px solid #ddd">${attachments.length > 0 ? `${attachments.length} adet ektedir` : "Gönderilmedi"}</td></tr>
         </table>
       `,

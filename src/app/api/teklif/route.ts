@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { checkRateLimit, getClientIp } from "@/lib/rateLimit";
 import { validateFotolar, FotoValidasyonHatasi } from "@/lib/fotoValidasyon";
+import { escapeHtml } from "@/lib/escapeHtml";
 
 const MIN_SUBMIT_MS = 3000;
 
@@ -85,12 +86,12 @@ export async function POST(req: NextRequest) {
       html: `
         <h2>Yeni Fiyat Teklifi Talebi</h2>
         <table style="border-collapse:collapse;width:100%;max-width:600px">
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Telefon</td><td style="padding:8px;border:1px solid #ddd">${telefon}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">İl / İlçe</td><td style="padding:8px;border:1px solid #ddd">${il} / ${ilce}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Marka</td><td style="padding:8px;border:1px solid #ddd">${marka}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Model</td><td style="padding:8px;border:1px solid #ddd">${model}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Model Yılı</td><td style="padding:8px;border:1px solid #ddd">${yil}</td></tr>
-          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Çalışma Saati</td><td style="padding:8px;border:1px solid #ddd">${saat}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Telefon</td><td style="padding:8px;border:1px solid #ddd">${escapeHtml(telefon)}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">İl / İlçe</td><td style="padding:8px;border:1px solid #ddd">${escapeHtml(il)} / ${escapeHtml(ilce)}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Marka</td><td style="padding:8px;border:1px solid #ddd">${escapeHtml(marka)}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Model</td><td style="padding:8px;border:1px solid #ddd">${escapeHtml(model)}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Model Yılı</td><td style="padding:8px;border:1px solid #ddd">${escapeHtml(yil)}</td></tr>
+          <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Çalışma Saati</td><td style="padding:8px;border:1px solid #ddd">${escapeHtml(saat)}</td></tr>
           <tr><td style="padding:8px;border:1px solid #ddd;font-weight:bold">Fotoğraf</td><td style="padding:8px;border:1px solid #ddd">${attachments.length > 0 ? `${attachments.length} adet ektedir` : "Gönderilmedi"}</td></tr>
         </table>
       `,

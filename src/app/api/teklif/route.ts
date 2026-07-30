@@ -41,7 +41,7 @@ export async function POST(req: NextRequest) {
     }
 
     const ip = getClientIp(req);
-    if (!checkRateLimit(ip)) {
+    if (!(await checkRateLimit(ip))) {
       return NextResponse.json(
         { error: "Çok fazla talep gönderdiniz. Lütfen birkaç dakika sonra tekrar deneyin." },
         { status: 429 }

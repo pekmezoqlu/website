@@ -77,8 +77,6 @@ export default async function UrunDetay({ params }: Props) {
     { label: "Kuyruk Mili",          value: urun.kuyrukMili },
     { label: "Kaldırma Kapasitesi",  value: urun.kaldirmaKapasitesi },
     { label: "Araç Durumu",          value: urun.durum },
-    { label: "Çekiş Tipi",          value: "4x4" },
-    { label: "Tipi",                 value: "Tarla Tipi" },
   ];
 
   return (

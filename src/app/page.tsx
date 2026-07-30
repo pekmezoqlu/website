@@ -53,7 +53,7 @@ const onecikarilan = [
     ad: "New Holland TD5.100",
     kategori: "2. El Traktör",
     detay: "100 HP • 768 Saat • 2022",
-    foto: "/tractors/nh-td5100-12.jpg",
+    foto: "/tractors/nh-td5100-12.webp",
     renk: "bg-blue-50",
   },
   {
@@ -64,7 +64,7 @@ const onecikarilan = [
     ad: "Massey Ferguson 5430",
     kategori: "2. El Traktör",
     detay: "92 HP • 6.000 Saat • 2012",
-    foto: "/tractors/mf5430-1.jpg",
+    foto: "/tractors/mf5430-1.webp",
     renk: "bg-orange-50",
   },
   {
@@ -75,7 +75,7 @@ const onecikarilan = [
     ad: "Başak 2055",
     kategori: "2. El Traktör",
     detay: "55 HP • 185 Saat • 2023",
-    foto: "/tractors/basak-2055-2.jpg",
+    foto: "/tractors/basak-2055-2.webp",
     renk: "bg-red-50",
   },
 ];

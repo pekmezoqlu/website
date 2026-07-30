@@ -92,7 +92,7 @@ export default function Home() {
         <div className="lg:hidden flex flex-col w-full">
           <div className="w-full shrink-0 relative">
             <Image
-              src="/hero-traktor.png"
+              src="/hero-traktor.webp"
               alt="Pekmezoğlu traktörler"
               width={800}
               height={533}
@@ -126,7 +126,7 @@ export default function Home() {
         {/* MASAÜSTÜ: fotoğraf sağda, metin solda */}
         <div className="hidden lg:block absolute top-0 right-0 w-[60%] h-full z-10 anim-slide-right">
           <Image
-            src="/hero-traktor.png"
+            src="/hero-traktor.webp"
             alt="Pekmezoğlu traktörler"
             fill
             priority

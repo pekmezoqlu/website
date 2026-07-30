@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "https://www.pekmezoglu.com/hero-traktor.png",
+        url: "https://www.pekmezoglu.com/hero-traktor.webp",
         width: 1200,
         height: 630,
         alt: "Pekmezoğlu Motorlu Araçlar",
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Pekmezoğlu Motorlu Araçlar | Traktör Satış & Servis",
     description: "Eskişehir'de traktör satışı ve servisi. Sıfır ve ikinci el traktör alım & satım.",
-    images: ["https://www.pekmezoglu.com/hero-traktor.png"],
+    images: ["https://www.pekmezoglu.com/hero-traktor.webp"],
   },
 };
 
@@ -52,7 +52,7 @@ const jsonLd = {
     "Eskişehir Odunpazarı'nda traktör satışı ve servisi. Sıfır ve ikinci el traktör alım-satım, takas ve servis hizmetleri.",
   url: "https://www.pekmezoglu.com",
   logo: "https://www.pekmezoglu.com/icon",
-  image: "https://www.pekmezoglu.com/hero-traktor.png",
+  image: "https://www.pekmezoglu.com/hero-traktor.webp",
   telephone: "+905359878980",
   foundingDate: "1973",
   address: {

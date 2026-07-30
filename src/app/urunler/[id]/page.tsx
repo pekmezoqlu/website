@@ -113,8 +113,7 @@ export default async function UrunDetay({ params }: Props) {
             )}
           </div>
           <h1 className="text-lg font-extrabold text-gray-900 leading-snug uppercase">
-            {urun.modelYili} {urun.marka} {urun.model}
-            {urun.saat !== "-" ? ` — ${urun.saat}` : ""}
+            {urun.marka} {urun.model}
           </h1>
           <div className="flex items-center gap-1.5 mt-2 text-sm text-gray-500">
             <svg className="w-4 h-4 text-red-400 shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -217,8 +216,7 @@ export default async function UrunDetay({ params }: Props) {
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
           <h1 className="text-2xl font-bold text-gray-900 mb-4 uppercase">
-            {urun.modelYili} {urun.marka} {urun.model}
-            {urun.saat !== "-" ? ` — ${urun.saat}` : ""}
+            {urun.marka} {urun.model}
           </h1>
 
           <div className="grid lg:grid-cols-5 gap-5">

@@ -124,7 +124,7 @@ export default function Navbar() {
             </Link>
           ))}
           <Link
-            href="/iletisim"
+            href="/teklif"
             onClick={() => setOpen(false)}
             className="bg-red-600 text-white text-sm font-semibold px-4 py-2 rounded-lg text-center hover:bg-red-700 transition-colors"
           >

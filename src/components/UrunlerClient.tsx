@@ -41,7 +41,6 @@ function parseSaat(s: string): number | null {
   if (s === "-") return null;
   return Number(s.replace(/[^\d]/g, ""));
 }
-const saatDegerleri = urunler.map((u) => parseSaat(u.saat)).filter((v): v is number => v !== null);
 const MIN_SAAT = 0;
 const MAX_SAAT = 15000;
 

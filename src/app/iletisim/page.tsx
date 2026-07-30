@@ -16,7 +16,7 @@ export default function Iletisim() {
             <p className="text-red-400 text-sm font-semibold uppercase tracking-widest mb-3">Bize Ulaşın</p>
             <h1 className="text-4xl md:text-5xl font-extrabold mb-4">İletişim</h1>
             <p className="text-gray-400 text-lg max-w-xl">
-              Eskişehir Odunpazarı'nda hizmetinizdeyiz. Arayın, yazın veya ziyaret edin.
+              Eskişehir Odunpazarı&apos;nda hizmetinizdeyiz. Arayın, yazın veya ziyaret edin.
             </p>
           </FadeIn>
         </div>

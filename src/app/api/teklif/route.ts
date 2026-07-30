@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import nodemailer from "nodemailer";
 import { checkRateLimit, getClientIp } from "@/lib/rateLimit";
+import { validateFotolar, FotoValidasyonHatasi } from "@/lib/fotoValidasyon";
 
 const MIN_SUBMIT_MS = 3000;
 
@@ -53,6 +54,16 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Sunucu yapılandırması eksik." }, { status: 500 });
     }
 
+    let validFotolar;
+    try {
+      validFotolar = validateFotolar(fotolar);
+    } catch (err) {
+      if (err instanceof FotoValidasyonHatasi) {
+        return NextResponse.json({ error: err.message }, { status: 400 });
+      }
+      throw err;
+    }
+
     const transporter = nodemailer.createTransport({
       host: "smtp-mail.outlook.com",
       port: 587,
@@ -60,7 +71,7 @@ export async function POST(req: NextRequest) {
       auth: { user, pass },
     });
 
-    const attachments = (fotolar ?? []).map((f, i) => ({
+    const attachments = validFotolar.map((f, i) => ({
       filename: f.name || `fotograf-${i + 1}.jpg`,
       content: f.data.split(",")[1],
       encoding: "base64" as const,

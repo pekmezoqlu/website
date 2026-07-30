@@ -16,7 +16,7 @@ export async function POST(req: NextRequest) {
       email: string;
       konu: string;
       mesaj: string;
-      fotolar: { name: string; data: string; type: string }[];
+      fotolar: { name: string; url: string }[];
       web?: string;
       sure?: number;
     };
@@ -75,11 +75,9 @@ export async function POST(req: NextRequest) {
       auth: { user, pass },
     });
 
-    const attachments = validFotolar.map((f, i) => ({
-      filename: f.name || `fotograf-${i + 1}.jpg`,
-      content: f.data.split(",")[1],
-      encoding: "base64" as const,
-      contentType: f.type,
+    const attachments = validFotolar.map((f) => ({
+      filename: f.name,
+      path: f.url,
     }));
 
     await transporter.sendMail({

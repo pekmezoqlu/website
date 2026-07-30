@@ -2,8 +2,9 @@
 
 import { useState, useRef, useEffect } from "react";
 import type { FormEvent, DragEvent } from "react";
+import { upload } from "@vercel/blob/client";
 
-type Foto = { name: string; data: string; type: string; preview: string };
+type Foto = { id: string; name: string; url: string | null; preview: string; yukleniyor: boolean };
 
 export default function Teklif() {
   const [gonderildi, setGonderildi] = useState(false);
@@ -20,17 +21,26 @@ export default function Teklif() {
 
   function dosyaEkle(files: FileList | null) {
     if (!files) return;
+    let mevcut = fotolar.length;
     for (const file of Array.from(files)) {
-      if (fotolar.length >= 5) break;
+      if (mevcut >= 5) break;
       if (!file.type.startsWith("image/")) continue;
       if (file.size > 3 * 1024 * 1024) { setHata("Her fotoğraf en fazla 3 MB olabilir."); continue; }
       setHata("");
-      const reader = new FileReader();
-      reader.onload = (e) => {
-        const data = e.target?.result as string;
-        setFotolar((prev) => prev.length < 5 ? [...prev, { name: file.name, data, type: file.type, preview: data }] : prev);
-      };
-      reader.readAsDataURL(file);
+      mevcut++;
+
+      const id = crypto.randomUUID();
+      const preview = URL.createObjectURL(file);
+      setFotolar((prev) => [...prev, { id, name: file.name, url: null, preview, yukleniyor: true }]);
+
+      upload(`teklif/${file.name}`, file, { access: "public", handleUploadUrl: "/api/upload" })
+        .then((blob) => {
+          setFotolar((prev) => prev.map((f) => (f.id === id ? { ...f, url: blob.url, yukleniyor: false } : f)));
+        })
+        .catch(() => {
+          setFotolar((prev) => prev.filter((f) => f.id !== id));
+          setHata("Bir fotoğraf yüklenemedi, lütfen tekrar deneyin.");
+        });
     }
   }
 
@@ -42,6 +52,10 @@ export default function Teklif() {
 
   async function handleSubmit(e: FormEvent) {
     e.preventDefault();
+    if (fotolar.some((f) => f.yukleniyor)) {
+      setHata("Fotoğraflar yükleniyor, lütfen bekleyin.");
+      return;
+    }
     setYukleniyor(true);
     setHata("");
     try {
@@ -50,7 +64,7 @@ export default function Teklif() {
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           ...form,
-          fotolar: fotolar.map(({ name, data, type }) => ({ name, data, type })),
+          fotolar: fotolar.filter((f) => f.url).map(({ name, url }) => ({ name, url })),
           web,
           sure: Date.now() - acilisZamani.current,
         }),
@@ -236,13 +250,24 @@ export default function Teklif() {
 
                     {fotolar.length > 0 && (
                       <div className="mt-3 grid grid-cols-5 gap-2">
-                        {fotolar.map((f, i) => (
-                          <div key={i} className="relative aspect-square rounded-lg overflow-hidden border border-gray-200 bg-gray-100">
+                        {fotolar.map((f) => (
+                          <div key={f.id} className="relative aspect-square rounded-lg overflow-hidden border border-gray-200 bg-gray-100">
                             {/* eslint-disable-next-line @next/next/no-img-element */}
                             <img src={f.preview} alt="" className="w-full h-full object-cover" />
+                            {f.yukleniyor && (
+                              <div className="absolute inset-0 bg-black/40 flex items-center justify-center">
+                                <svg className="w-5 h-5 text-white animate-spin" fill="none" viewBox="0 0 24 24">
+                                  <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" />
+                                  <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z" />
+                                </svg>
+                              </div>
+                            )}
                             <button
                               type="button"
-                              onClick={() => setFotolar((prev) => prev.filter((_, idx) => idx !== i))}
+                              onClick={() => {
+                                URL.revokeObjectURL(f.preview);
+                                setFotolar((prev) => prev.filter((x) => x.id !== f.id));
+                              }}
                               className="absolute top-0.5 right-0.5 w-5 h-5 bg-red-600 text-white rounded-full text-xs flex items-center justify-center hover:bg-red-700"
                             >
                               ×
@@ -259,7 +284,7 @@ export default function Teklif() {
 
                   <button
                     type="submit"
-                    disabled={yukleniyor}
+                    disabled={yukleniyor || fotolar.some((f) => f.yukleniyor)}
                     className="w-full bg-red-600 hover:bg-red-700 disabled:bg-red-400 text-white font-semibold py-3.5 rounded-xl transition-colors text-sm flex items-center justify-center gap-2"
                   >
                     {yukleniyor ? (

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import Link from "next/link";
 import FadeIn from "@/components/FadeIn";
 
 export const metadata: Metadata = {
-  title: "Hakkımızda — Pekmezoğlu Motorlu Araçlar",
+  title: "Hakkımızda",
   description:
     "50 yılı aşkın deneyimimizle Pekmezoğlu Motorlu Araçlar olarak çiftçilerimize en iyi hizmeti sunuyoruz.",
 };
@@ -31,6 +32,33 @@ const degerler = [
   },
 ];
 
+const hikaye = [
+  {
+    baslik: "Elli yılı aşkın güven.",
+    metin:
+      "1973'ten bu yana Eskişehir ve çevresindeki çiftçilere hizmet veriyoruz. Traktörü sadece bir makine değil, üretimin bir ortağı olarak görüyoruz; bu yüzden her satışın arkasında yıllara dayanan bir bilgi birikimi var.",
+    dosya: "elli-yil.webp",
+  },
+  {
+    baslik: "Doğru traktör, doğru çözüm.",
+    metin:
+      "Her arazi, her üretim biçimi farklıdır. Sıfır ve ikinci el geniş ürün yelpazemizle ihtiyacınıza ve bütçenize en uygun modeli birlikte belirliyoruz; asla tek tip çözüm sunmuyoruz.",
+    dosya: "dogru-cozum.webp",
+  },
+  {
+    baslik: "Satışın ötesinde güvence.",
+    metin:
+      "İlişkimiz, anahtarı teslim ettiğimiz anda bitmiyor. Periyodik bakım, garanti kapsamlı onarım ve teknik danışmanlıkla traktörünüz sahada olduğu sürece yanınızdayız.",
+    dosya: "satis-sonrasi.webp",
+  },
+  {
+    baslik: "Şeffaf ticaret, kalıcı ilişki.",
+    metin:
+      "Fiyatlandırmada gizli bedel, takasta göz boyama yok. Eskişehir'in tarım camiasıyla kurduğumuz güven, bugüne kadar geldiğimiz yolun en büyük sermayesi.",
+    dosya: "seffaf-ticaret.webp",
+  },
+];
+
 const hizmetler = [
   "Sıfır traktör satışı (tüm marka ve modeller)",
   "2. el traktör alım & satım (tüm marka ve modeller)",
@@ -44,26 +72,16 @@ export default function Hakkimizda() {
   return (
     <>
       {/* Başlık */}
-      <section className="bg-gray-900 text-white py-16">
+      <section className="bg-white pt-16 pb-8 md:pt-24 md:pb-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn direction="up">
-            <p className="text-red-400 text-sm font-semibold uppercase tracking-widest mb-3">Kurumsal</p>
-            <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Hakkımızda</h1>
-            <p className="text-gray-400 text-lg max-w-xl">
-              50 yılı aşkın deneyimimizle çiftçilerimize güvenilir traktör ve tarım makinesi çözümleri sunuyoruz.
-            </p>
-          </FadeIn>
-        </div>
-      </section>
-
-      {/* Hikaye */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
+          <div className="grid md:grid-cols-2 gap-12 md:gap-20 items-center">
             <FadeIn direction="left">
               <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Biz Kimiz?</h2>
-                <div className="space-y-4 text-gray-600 leading-relaxed">
+                <p className="text-red-600 text-sm font-semibold uppercase tracking-widest mb-3">Kurumsal</p>
+                <h1 className="font-serif text-4xl md:text-5xl font-medium text-gray-900 mb-5 leading-tight">
+                  Hakkımızda
+                </h1>
+                <div className="space-y-4 text-gray-600 leading-relaxed mb-8">
                   <p>
                     <span className="font-semibold text-gray-900">Pekmezoğlu Motorlu Araçlar ve Ticaret Ltd. Şti.</span>,
                     50 yılı aşkın süredir Türkiye&apos;nin tarım sektörüne hizmet vermektedir. Kurulduğumuz günden bu yana
@@ -74,13 +92,13 @@ export default function Hakkimizda() {
                     tarla büyüklüğünü, arazi yapısını ve bütçesini göz önünde bulundurarak en doğru çözümü birlikte belirliyoruz.
                   </p>
                   <p>
-                    Bunun yanı sıra tüm marka ve modellerde 2. el traktör alım
-                    ve satımı yapıyoruz. Elinizdeki traktörü satmak ya da ikinci el uygun fiyatlı bir traktör almak istiyorsanız doğru adrestesiniz.
+                    Bunun yanı sıra tüm marka ve modellerde 2. el traktör alım ve satımı yapıyoruz. Elinizdeki traktörü
+                    satmak ya da ikinci el uygun fiyatlı bir traktör almak istiyorsanız doğru adrestesiniz.
                   </p>
                 </div>
                 <Link
                   href="/iletisim"
-                  className="inline-block mt-8 bg-red-600 text-white font-semibold px-7 py-3 rounded-xl hover:bg-red-700 transition-colors"
+                  className="inline-block bg-red-600 text-white font-semibold px-7 py-3 rounded-xl hover:bg-red-700 transition-colors"
                 >
                   Bize Ulaşın
                 </Link>
@@ -88,16 +106,59 @@ export default function Hakkimizda() {
             </FadeIn>
 
             <FadeIn direction="right">
-              <div className="bg-gray-100 rounded-2xl h-80 flex items-center justify-center">
-                <div className="text-center text-gray-400">
-                  <svg className="w-20 h-20 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1} d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
-                  </svg>
-                  <p className="text-sm">Firma fotoğrafınızı buraya ekleyin</p>
+              <div className="mx-auto max-w-sm">
+                <div className="relative rounded-2xl overflow-hidden">
+                  <Image
+                    src="/hakkimizda/yonetim.webp"
+                    alt="Pekmezoğlu Motorlu Araçlar kurucu ortakları ve yönetim kadrosu"
+                    width={832}
+                    height={1267}
+                    className="w-full h-auto"
+                    priority
+                  />
                 </div>
               </div>
             </FadeIn>
           </div>
+        </div>
+      </section>
+
+      {/* Hikaye — editoryal anlatı */}
+      <section className="bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 divide-y divide-gray-100">
+          {hikaye.map((blok, i) => {
+            const gorselSolda = i % 2 === 1;
+            return (
+              <div key={blok.baslik} className="py-16 md:py-24">
+                <div
+                  className={`grid md:grid-cols-2 gap-12 md:gap-20 items-center ${
+                    gorselSolda ? "md:[&>*:first-child]:order-2" : ""
+                  }`}
+                >
+                  <FadeIn direction={gorselSolda ? "right" : "left"}>
+                    <div>
+                      <h2 className="font-serif text-3xl md:text-4xl font-medium text-gray-900 mb-5 leading-tight">
+                        {blok.baslik}
+                      </h2>
+                      <p className="text-gray-600 text-lg leading-relaxed">{blok.metin}</p>
+                    </div>
+                  </FadeIn>
+
+                  <FadeIn direction={gorselSolda ? "left" : "right"}>
+                    <div className="relative bg-gray-100 rounded-2xl aspect-[4/3] overflow-hidden">
+                      <Image
+                        src={`/hakkimizda/${blok.dosya}`}
+                        alt={blok.baslik}
+                        fill
+                        sizes="(min-width: 768px) 50vw, 100vw"
+                        className="object-cover"
+                      />
+                    </div>
+                  </FadeIn>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </section>
 

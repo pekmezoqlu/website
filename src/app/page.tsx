@@ -106,7 +106,7 @@ export default function Home() {
             <div className="absolute inset-x-0 bottom-0 h-10 bg-gradient-to-t from-white to-transparent" />
           </div>
           <div className="px-5 pb-8 pt-4 text-center anim-slide-left">
-            <h1 className="text-3xl font-black uppercase text-gray-900 mb-2" style={{ lineHeight: "1.15" }}>
+            <h1 className="font-serif text-3xl font-black uppercase text-gray-900 mb-2" style={{ lineHeight: "1.15" }}>
               Pekmezoğlu<br />Çiftçilerine Özel Teklifler
             </h1>
             <p className="text-gray-500 text-xs mb-4 leading-relaxed">
@@ -139,7 +139,7 @@ export default function Home() {
         </div>
         <div className="hidden lg:flex relative z-20 w-full max-w-7xl mx-auto px-2 lg:px-4">
           <div className="w-1/2 py-20 anim-slide-left">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase mb-4 text-gray-900" style={{ lineHeight: "1.15" }}>
+            <h1 className="font-serif text-4xl sm:text-5xl lg:text-6xl font-black uppercase mb-4 text-gray-900" style={{ lineHeight: "1.15" }}>
               Pekmezoğlu<br />
               Çiftçilerine<br />
               Özel<br />
@@ -169,7 +169,7 @@ export default function Home() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up">
             <div className="text-center mb-14">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Neden Bizi Seçmelisiniz?</h2>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-4">Neden Bizi Seçmelisiniz?</h2>
               <p className="text-gray-500 max-w-xl mx-auto">
                 Yılların deneyimi ve müşteri memnuniyeti odaklı hizmet anlayışımızla fark yaratıyoruz.
               </p>
@@ -195,7 +195,7 @@ export default function Home() {
           <FadeIn direction="up">
           <div className="flex items-end justify-between mb-12">
             <div>
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-2">Öne Çıkan Traktörler</h2>
+              <h2 className="font-serif text-3xl md:text-4xl font-bold text-gray-900 mb-2">Öne Çıkan Traktörler</h2>
               <p className="text-gray-500">En çok tercih edilen modellerimizden bir seçki</p>
             </div>
             <Link
@@ -265,7 +265,7 @@ export default function Home() {
       <section className="bg-gray-900 py-20">
         <FadeIn direction="zoom">
           <div className="max-w-3xl mx-auto px-4 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-white">Doğru Traktörü Seçmekte Kararsız mısınız?</h2>
+            <h2 className="font-serif text-3xl md:text-4xl font-bold mb-4 text-white">Doğru Traktörü Seçmekte Kararsız mısınız?</h2>
             <p className="text-gray-400 mb-8 text-lg">
               Uzman ekibimiz ihtiyacınıza en uygun modeli belirlemenize ücretsiz yardımcı olur.
             </p>

@@ -111,8 +111,8 @@ export default function Hakkimizda() {
                   <Image
                     src="/hakkimizda/yonetim.webp"
                     alt="Pekmezoğlu Motorlu Araçlar kurucu ortakları ve yönetim kadrosu"
-                    width={832}
-                    height={1267}
+                    width={1005}
+                    height={1529}
                     className="w-full h-auto"
                     priority
                   />
@@ -127,7 +127,7 @@ export default function Hakkimizda() {
       <section className="bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 divide-y divide-gray-100">
           {hikaye.map((blok, i) => {
-            const gorselSolda = i % 2 === 1;
+            const gorselSolda = i % 2 === 0;
             return (
               <div key={blok.baslik} className="py-16 md:py-24">
                 <div
@@ -166,7 +166,7 @@ export default function Hakkimizda() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up">
-            <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Değerlerimiz</h2>
+            <h2 className="font-serif text-3xl font-bold text-gray-900 text-center mb-12">Değerlerimiz</h2>
           </FadeIn>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
             {degerler.map((d, i) => (
@@ -186,7 +186,7 @@ export default function Hakkimizda() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up">
-            <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Hizmetlerimiz</h2>
+            <h2 className="font-serif text-3xl font-bold text-gray-900 text-center mb-12">Hizmetlerimiz</h2>
           </FadeIn>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {hizmetler.map((h, i) => (

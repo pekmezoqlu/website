@@ -124,23 +124,23 @@ export default function Hakkimizda() {
       {/* Hizmetler */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <FadeIn direction="left">
-            <div className="max-w-2xl">
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Hizmetlerimiz</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                {hizmetler.map((h) => (
-                  <div key={h} className="flex items-center gap-3">
-                    <div className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center shrink-0">
-                      <svg className="w-3 h-3 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                      </svg>
-                    </div>
-                    <span className="text-gray-700 text-sm">{h}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
+          <FadeIn direction="up">
+            <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Hizmetlerimiz</h2>
           </FadeIn>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {hizmetler.map((h, i) => (
+              <FadeIn key={h} direction="zoom" delay={i * 80}>
+                <div className="bg-gray-50 rounded-2xl p-6 border border-gray-100 flex items-center gap-4 h-full">
+                  <div className="w-10 h-10 bg-red-100 rounded-full flex items-center justify-center shrink-0">
+                    <svg className="w-5 h-5 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                    </svg>
+                  </div>
+                  <span className="text-gray-800 font-medium text-sm">{h}</span>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
         </div>
       </section>
     </>

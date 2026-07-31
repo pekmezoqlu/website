@@ -11,23 +11,23 @@ export const metadata: Metadata = {
 const degerler = [
   {
     baslik: "Dürüstlük",
-    aciklama: "Her işlemde şeffaf ve dürüst olmak temel ilkemizdir.",
+    aciklama: "Şeffaf fiyatlandırma ve güvenilir ticaret anlayışı.",
     emoji: "🤝",
   },
   {
-    baslik: "Kalite",
-    aciklama: "Sadece test edilmiş ve güvenilir ürünleri müşterilerimize sunuyoruz.",
-    emoji: "⭐",
+    baslik: "Doğru Çözüm",
+    aciklama: "İhtiyaca, araziye ve bütçeye uygun model seçimi.",
+    emoji: "🎯",
   },
   {
-    baslik: "Müşteri Odaklılık",
-    aciklama: "Her müşterimizin ihtiyacını kişiselleştirilmiş hizmetle karşılıyoruz.",
-    emoji: "❤️",
+    baslik: "Satış Sonrası",
+    aciklama: "Bakım, servis ve teknik danışmanlık desteği.",
+    emoji: "🛠️",
   },
   {
-    baslik: "Sürdürülebilirlik",
-    aciklama: "Tarıma ve doğaya saygılı çözümleri her zaman önceliklendiriyoruz.",
-    emoji: "🌱",
+    baslik: "Tecrübe",
+    aciklama: "Yarım asrı aşan sektör bilgisi ve müşteri birikimi.",
+    emoji: "🏆",
   },
 ];
 

@@ -220,7 +220,8 @@ export default function Home() {
                       src={urun.foto}
                       alt={urun.ad}
                       fill
-                      className="object-contain group-hover:scale-105 transition-transform duration-300"
+                      sizes="(min-width: 768px) 33vw, 100vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 </Link>

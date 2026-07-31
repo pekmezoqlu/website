@@ -124,42 +124,23 @@ export default function Hakkimizda() {
       {/* Hizmetler */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid md:grid-cols-2 gap-16 items-center">
-            <FadeIn direction="left">
-              <div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-6">Hizmetlerimiz</h2>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
-                  {hizmetler.map((h) => (
-                    <div key={h} className="flex items-center gap-3">
-                      <div className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center shrink-0">
-                        <svg className="w-3 h-3 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                        </svg>
-                      </div>
-                      <span className="text-gray-700 text-sm">{h}</span>
+          <FadeIn direction="left">
+            <div className="max-w-2xl">
+              <h2 className="text-3xl font-bold text-gray-900 mb-6">Hizmetlerimiz</h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                {hizmetler.map((h) => (
+                  <div key={h} className="flex items-center gap-3">
+                    <div className="w-5 h-5 bg-red-100 rounded-full flex items-center justify-center shrink-0">
+                      <svg className="w-3 h-3 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                      </svg>
                     </div>
-                  ))}
-                </div>
-              </div>
-            </FadeIn>
-
-            <div className="grid grid-cols-2 gap-6">
-              {[
-                { sayi: "50+", label: "Yıllık Deneyim", aciklama: "Tarım sektöründe köklü geçmişimiz" },
-                { sayi: "5000+", label: "Mutlu Müşteri", aciklama: "Memnun çiftçi ailesimiz büyüyor" },
-                { sayi: "100+", label: "Traktör Modeli", aciklama: "Farklı marka ve model seçenekleri" },
-                { sayi: "7/24", label: "Teknik Destek", aciklama: "Uzman ekibimizle her an yanınızdayız" },
-              ].map((item, i) => (
-                <FadeIn key={item.label} direction="zoom" delay={i * 80}>
-                  <div className="bg-red-50 rounded-2xl p-6">
-                    <p className="text-4xl font-extrabold text-red-600 mb-1">{item.sayi}</p>
-                    <p className="font-bold text-gray-900 text-sm">{item.label}</p>
-                    <p className="text-gray-500 text-xs mt-1">{item.aciklama}</p>
+                    <span className="text-gray-700 text-sm">{h}</span>
                   </div>
-                </FadeIn>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
     </>

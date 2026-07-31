@@ -40,10 +40,10 @@ const hikaye = [
     dosya: "elli-yil.webp",
   },
   {
-    baslik: "Doğru traktör, doğru çözüm.",
+    baslik: "Şeffaf ticaret, kalıcı ilişki.",
     metin:
-      "Her arazi, her üretim biçimi farklıdır. Sıfır ve ikinci el geniş ürün yelpazemizle ihtiyacınıza ve bütçenize en uygun modeli birlikte belirliyoruz; asla tek tip çözüm sunmuyoruz.",
-    dosya: "dogru-cozum.webp",
+      "Fiyatlandırmada gizli bedel, takasta göz boyama yok. Eskişehir'in tarım camiasıyla kurduğumuz güven, bugüne kadar geldiğimiz yolun en büyük sermayesi.",
+    dosya: "seffaf-ticaret.webp",
   },
   {
     baslik: "Satışın ötesinde güvence.",
@@ -52,10 +52,10 @@ const hikaye = [
     dosya: "satis-sonrasi.webp",
   },
   {
-    baslik: "Şeffaf ticaret, kalıcı ilişki.",
+    baslik: "Doğru traktör, doğru çözüm.",
     metin:
-      "Fiyatlandırmada gizli bedel, takasta göz boyama yok. Eskişehir'in tarım camiasıyla kurduğumuz güven, bugüne kadar geldiğimiz yolun en büyük sermayesi.",
-    dosya: "seffaf-ticaret.webp",
+      "Her arazi, her üretim biçimi farklıdır. Sıfır ve ikinci el geniş ürün yelpazemizle ihtiyacınıza ve bütçenize en uygun modeli birlikte belirliyoruz; asla tek tip çözüm sunmuyoruz.",
+    dosya: "dogru-cozum.webp",
   },
 ];
 

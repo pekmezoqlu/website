@@ -97,7 +97,7 @@ export default function Hakkimizda() {
             <FadeIn direction="left">
               <div>
                 <p className="text-red-600 text-sm font-semibold uppercase tracking-widest mb-3">Kurumsal</p>
-                <h1 className="font-serif text-4xl md:text-5xl font-medium text-gray-900 mb-5 leading-tight">
+                <h1 className="text-4xl md:text-5xl font-medium text-gray-900 mb-5 leading-tight">
                   Hakkımızda
                 </h1>
                 <div className="space-y-4 text-gray-600 leading-relaxed mb-8">
@@ -156,7 +156,7 @@ export default function Hakkimizda() {
                 >
                   <FadeIn direction={gorselSolda ? "right" : "left"}>
                     <div>
-                      <h2 className="font-serif text-3xl md:text-4xl font-medium text-gray-900 mb-5 leading-tight">
+                      <h2 className="text-3xl md:text-4xl font-medium text-gray-900 mb-5 leading-tight">
                         {blok.baslik}
                       </h2>
                       <p className="text-gray-600 text-lg leading-relaxed">{blok.metin}</p>
@@ -185,7 +185,7 @@ export default function Hakkimizda() {
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up">
-            <h2 className="font-serif text-3xl font-bold text-gray-900 text-center mb-12">Hizmetlerimiz</h2>
+            <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">Hizmetlerimiz</h2>
           </FadeIn>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {hizmetler.map((h, i) => (

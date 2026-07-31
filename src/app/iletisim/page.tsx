@@ -14,7 +14,7 @@ export default function Iletisim() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FadeIn direction="up">
             <p className="text-red-400 text-sm font-semibold uppercase tracking-widest mb-3">Bize Ulaşın</p>
-            <h1 className="font-serif text-4xl md:text-5xl font-extrabold mb-4">İletişim</h1>
+            <h1 className="text-4xl md:text-5xl font-extrabold mb-4">İletişim</h1>
             <p className="text-gray-400 text-lg max-w-xl">
               Eskişehir Odunpazarı&apos;nda hizmetinizdeyiz. Arayın, yazın veya ziyaret edin.
             </p>
@@ -29,7 +29,7 @@ export default function Iletisim() {
             {/* Bilgiler */}
             <FadeIn direction="left">
               <div>
-                <h2 className="font-serif text-2xl font-bold text-gray-900 mb-8">Bilgilerimiz</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-8">Bilgilerimiz</h2>
                 <div className="space-y-6">
 
                   <div className="flex gap-4">
@@ -120,7 +120,7 @@ export default function Iletisim() {
             {/* Harita */}
             <FadeIn direction="right">
               <div>
-                <h2 className="font-serif text-2xl font-bold text-gray-900 mb-8">Konum</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-8">Konum</h2>
                 <div className="rounded-2xl overflow-hidden shadow-sm border border-gray-200 h-96">
                   <iframe
                     src="https://maps.google.com/maps?q=39.7394427,30.614442&z=16&output=embed"

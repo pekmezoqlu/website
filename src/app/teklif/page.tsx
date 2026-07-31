@@ -84,7 +84,7 @@ export default function Teklif() {
       <section className="bg-gray-900 text-white py-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <p className="text-red-400 text-sm font-semibold uppercase tracking-widest mb-3">Hızlı Değerlendirme</p>
-          <h1 className="font-serif text-4xl md:text-5xl font-extrabold mb-4">Fiyat Teklifi Al</h1>
+          <h1 className="text-4xl md:text-5xl font-extrabold mb-4">Fiyat Teklifi Al</h1>
           <p className="text-gray-400 text-lg max-w-xl">
             Traktörünüzün bilgilerini ve fotoğraflarını gönderin, en kısa sürede sizi arayalım.
           </p>
@@ -112,7 +112,7 @@ export default function Teklif() {
               </div>
             ) : (
               <>
-                <h2 className="font-serif text-2xl font-bold text-gray-900 mb-6">Traktör Bilgileri</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">Traktör Bilgileri</h2>
                 <form onSubmit={handleSubmit} className="space-y-5">
 
                   {/* Honeypot: botlar bu alanı doldurur, insanlar görmez */}

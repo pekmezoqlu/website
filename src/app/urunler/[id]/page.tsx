@@ -110,7 +110,7 @@ export default async function UrunDetay({ params }: Props) {
               </span>
             )}
           </div>
-          <h1 className="font-serif text-lg font-extrabold text-gray-900 leading-snug uppercase">
+          <h1 className="text-lg font-extrabold text-gray-900 leading-snug uppercase">
             {urun.marka} {urun.model}
           </h1>
           <div className="flex items-center gap-1.5 mt-2 text-sm text-gray-500">
@@ -213,7 +213,7 @@ export default async function UrunDetay({ params }: Props) {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-          <h1 className="font-serif text-2xl font-bold text-gray-900 mb-4 uppercase">
+          <h1 className="text-2xl font-bold text-gray-900 mb-4 uppercase">
             {urun.marka} {urun.model}
           </h1>
 

@@ -8,24 +8,11 @@ import { urunler } from "@/lib/urunler";
 const OZEL_URUN_ID = 86;
 const GOSTERILDI_KEY = "duyuru-gosterildi";
 
-function formatTime(seconds: number) {
-  if (!Number.isFinite(seconds)) return "00:00";
-  const m = Math.floor(seconds / 60);
-  const s = Math.floor(seconds % 60);
-  return `${String(m).padStart(2, "0")}:${String(s).padStart(2, "0")}`;
-}
-
-
 export default function AnnouncementModal() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
-
-  const [playing, setPlaying] = useState(true);
-  const [muted, setMuted] = useState(true);
-  const [currentTime, setCurrentTime] = useState(0);
-  const [duration, setDuration] = useState(0);
 
   const urun = urunler.find((u) => u.id === OZEL_URUN_ID);
 
@@ -72,41 +59,21 @@ export default function AnnouncementModal() {
   }, [open]);
 
   useEffect(() => {
+    if (!open) return;
+    const v = videoRef.current;
+    if (!v) return;
+    v.muted = true;
+    v.play().catch(() => {});
+  }, [open]);
+
+  useEffect(() => {
     return () => {
       if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
     };
   }, []);
 
   function handleVideoEnded() {
-    setPlaying(false);
     closeTimerRef.current = setTimeout(() => setOpen(false), 3000);
-  }
-
-  function togglePlay() {
-    const v = videoRef.current;
-    if (!v) return;
-    if (v.paused) {
-      v.play();
-      setPlaying(true);
-    } else {
-      v.pause();
-      setPlaying(false);
-    }
-  }
-
-  function toggleMute() {
-    const v = videoRef.current;
-    if (!v) return;
-    v.muted = !v.muted;
-    setMuted(v.muted);
-  }
-
-  function seek(e: React.ChangeEvent<HTMLInputElement>) {
-    const v = videoRef.current;
-    if (!v) return;
-    const t = Number(e.target.value);
-    v.currentTime = t;
-    setCurrentTime(t);
   }
 
   if (!open) return null;
@@ -148,57 +115,15 @@ export default function AnnouncementModal() {
               ref={videoRef}
               src="/duyuru-video.mp4"
               autoPlay
-              muted={muted}
+              muted
               playsInline
+              disablePictureInPicture
+              controlsList="nodownload noremoteplayback nofullscreen"
+              onContextMenu={(e) => e.preventDefault()}
               onEnded={handleVideoEnded}
-              onTimeUpdate={(e) => {
-                setCurrentTime(e.currentTarget.currentTime);
-                if (Number.isFinite(e.currentTarget.duration)) setDuration(e.currentTarget.duration);
-              }}
-              onLoadedMetadata={(e) => setDuration(e.currentTarget.duration)}
-              onDurationChange={(e) => setDuration(e.currentTarget.duration)}
-              className="w-full max-h-[42vh] object-contain"
+              tabIndex={-1}
+              className="w-full max-h-[42vh] object-contain pointer-events-none"
             />
-
-            {/* Özel kontrol çubuğu */}
-            <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/85 via-black/40 to-transparent pt-8 pb-2.5 px-3 flex items-center gap-2.5">
-              <button onClick={togglePlay} aria-label={playing ? "Duraklat" : "Oynat"} className="text-white shrink-0">
-                {playing ? (
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <rect x="6" y="5" width="4" height="14" rx="1" />
-                    <rect x="14" y="5" width="4" height="14" rx="1" />
-                  </svg>
-                ) : (
-                  <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M8 5v14l11-7z" />
-                  </svg>
-                )}
-              </button>
-              <span className="text-white text-[11px] tabular-nums shrink-0">{formatTime(currentTime)}</span>
-              <input
-                type="range"
-                min={0}
-                max={duration || 0}
-                step={0.1}
-                value={currentTime}
-                onChange={seek}
-                className="flex-1 h-1 accent-red-600 cursor-pointer"
-              />
-              <span className="text-white text-[11px] tabular-nums shrink-0">{formatTime(duration)}</span>
-              <button onClick={toggleMute} aria-label={muted ? "Sesi Aç" : "Sesi Kapat"} className="text-white shrink-0">
-                {muted ? (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 9l4 6m0-6l-4 6" />
-                  </svg>
-                ) : (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5.586 15H4a1 1 0 01-1-1v-4a1 1 0 011-1h1.586l4.707-4.707C10.923 3.663 12 4.109 12 5v14c0 .891-1.077 1.337-1.707.707L5.586 15z" />
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15.5 8.5a5 5 0 010 7M18 6a9 9 0 010 12" />
-                  </svg>
-                )}
-              </button>
-            </div>
           </div>
 
           {/* İçerik */}

@@ -63,7 +63,27 @@ export default function AnnouncementModal() {
     const v = videoRef.current;
     if (!v) return;
     v.muted = true;
-    v.play().catch(() => {});
+
+    const tryPlay = () => v.play().catch(() => {});
+    tryPlay();
+    v.addEventListener("loadeddata", tryPlay);
+    v.addEventListener("canplay", tryPlay);
+
+    // Safari bazen otomatik oynatmayı yalnızca gerçek bir kullanıcı
+    // etkileşiminden sonra izin veriyor; görünür bir kontrol eklemeden
+    // sayfadaki ilk dokunuşta sessizce tekrar dene.
+    const onFirstInteraction = () => {
+      if (v.paused) tryPlay();
+    };
+    document.addEventListener("pointerdown", onFirstInteraction, { once: true });
+    document.addEventListener("touchstart", onFirstInteraction, { once: true });
+
+    return () => {
+      v.removeEventListener("loadeddata", tryPlay);
+      v.removeEventListener("canplay", tryPlay);
+      document.removeEventListener("pointerdown", onFirstInteraction);
+      document.removeEventListener("touchstart", onFirstInteraction);
+    };
   }, [open]);
 
   useEffect(() => {

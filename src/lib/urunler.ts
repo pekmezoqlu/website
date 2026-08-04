@@ -1806,4 +1806,22 @@ export const urunler: Urun[] = [
       "/tractors/mf-265s-1993-1.webp",
     ],
   },
+  {
+    id: 86,
+    marka: "Massey Ferguson",
+    model: "2635",
+    modelYili: "2015",
+    guc: "-",
+    saat: "2.500 saat",
+    vites: "-",
+    kuyrukMili: "-",
+    kaldirmaKapasitesi: "-",
+    durum: "2. El",
+    renk: "bg-orange-50",
+    textColor: "text-orange-700",
+    badge: "",
+    fotolar: [
+      "/tractors/mf-2635-2015-1.webp",
+    ],
+  },
 ];

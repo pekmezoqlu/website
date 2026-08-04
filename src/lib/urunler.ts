@@ -1834,6 +1834,13 @@ export const urunler: Urun[] = [
       "/tractors/mf-2635-2015-4.webp",
       "/tractors/mf-2635-2015-5.webp",
       "/tractors/mf-2635-2015-6.webp",
+      "/tractors/mf-2635-2015-7.webp",
+      "/tractors/mf-2635-2015-8.webp",
+      "/tractors/mf-2635-2015-9.webp",
+      "/tractors/mf-2635-2015-10.webp",
+      "/tractors/mf-2635-2015-11.webp",
+      "/tractors/mf-2635-2015-12.webp",
+      "/tractors/mf-2635-2015-13.webp",
     ],
   },
 ];

@@ -1804,6 +1804,9 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/mf-265s-1993-1.webp",
+      "/tractors/mf-265s-1993-2.webp",
+      "/tractors/mf-265s-1993-3.webp",
+      "/tractors/mf-265s-1993-4.webp",
     ],
   },
   {
@@ -1822,6 +1825,11 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/mf-2635-2015-1.webp",
+      "/tractors/mf-2635-2015-2.webp",
+      "/tractors/mf-2635-2015-3.webp",
+      "/tractors/mf-2635-2015-4.webp",
+      "/tractors/mf-2635-2015-5.webp",
+      "/tractors/mf-2635-2015-6.webp",
     ],
   },
 ];

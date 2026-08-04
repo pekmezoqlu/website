@@ -1786,6 +1786,10 @@ export const urunler: Urun[] = [
     badge: "",
     fotolar: [
       "/tractors/mf-240s-2007-1.webp",
+      "/tractors/mf-240s-2007-2.webp",
+      "/tractors/mf-240s-2007-3.webp",
+      "/tractors/mf-240s-2007-4.webp",
+      "/tractors/mf-240s-2007-5.webp",
     ],
   },
   {

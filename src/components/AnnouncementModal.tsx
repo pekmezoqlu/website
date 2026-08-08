@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import Link from "next/link";
 import { urunler } from "@/lib/urunler";
 
-const OZEL_URUN_ID = 86;
+const OZEL_URUN_ID = 87;
 const GOSTERILDI_KEY = "duyuru-gosterildi";
 
 export default function AnnouncementModal() {

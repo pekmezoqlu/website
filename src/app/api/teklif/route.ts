@@ -40,6 +40,19 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Lütfen geçerli bir telefon numarası girin." }, { status: 400 });
     }
 
+    const MAX_LENGTHS = { telefon: 25, il: 60, ilce: 60, marka: 60, model: 80, yil: 10, saat: 30 };
+    if (
+      telefon.length > MAX_LENGTHS.telefon ||
+      il.length > MAX_LENGTHS.il ||
+      ilce.length > MAX_LENGTHS.ilce ||
+      marka.length > MAX_LENGTHS.marka ||
+      model.length > MAX_LENGTHS.model ||
+      yil.length > MAX_LENGTHS.yil ||
+      saat.length > MAX_LENGTHS.saat
+    ) {
+      return NextResponse.json({ error: "Girdiğiniz bilgilerden biri çok uzun." }, { status: 400 });
+    }
+
     const ip = getClientIp(req);
     if (!(await checkRateLimit(ip))) {
       return NextResponse.json(

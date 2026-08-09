@@ -44,15 +44,13 @@ function parseSaat(s: string): number | null {
 const MIN_SAAT = 0;
 const MAX_SAAT = 15000;
 
-type Siralama = "varsayilan" | "yeni-eklenen" | "en-yeni" | "en-eski" | "fiyat-artan" | "fiyat-azalan";
+type Siralama = "varsayilan" | "yeni-eklenen" | "en-yeni" | "en-eski";
 
 const SIRALAMA_ETIKET: Record<Siralama, string> = {
   "varsayilan":    "Sıralama",
   "yeni-eklenen":  "Yeni Eklenen",
   "en-yeni":       "Model: En Yeni",
   "en-eski":       "Model: En Eski",
-  "fiyat-artan":   "Fiyat: Artan",
-  "fiyat-azalan":  "Fiyat: Azalan",
 };
 
 type Durum = "" | "Sıfır" | "2. El";
@@ -111,8 +109,6 @@ export default function UrunlerClient() {
         case "yeni-eklenen":  return b.id - a.id;
         case "en-yeni":       return Number(b.modelYili) - Number(a.modelYili);
         case "en-eski":       return Number(a.modelYili) - Number(b.modelYili);
-        case "fiyat-artan":   return (a.fiyat ?? Infinity) - (b.fiyat ?? Infinity);
-        case "fiyat-azalan":  return (b.fiyat ?? 0) - (a.fiyat ?? 0);
         default:              return 0;
       }
     });

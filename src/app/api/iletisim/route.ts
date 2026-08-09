@@ -43,6 +43,17 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: "Lütfen geçerli bir e-posta adresi girin." }, { status: 400 });
     }
 
+    const MAX_LENGTHS = { ad: 100, telefon: 25, email: 254, konu: 150, mesaj: 5000 };
+    if (
+      ad.length > MAX_LENGTHS.ad ||
+      telefon.length > MAX_LENGTHS.telefon ||
+      (email && email.length > MAX_LENGTHS.email) ||
+      konu.length > MAX_LENGTHS.konu ||
+      mesaj.length > MAX_LENGTHS.mesaj
+    ) {
+      return NextResponse.json({ error: "Girdiğiniz bilgilerden biri çok uzun." }, { status: 400 });
+    }
+
     const ip = getClientIp(req);
     if (!(await checkRateLimit(ip))) {
       return NextResponse.json(

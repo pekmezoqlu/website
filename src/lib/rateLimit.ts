@@ -51,7 +51,7 @@ function createLimiter(name: string, maxRequests: number, windowMs: number) {
 }
 
 export const checkRateLimit = createLimiter("form", 3, 10 * 60 * 1000);
-export const checkUploadRateLimit = createLimiter("upload", 30, 10 * 60 * 1000);
+export const checkUploadRateLimit = createLimiter("upload", 8, 10 * 60 * 1000);
 
 export function getClientIp(req: NextRequest): string {
   const forwardedFor = req.headers.get("x-forwarded-for");

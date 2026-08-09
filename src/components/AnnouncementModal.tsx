@@ -11,6 +11,7 @@ const GOSTERILDI_KEY = "duyuru-gosterildi";
 export default function AnnouncementModal() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
+  const [prevPathname, setPrevPathname] = useState(pathname);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
 
@@ -39,13 +40,20 @@ export default function AnnouncementModal() {
     },
   ];
 
+  // Rota değiştiğinde kartı kapatmak bir render-sırası state ayarlaması;
+  // effect içine koymak gereksiz bir yeniden render'a yol açıyordu (react-hooks/set-state-in-effect).
+  if (pathname !== prevPathname) {
+    setPrevPathname(pathname);
+    if (pathname !== "/") setOpen(false);
+  }
+
   useEffect(() => {
-    if (pathname !== "/") {
-      setOpen(false);
-      return;
-    }
+    if (pathname !== "/") return;
     if (sessionStorage.getItem(GOSTERILDI_KEY)) return;
     sessionStorage.setItem(GOSTERILDI_KEY, "1");
+    // sessionStorage tarayıcıya özel olduğundan (SSR'da yok) render sırasında
+    // okunamaz; bu, sayfa açıldığında bir kerelik dış sistem senkronizasyonu.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
     setOpen(true);
   }, [pathname]);
 

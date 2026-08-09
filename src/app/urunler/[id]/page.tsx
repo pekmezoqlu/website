@@ -1,7 +1,7 @@
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import type { Metadata } from "next";
-import { urunler } from "@/lib/urunler";
+import { urunler, urunAciklama } from "@/lib/urunler";
 import { urunWhatsappLink } from "@/lib/whatsapp";
 import FotoGalerisi from "@/components/FotoGalerisi";
 
@@ -17,7 +17,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!urun) return {};
   return {
     title: `${urun.marka} ${urun.model}`,
-    description: `${urun.modelYili} model ${urun.marka} ${urun.model} — ${urun.guc}, ${urun.durum}`,
+    description: urunAciklama(urun),
   };
 }
 
@@ -31,9 +31,8 @@ export default async function UrunDetay({ params }: Props) {
   const urunUrl = `${baseUrl}/urunler/${urun.id}`;
   const itemCondition = urun.durum === "Sıfır" ? "https://schema.org/NewCondition" : "https://schema.org/UsedCondition";
 
-  const ozellikler: { "@type": "PropertyValue"; name: string; value: string }[] = [
-    { "@type": "PropertyValue", name: "Model Yılı", value: urun.modelYili },
-  ];
+  const ozellikler: { "@type": "PropertyValue"; name: string; value: string }[] = [];
+  if (urun.modelYili !== "-") ozellikler.push({ "@type": "PropertyValue", name: "Model Yılı", value: urun.modelYili });
   if (urun.guc !== "-") ozellikler.push({ "@type": "PropertyValue", name: "Motor Gücü", value: urun.guc });
   if (urun.saat !== "-") ozellikler.push({ "@type": "PropertyValue", name: "Çalışma Saati", value: urun.saat });
   if (urun.vites !== "-") ozellikler.push({ "@type": "PropertyValue", name: "Vites", value: urun.vites });
@@ -48,7 +47,7 @@ export default async function UrunDetay({ params }: Props) {
     model: urun.model,
     sku: String(urun.id),
     url: urunUrl,
-    description: `${urun.modelYili} model ${urun.marka} ${urun.model} — ${urun.guc}, ${urun.durum}`,
+    description: urunAciklama(urun),
     image: urun.fotolar.map((f) => `${baseUrl}${f}`),
     itemCondition,
     additionalProperty: ozellikler,

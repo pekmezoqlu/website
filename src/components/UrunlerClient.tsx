@@ -77,6 +77,16 @@ function saatFiltresiAktif(f: Filters) {
   return f.saatAralik[0] !== MIN_SAAT || f.saatAralik[1] !== MAX_SAAT || !f.saatBilinmiyor;
 }
 
+// Yılı bilinmeyen ("-") ürünleri sıralama yönünden bağımsız olarak her zaman
+// sona atar; aksi halde Number("-") -> NaN karşılaştırması tanımsız davranırdı.
+function yilKarsilastir(a: (typeof urunler)[number], b: (typeof urunler)[number], yon: "yeni" | "eski") {
+  const ay = Number(a.modelYili);
+  const by = Number(b.modelYili);
+  if (Number.isNaN(ay)) return Number.isNaN(by) ? 0 : 1;
+  if (Number.isNaN(by)) return -1;
+  return yon === "yeni" ? by - ay : ay - by;
+}
+
 export default function UrunlerClient() {
   const [panelAcik, setPanelAcik] = useState(false);
   const [filters, setFilters] = useState<Filters>(BOSH);
@@ -94,7 +104,13 @@ export default function UrunlerClient() {
       if (filters.durum && u.durum !== filters.durum) return false;
       if (filters.markalar.length > 0 && !filters.markalar.includes(u.marka)) return false;
       const yil = Number(u.modelYili);
-      if (yil < filters.yilAralik[0] || yil > filters.yilAralik[1]) return false;
+      if (Number.isNaN(yil)) {
+        // Yılı bilinmeyen ürün, kullanıcı yıl aralığını daralttığında eleniyor;
+        // varsayılan (tam) aralıkta gösterilmeye devam ediyor.
+        if (yilFiltresiAktif(filters)) return false;
+      } else if (yil < filters.yilAralik[0] || yil > filters.yilAralik[1]) {
+        return false;
+      }
       const saat = parseSaat(u.saat);
       if (saat === null) {
         if (!filters.saatBilinmiyor) return false;
@@ -107,8 +123,8 @@ export default function UrunlerClient() {
     return [...liste].sort((a, b) => {
       switch (siralama) {
         case "yeni-eklenen":  return b.id - a.id;
-        case "en-yeni":       return Number(b.modelYili) - Number(a.modelYili);
-        case "en-eski":       return Number(a.modelYili) - Number(b.modelYili);
+        case "en-yeni":       return yilKarsilastir(a, b, "yeni");
+        case "en-eski":       return yilKarsilastir(a, b, "eski");
         default:              return 0;
       }
     });
@@ -126,7 +142,7 @@ export default function UrunlerClient() {
   return (
     <>
       {/* ── Sticky filtre barı ── */}
-      <section className="bg-white border-b border-gray-200 sticky top-16 z-40">
+      <section className="bg-white border-b border-gray-200 sticky top-20 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-3">
           <button
             onClick={() => setPanelAcik(true)}

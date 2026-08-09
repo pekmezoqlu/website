@@ -51,7 +51,7 @@ const jsonLd = {
   description:
     "Eskişehir Odunpazarı'nda traktör satışı ve servisi. Sıfır ve ikinci el traktör alım-satım, takas ve servis hizmetleri.",
   url: "https://www.pekmezoglu.com",
-  logo: "https://www.pekmezoglu.com/icon",
+  logo: "https://www.pekmezoglu.com/icon.png",
   image: "https://www.pekmezoglu.com/hero-traktor.webp",
   telephone: "+905359878980",
   foundingDate: "1973",

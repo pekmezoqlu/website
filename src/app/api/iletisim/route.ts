@@ -3,14 +3,17 @@ import nodemailer from "nodemailer";
 import { checkRateLimit, getClientIp } from "@/lib/rateLimit";
 import { validateFotolar, FotoValidasyonHatasi } from "@/lib/fotoValidasyon";
 import { escapeHtml } from "@/lib/escapeHtml";
+import { readJsonBody } from "@/lib/readJson";
 
 const MIN_SUBMIT_MS = 3000;
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 export async function POST(req: NextRequest) {
+  const parsed = await readJsonBody(req);
+  if (!parsed.ok) return parsed.response;
+
   try {
-    const body = await req.json();
-    const { ad, telefon, email, konu, mesaj, fotolar, web, sure } = body as {
+    const { ad, telefon, email, konu, mesaj, fotolar, web, sure } = parsed.body as {
       ad: string;
       telefon: string;
       email: string;

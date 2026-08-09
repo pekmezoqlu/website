@@ -1,6 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { handleUpload, type HandleUploadBody } from "@vercel/blob/client";
 import { checkUploadRateLimit, getClientIp } from "@/lib/rateLimit";
+import { readJsonBody } from "@/lib/readJson";
 
 export async function POST(request: NextRequest): Promise<NextResponse> {
   const ip = getClientIp(request);
@@ -8,7 +9,9 @@ export async function POST(request: NextRequest): Promise<NextResponse> {
     return NextResponse.json({ error: "Çok fazla yükleme denemesi yapıldı." }, { status: 429 });
   }
 
-  const body = (await request.json()) as HandleUploadBody;
+  const parsed = await readJsonBody(request);
+  if (!parsed.ok) return parsed.response;
+  const body = parsed.body as HandleUploadBody;
 
   try {
     const jsonResponse = await handleUpload({

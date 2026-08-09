@@ -16,6 +16,14 @@ export type Urun = {
   fiyat?: number;
 };
 
+// modelYili veya guc "-" (bilinmiyor) olduğunda "- model X — -, Sıfır" gibi
+// bozuk bir cümle üretmemek için parçaları koşullu birleştirir.
+export function urunAciklama(urun: Urun): string {
+  const isim = urun.modelYili !== "-" ? `${urun.modelYili} model ${urun.marka} ${urun.model}` : `${urun.marka} ${urun.model}`;
+  const detay = urun.guc !== "-" ? `${urun.guc}, ${urun.durum}` : urun.durum;
+  return `${isim} — ${detay}`;
+}
+
 export const urunler: Urun[] = [
   {
     id: 4,

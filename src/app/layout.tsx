@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/Footer";
-import AnnouncementModal from "@/components/AnnouncementModal";
 import Script from "next/script";
 
 export const metadata: Metadata = {
@@ -117,7 +116,6 @@ export default function RootLayout({
             gtag('config', 'G-K17C7R3J6S');
           `}
         </Script>
-        <AnnouncementModal />
         <Navbar />
         <main className="flex-1">{children}</main>
         <Footer />

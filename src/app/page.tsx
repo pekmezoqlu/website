@@ -67,17 +67,6 @@ const onecikarilan = [
     foto: "/tractors/mf5430-1.webp",
     renk: "bg-orange-50",
   },
-  {
-    id: 10,
-    marka: "Başak",
-    model: "2055",
-    modelYili: "2023",
-    ad: "Başak 2055",
-    kategori: "2. El Traktör",
-    detay: "55 HP • 185 Saat • 2023",
-    foto: "/tractors/basak-2055-2.webp",
-    renk: "bg-red-50",
-  },
 ];
 
 export default function Home() {

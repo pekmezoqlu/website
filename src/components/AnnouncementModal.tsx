@@ -3,17 +3,18 @@
 import { useEffect, useRef, useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { urunler } from "@/lib/urunler";
 
-const OZEL_URUN_ID = 87;
+const OZEL_URUN_ID = 88;
 const GOSTERILDI_KEY = "duyuru-gosterildi";
+const OTOKAPAT_SANIYE = 10;
 
 export default function AnnouncementModal() {
   const [open, setOpen] = useState(false);
   const pathname = usePathname();
   const [prevPathname, setPrevPathname] = useState(pathname);
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const videoRef = useRef<HTMLVideoElement>(null);
 
   const urun = urunler.find((u) => u.id === OZEL_URUN_ID);
 
@@ -68,43 +69,13 @@ export default function AnnouncementModal() {
 
   useEffect(() => {
     if (!open) return;
-    const v = videoRef.current;
-    if (!v) return;
-    v.muted = true;
-
-    const tryPlay = () => v.play().catch(() => {});
-    tryPlay();
-    v.addEventListener("loadeddata", tryPlay);
-    v.addEventListener("canplay", tryPlay);
-
-    // Safari bazen otomatik oynatmayı yalnızca gerçek bir kullanıcı
-    // etkileşiminden sonra izin veriyor; görünür bir kontrol eklemeden
-    // sayfadaki ilk dokunuşta sessizce tekrar dene.
-    const onFirstInteraction = () => {
-      if (v.paused) tryPlay();
-    };
-    document.addEventListener("pointerdown", onFirstInteraction, { once: true });
-    document.addEventListener("touchstart", onFirstInteraction, { once: true });
-
-    return () => {
-      v.removeEventListener("loadeddata", tryPlay);
-      v.removeEventListener("canplay", tryPlay);
-      document.removeEventListener("pointerdown", onFirstInteraction);
-      document.removeEventListener("touchstart", onFirstInteraction);
-    };
-  }, [open]);
-
-  useEffect(() => {
+    closeTimerRef.current = setTimeout(() => setOpen(false), OTOKAPAT_SANIYE * 1000);
     return () => {
       if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
     };
-  }, []);
+  }, [open]);
 
-  function handleVideoEnded() {
-    closeTimerRef.current = setTimeout(() => setOpen(false), 3000);
-  }
-
-  if (!open) return null;
+  if (!open || !urun) return null;
 
   return (
     <div
@@ -137,20 +108,15 @@ export default function AnnouncementModal() {
             </svg>
           </button>
 
-          {/* Video */}
-          <div className="relative bg-black flex items-center justify-center min-h-0 shrink">
-            <video
-              ref={videoRef}
-              src="/duyuru-video.mp4"
-              autoPlay
-              muted
-              playsInline
-              disablePictureInPicture
-              controlsList="nodownload noremoteplayback nofullscreen"
-              onContextMenu={(e) => e.preventDefault()}
-              onEnded={handleVideoEnded}
-              tabIndex={-1}
-              className="w-full max-h-[42vh] object-contain pointer-events-none"
+          {/* Ürün fotoğrafı */}
+          <div className="relative bg-black h-56 shrink-0">
+            <Image
+              src={urun.fotolar[0]}
+              alt={`${urun.marka} ${urun.model}`}
+              fill
+              sizes="384px"
+              className="object-cover"
+              priority
             />
           </div>
 
@@ -160,14 +126,7 @@ export default function AnnouncementModal() {
               <span>★</span> YENİ GELENLER <span>★</span>
             </div>
             <h2 className="text-2xl font-black text-gray-900 uppercase leading-tight">
-              {urun ? (
-                <>
-                  {urun.marka}{" "}
-                  <span className="text-red-600">{urun.model}</span>
-                </>
-              ) : (
-                "Yeni Gelen Traktörümüz"
-              )}
+              {urun.marka} <span className="text-red-600">{urun.model}</span>
             </h2>
             <div className="w-14 h-1 bg-red-600 mx-auto mt-3 mb-4 rounded-full" />
             <p className="text-gray-500 text-sm mb-5">

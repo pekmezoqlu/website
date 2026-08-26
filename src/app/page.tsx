@@ -67,6 +67,17 @@ const onecikarilan = [
     foto: "/tractors/mf5430-1.webp",
     renk: "bg-orange-50",
   },
+  {
+    id: 88,
+    marka: "Erkunt",
+    model: "Nimet 75 Lüks",
+    modelYili: "2021",
+    ad: "Erkunt Nimet 75 Lüks",
+    kategori: "2. El Traktör",
+    detay: "75 HP • 4x4 • 2021",
+    foto: "/tractors/erkunt-nimet75luks-1.webp",
+    renk: "bg-teal-50",
+  },
 ];
 
 export default function Home() {

@@ -8,7 +8,7 @@ import { urunler } from "@/lib/urunler";
 
 const OZEL_URUN_ID = 88;
 const GOSTERILDI_KEY = "duyuru-gosterildi";
-const OTOKAPAT_SANIYE = 10;
+const OTOKAPAT_SANIYE = 15;
 
 export default function AnnouncementModal() {
   const [open, setOpen] = useState(false);

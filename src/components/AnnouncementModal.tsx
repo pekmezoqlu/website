@@ -6,7 +6,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { urunler } from "@/lib/urunler";
 
-const OZEL_URUN_ID = 88;
+const OZEL_URUN_ID = 92;
 const GOSTERILDI_KEY = "duyuru-gosterildi";
 const OTOKAPAT_SANIYE = 15;
 
@@ -17,8 +17,6 @@ export default function AnnouncementModal() {
   const closeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
 
   const urun = urunler.find((u) => u.id === OZEL_URUN_ID);
-
-  const saatParcalari = urun && urun.saat !== "-" ? urun.saat.split(" ") : null;
 
   const ozellikler = [
     {
@@ -34,9 +32,9 @@ export default function AnnouncementModal() {
       ),
     },
     {
-      label: saatParcalari ? `${saatParcalari[0]}\n${saatParcalari.slice(1).join(" ").toUpperCase()}` : "—\nSaat",
+      label: urun && urun.vites !== "-" ? `${urun.vites}\nLevye Vites` : "—\nVites",
       icon: (
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 6v6l4 2m6-2a9 9 0 11-18 0 9 9 0 0118 0z" />
+        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" />
       ),
     },
   ];
@@ -131,6 +129,8 @@ export default function AnnouncementModal() {
             <div className="w-14 h-1 bg-red-600 mx-auto mt-3 mb-4 rounded-full" />
             <p className="text-gray-500 text-sm mb-5">
               Stoklarımıza <span className="text-red-600 font-semibold">yeni</span> eklenmiştir.
+              <br />
+              <span className="text-gray-700 font-semibold">Vade ve takas imkânı mevcuttur.</span>
             </p>
 
             <div className="flex items-start justify-center gap-3 mb-6">

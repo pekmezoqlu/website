@@ -212,9 +212,9 @@ export default async function UrunDetay({ params }: Props) {
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5">
-          <h1 className="text-2xl font-bold text-gray-900 mb-4 uppercase">
+          <div className="text-2xl font-bold text-gray-900 mb-4 uppercase">
             {urun.marka} {urun.model}
-          </h1>
+          </div>
 
           <div className="grid lg:grid-cols-5 gap-5">
             {/* Galeri */}

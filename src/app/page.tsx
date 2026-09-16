@@ -139,12 +139,12 @@ export default function Home() {
         </div>
         <div className="hidden lg:flex relative z-20 w-full max-w-7xl mx-auto px-2 lg:px-4">
           <div className="w-1/2 py-20 anim-slide-left">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase mb-4 text-gray-900" style={{ lineHeight: "1.15" }}>
+            <div className="text-4xl sm:text-5xl lg:text-6xl font-black uppercase mb-4 text-gray-900" style={{ lineHeight: "1.15" }}>
               Pekmezoğlu<br />
               Çiftçilerine<br />
               Özel<br />
               Teklifler
-            </h1>
+            </div>
             <p className="text-gray-500 text-base mb-8 max-w-sm leading-relaxed">
               1973&apos;ten bu yana sıfır ve ikinci el traktörlerde güvenilir satış, takas desteği ve size özel avantajlar sunuyoruz.
             </p>

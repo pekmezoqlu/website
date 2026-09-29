@@ -1914,6 +1914,7 @@ export const urunler: Urun[] = [
     fotolar: [
       "/tractors/jd-6120m-2022-2.webp",
       "/tractors/jd-6120m-2022-1.webp",
+      "/tractors/jd-6120m-2022-3.webp",
     ],
   },
 ];

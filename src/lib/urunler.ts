@@ -1897,4 +1897,22 @@ export const urunler: Urun[] = [
       "/tractors/erkunt-kiymet90e-2013-13.webp",
     ],
   },
+  {
+    id: 93,
+    marka: "John Deere",
+    model: "6120M Premium",
+    modelYili: "2022",
+    guc: "120 HP (IPM ile 140 HP)",
+    saat: "520 saat",
+    vites: "24+24",
+    kuyrukMili: "540/1000 d/d",
+    kaldirmaKapasitesi: "-",
+    durum: "2. El",
+    renk: "bg-green-50",
+    textColor: "text-green-700",
+    badge: "Full Paket",
+    fotolar: [
+      "/tractors/jd-6120m-2022-1.webp",
+    ],
+  },
 ];

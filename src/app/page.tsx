@@ -221,7 +221,7 @@ export default function Home() {
                       alt={urun.ad}
                       fill
                       sizes="(min-width: 768px) 33vw, 100vw"
-                      className="object-cover group-hover:scale-105 transition-transform duration-300"
+                      className="object-contain group-hover:scale-105 transition-transform duration-300"
                     />
                   </div>
                 </Link>
